@@ -1,0 +1,19 @@
+footer {
+    colorSchemeSwitchter = ${q(site).property('themeColorSchemeSwitchter')}
+    colorSchemeSwitchter.@if.both = ${q(site).property('themeColorScheme') == 'light dark'}
+    clipPathAboveFooter = ${q(site).property('themeClipPathEnabled') && q(site).property('themeClipPathAboveFooter')}
+    spacing = ${q(site).property('themeFooterSpacing')}
+    logo = Litespeed.Theme:Component.Logo {
+        @if.show = ${q(site).property('themeFooterShowLogo')}
+        class = 'p-0'
+        size = null
+        height = ${q(site).property('themeLogoHeightInFooter') / 1.25}
+        setStyle = true
+        additionalLinkClass = 'max-w-full'
+        linkAttributes {
+            href = Neos.Neos:NodeUri {
+                node = ${site}
+            }
+        }
+    }
+}

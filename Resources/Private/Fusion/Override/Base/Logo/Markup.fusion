@@ -1,0 +1,9 @@
+prototype(Litespeed.Style:Logo.Markup) {
+    @class = 'Litespeed\\Style\\FusionObjects\\LogoMarkupImplementation'
+    content = ${value}
+    contextNodes = Neos.Fusion:DataStructure {
+        node = ${node}
+        documentNode = ${documentNode}
+        site = ${site}
+    }
+}

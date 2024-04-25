@@ -1,0 +1,28 @@
+'Litespeed.Theme:Document.HomePage':
+  superTypes:
+    'Litespeed.Style:Mixin.Colors': true
+    'Litespeed.Style:Mixin.Visuals': true
+    'Litespeed.Style:Mixin.Fonts': true
+    'Litespeed.Style:Mixin.Hr': true
+    'Litespeed.Style:Mixin.Browserconfig': true
+    'Litespeed.Style:Mixin.Webmanifest': true
+    'Litespeed.Style:Mixin.Favicon': true
+    'Litespeed.Style:Mixin.RobotsTxt': true
+    'Litespeed.Style:Mixin.ScollIndicator': true
+  properties:
+    themeBackendCSS:
+      type: string
+    themeCSS:
+      type: string
+    themeCSSHash:
+      type: string
+    themeHeaderMarkup:
+      type: string
+    themeClipPathEnabled:
+      type: boolean
+      defaultValue: false
+    footerNavigationMultiColumn:
+      ui:
+        inspector:
+          editorOptions:
+            max: 'ClientEval: node.properties.themeFooterShowLogo ? 3 : 4'

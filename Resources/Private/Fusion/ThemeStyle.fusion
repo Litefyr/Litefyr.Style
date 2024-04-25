@@ -1,0 +1,16 @@
+themestyle = Neos.Fusion:Http.Message {
+    httpResponseHead.headers.Content-Type = 'text/css'
+    themeCSS = ${q(site).property('themeCSS')}
+
+    @cache {
+        mode = 'cached'
+        entryIdentifier {
+            documentNode = ${site}
+            editPreviewMode = ${node.context.currentRenderingMode.name}
+            tailwindcss = 'tailwindcss'
+        }
+        entryTags {
+            1 = ${Neos.Caching.nodeTag(site)}
+        }
+    }
+}

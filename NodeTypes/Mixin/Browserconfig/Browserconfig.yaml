@@ -1,0 +1,24 @@
+'Litespeed.Style:Mixin.Browserconfig':
+  abstract: true
+  superTypes:
+    'Litespeed.Style:Mixin.Tab': true
+  ui:
+    inspector:
+      groups:
+        themeBrowserconfig:
+          label: i18n
+          position: 220
+          icon: windows
+          tab: theme
+          collapsed: true
+  properties:
+    themeBrowserconfigTileColor:
+      options:
+        preset: 'theme.color.optional'
+      ui:
+        label: i18n
+        inspector:
+          group: themeBrowserconfig
+          position: 10
+          editorOptions:
+            mode: hex

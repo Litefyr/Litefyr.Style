@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2"
+    xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="" product-name="Litespeed.Style" source-language="en" target-language="de" datatype="plaintext">
+        <body>
+            <trans-unit id="groups.themeColorScheme" xml:space="preserve">
+                <source>Color scheme</source>
+                <target>Farbschema</target>
+            </trans-unit>
+            <trans-unit id="groups.themeColorsLight" xml:space="preserve">
+                <source>Light Mode</source>
+                <target>Helle Darstellung</target>
+            </trans-unit>
+            <trans-unit id="groups.themeColorsDark" xml:space="preserve">
+                <source>Dark Mode</source>
+                <target>Dunkle Darstellung</target>
+            </trans-unit>
+            <trans-unit id="properties.themeColorScheme.selectBoxEditor.values.light dark" xml:space="preserve">
+                <source>Light and dark mode</source>
+                <target>Helle und dunkle Darstellung</target>
+            </trans-unit>
+            <trans-unit id="properties.themeColorSchemeSwitchter" xml:space="preserve">
+                <source>Show selection for dark mode</source>
+                <target>Auswahl für Dark Mode anzeigen</target>
+            </trans-unit>
+            <trans-unit id="properties.themeColorSchemeSwitchter.selectBoxEditor.placeholder" xml:space="preserve">
+                <source>Do not display</source>
+                <target>Nicht anzeigen</target>
+            </trans-unit>
+            <trans-unit id="properties.themeColorSchemeSwitchter.selectBoxEditor.values.top" xml:space="preserve">
+                <source>In the navigation bar</source>
+                <target>In der Navigationsleiste</target>
+            </trans-unit>
+            <trans-unit id="properties.themeColorSchemeSwitchter.selectBoxEditor.values.bottom" xml:space="preserve">
+                <source>In the footer</source>
+                <target>In der Fußzeile</target>
+            </trans-unit>
+            <trans-unit id="properties.themeColorSchemeSwitchter.selectBoxEditor.values.both" xml:space="preserve">
+                <source><![CDATA[Top & bottom]]></source>
+                <target><![CDATA[Oben & unten]]></target>
+            </trans-unit>
+            <trans-unit id="background" xml:space="preserve">
+                <source>Background color of the website</source>
+                <target>Hintergrundfarbe der Website</target>
+            </trans-unit>
+            <trans-unit id="text" xml:space="preserve">
+                <source>Text color of the website</source>
+                <target>Textfarbe der Website</target>
+            </trans-unit>
+            <trans-unit id="header" xml:space="preserve">
+                <source>Header color</source>
+                <target>Farbe der Kopfzeile</target>
+            </trans-unit>
+            <trans-unit id="footer" xml:space="preserve">
+                <source>Footer color</source>
+                <target>Farbe der Fußzeile</target>
+            </trans-unit>
+            <trans-unit id="main" xml:space="preserve">
+                <source>Main accent color</source>
+                <target>Hauptakzentfarbe</target>
+            </trans-unit>
+            <trans-unit id="minor" xml:space="preserve">
+                <source>Minor accent color</source>
+                <target>Zweite Akzentfarbe</target>
+            </trans-unit>
+            <trans-unit id="minor2" xml:space="preserve">
+                <source>Third accent color</source>
+                <target>Dritte Akzentfarbe</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

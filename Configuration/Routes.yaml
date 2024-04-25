@@ -1,0 +1,146 @@
+- name: 'Theme style'
+  uriPattern: '{node}theme.css'
+  defaults:
+    '@package': 'Neos.Neos'
+    '@controller': 'Frontend\Node'
+    '@action': 'show'
+    '@format': 'themestyle'
+  httpMethods: ['GET']
+  routeParts:
+    node:
+      handler: 'Neos\Neos\Routing\FrontendNodeRoutePartHandlerInterface'
+      options:
+        onlyMatchSiteNodes: true
+
+- name: 'Browserconfig'
+  uriPattern: '{node}browserconfig.xml'
+  defaults:
+    '@package': 'Neos.Neos'
+    '@controller': 'Frontend\Node'
+    '@action': 'show'
+    '@format': 'browserconfig'
+  httpMethods: ['GET']
+  routeParts:
+    node:
+      handler: 'Neos\Neos\Routing\FrontendNodeRoutePartHandlerInterface'
+      options:
+        onlyMatchSiteNodes: true
+
+- name: 'site.webmanifest'
+  uriPattern: '{node}site.webmanifest'
+  defaults:
+    '@package': 'Neos.Neos'
+    '@controller': 'Frontend\Node'
+    '@action': 'show'
+    '@format': 'webmanifest'
+  httpMethods: ['GET']
+  routeParts:
+    node:
+      handler: 'Neos\Neos\Routing\FrontendNodeRoutePartHandlerInterface'
+      options:
+        onlyMatchSiteNodes: true
+
+- name: 'Favicon: android-chrome'
+  uriPattern: '{node}android-chrome-{size}.{fileextension}'
+  defaults:
+    '@package': 'Neos.Neos'
+    '@controller': 'Frontend\Node'
+    '@action': 'show'
+    'favicon': 'android-chrome-'
+    'fileextension': 'png'
+  httpMethods: ['GET']
+  routeParts:
+    node:
+      handler: 'Neos\Neos\Routing\FrontendNodeRoutePartHandlerInterface'
+      options:
+        onlyMatchSiteNodes: true
+
+- name: 'Favicon: apple-touch-icon'
+  uriPattern: '{node}apple-touch-icon.{fileextension}'
+  defaults:
+    '@package': 'Neos.Neos'
+    '@controller': 'Frontend\Node'
+    '@action': 'show'
+    'favicon': 'apple-touch-icon'
+    'fileextension': 'png'
+  httpMethods: ['GET']
+  routeParts:
+    node:
+      handler: 'Neos\Neos\Routing\FrontendNodeRoutePartHandlerInterface'
+      options:
+        onlyMatchSiteNodes: true
+
+- name: 'Favicon: apple-touch-icon-precomposed'
+  uriPattern: '{node}apple-touch-icon-precomposed.{fileextension}'
+  defaults:
+    '@package': 'Neos.Neos'
+    '@controller': 'Frontend\Node'
+    '@action': 'show'
+    'favicon': 'apple-touch-icon-precomposed'
+    'fileextension': 'png'
+  httpMethods: ['GET']
+  routeParts:
+    node:
+      handler: 'Neos\Neos\Routing\FrontendNodeRoutePartHandlerInterface'
+      options:
+        onlyMatchSiteNodes: true
+
+- name: 'Favicon: favicon with size'
+  uriPattern: '{node}favicon-{size}.{fileextension}'
+  defaults:
+    '@package': 'Neos.Neos'
+    '@controller': 'Frontend\Node'
+    '@action': 'show'
+    'favicon': 'favicon-'
+    'fileextension': 'png'
+  httpMethods: ['GET']
+  routeParts:
+    node:
+      handler: 'Neos\Neos\Routing\FrontendNodeRoutePartHandlerInterface'
+      options:
+        onlyMatchSiteNodes: true
+
+- name: 'Favicon: favicon.ico'
+  uriPattern: '{node}favicon.{fileextension}'
+  defaults:
+    '@package': 'Neos.Neos'
+    '@controller': 'Frontend\Node'
+    '@action': 'show'
+    'favicon': 'favicon'
+    'fileextension': 'ico'
+  httpMethods: ['GET']
+  routeParts:
+    node:
+      handler: 'Neos\Neos\Routing\FrontendNodeRoutePartHandlerInterface'
+      options:
+        onlyMatchSiteNodes: true
+
+- name: 'Favicon: mstile'
+  uriPattern: '{node}mstile-{size}.{fileextension}'
+  defaults:
+    '@package': 'Neos.Neos'
+    '@controller': 'Frontend\Node'
+    '@action': 'show'
+    'favicon': 'mstile-'
+    'fileextension': 'png'
+  httpMethods: ['GET']
+  routeParts:
+    node:
+      handler: 'Neos\Neos\Routing\FrontendNodeRoutePartHandlerInterface'
+      options:
+        onlyMatchSiteNodes: true
+
+- name: 'Favicon: favicon.ico'
+  uriPattern: '{node}safari-pinned-tab.{fileextension}'
+  defaults:
+    '@package': 'Neos.Neos'
+    '@controller': 'Frontend\Node'
+    '@action': 'show'
+    'favicon': 'safari-pinned-tab'
+    'fileextension': 'svg'
+  httpMethods: ['GET']
+  routeParts:
+    node:
+      handler: 'Neos\Neos\Routing\FrontendNodeRoutePartHandlerInterface'
+      options:
+        onlyMatchSiteNodes: true

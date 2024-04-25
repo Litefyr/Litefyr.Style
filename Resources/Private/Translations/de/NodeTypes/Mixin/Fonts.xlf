@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2"
+    xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="" product-name="Litespeed.Style" source-language="en" target-language="de" datatype="plaintext">
+        <body>
+            <trans-unit id="groups.themeFonts" xml:space="preserve">
+                <source>Fonts</source>
+                <target>Schriften</target>
+            </trans-unit>
+            <trans-unit id="properties.themeFontMain" xml:space="preserve">
+                <source>Main font</source>
+                <target>Hauptschriftart</target>
+            </trans-unit>
+            <trans-unit id="properties.themeFontHeadline" xml:space="preserve">
+                <source>Headline</source>
+                <target>Überschriften</target>
+            </trans-unit>
+            <trans-unit id="properties.themeFontQuote" xml:space="preserve">
+                <source>Quotes</source>
+                <target>Zitate</target>
+            </trans-unit>
+            <trans-unit id="properties.themeFontButton" xml:space="preserve">
+                <source>Buttons</source>
+                <target>Buttons</target>
+            </trans-unit>
+            <trans-unit id="editor.characterListing" xml:space="preserve">
+                <source>Character listing</source>
+                <target>Zeichenauflistung</target>
+            </trans-unit>
+            <trans-unit id="editor.typeface" xml:space="preserve">
+                <source>Typeface</source>
+                <target>Schriftart</target>
+            </trans-unit>
+            <trans-unit id="editor.normalFontWeight" xml:space="preserve">
+                <source>Normal font weight</source>
+                <target>Normaler Schriftstärke</target>
+            </trans-unit>
+            <trans-unit id="editor.boldFontWeight" xml:space="preserve">
+                <source>Bold font weight</source>
+                <target>Fettschrift</target>
+            </trans-unit>
+            <trans-unit id="editor.preview.headline" xml:space="preserve">
+                <source><![CDATA[All <strong>humans are born free & equal</strong> in dignity + rights.]]></source>
+                <target><![CDATA[Alle <strong>Menschen sind frei & gleich</strong> an Würde + Rechten geboren.]]></target>
+            </trans-unit>
+            <trans-unit id="editor.preview.quote" xml:space="preserve">
+                <source><![CDATA[<blockquote>I have no special talent. I am only <strong>passionately</strong> curious.</blockquote><strong>Albert Einstein</strong>]]></source>
+                <target><![CDATA[<blockquote>Ich habe keine besondere Begabung, sondern bin nur <strong>leidenschaftlich</strong> neugierig.</blockquote> <strong>Albert Einstein</strong>]]></target>
+            </trans-unit>
+            <trans-unit id="editor.preview.button" xml:space="preserve">
+                <source>learn more</source>
+                <target>mehr erfahren</target>
+            </trans-unit>
+            <trans-unit id="editor.preview.main" xml:space="preserve">
+                <source><![CDATA[Far far away, <strong>behind the word mountains,</strong> far from the countries Vokalia and Consonantia, there live the blind texts. <br><br>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. <strong>A small river named Duden flows by their place and supplies it with the necessary regelialia.</strong> It is a paradisematic country, in which roasted parts of sentences fly into your mouth. <br><br>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of <strong>Lorem Ipsum decided to leave</strong> for the far World of Grammar. <br><br> The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way. When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way. On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their projects again and again. And if she hasn’t been rewritten, then they are still using her.]]></source>
+                <target><![CDATA[Das hier ist der <strong>nützlichste und klügste Blindtext</strong> der ganzen Welt, weil er dir genau sagt, wann 100 Zeichen vorbei sind (gleich nach der Zahl). <br><br><strong>Kaum begreift man das Prinzip</strong>, zählt der Text schon 200 Zeichen, inklusive Leerschläge. Damit hast du nun eine geniale Methode zur Hand, einen Text von 300 Zeichen Länge zu visualisieren. <br>Mal angenommen, du willst sehen, welch ansprechenden Textkörper 400 Zeichen bilden können – <strong>jetzt hast du ein Mass dafür</strong>. <br><br>Und nachdem dieser amüsante Blindtext mit 500 Zeichen die Hälfte erreicht hat, könnte man eine Betrachtung anstellen, die sich schon über die 600er Marke hinaus erstreckt: Haben wir es hier wirklich mit Blindtext zu tun, oder könnte man nach 700 präzis getexteten Zeichen nicht schon von Content sprechen? <strong>Mit dieser Frage</strong> überrollen wir die 800-Zeichen-Grenze und bedanken uns herzlich, dass du diesen vermeintlich blinden Text von mehr als 900 Zeichen Länge tatsächlich gelesen hast. <strong>Damit setzen wir den Schlusspunkt, und zwar hinter die 999.</strong>]]></target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

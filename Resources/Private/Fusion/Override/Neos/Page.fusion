@@ -1,0 +1,16 @@
+prototype(Neos.Neos:Page) {
+    htmlTag.attributes {
+        class.@process {
+            colorScheme = ${Array.push(value, q(site).property('themeColorScheme') == 'dark' ? 'dark' : 'light')}
+            clipPath = ${Array.push(value, q(site).property('themeClipPathEnabled') ? 'has-wave' : 'is-flat')}
+        }
+    }
+    head.themeStyle = Neos.Fusion:Renderer {
+        @position= 'after structuredData'
+        renderPath = '/styleHeadTags'
+    }
+}
+
+prototype(Carbon.BackendDocument:Document) {
+    style.@process.style = ${q(site).property('themeCSS') + value}
+}

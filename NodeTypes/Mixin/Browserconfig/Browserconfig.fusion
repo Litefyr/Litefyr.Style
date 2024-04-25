@@ -1,0 +1,64 @@
+prototype(Litespeed.Style:Browserconfig) < prototype(Neos.Fusion:Component) {
+    notFoundPage = 'Litespeed.Theme:Document.NotFound'
+
+    tileColor = ${q(site).property('themeBrowserconfigTileColor') || '#da532c'}
+
+    icons = Neos.Fusion:Map {
+        items = ${q(site).property('themeFavicon')}
+        itemRenderer = ${String.startsWith(item.resource.filename, 'mstile-') ? item.resource : null}
+        @process.filter = ${Array.filter(value)}
+    }
+
+    renderer = Neos.Fusion:Case {
+        hasIcons {
+            condition = ${Carbon.Array.check(props.icons)}
+            renderer = Neos.Fusion:Http.Message {
+                httpResponseHead.headers.Content-Type = 'text/xml'
+                doctype = '<?xml version="1.0" encoding="UTF-8"?>'
+                openTags = '<browserconfig><msapplication><tile>'
+                closeTags = '</tile></msapplication></browserconfig>'
+                closeTags.@position = 'end'
+
+                tiles = Neos.Fusion:Loop {
+                    items = ${props.icons}
+                    itemRenderer = Neos.Fusion:Component {
+                        sizes = ${String.pregReplace(item.filename, "/mstile-(\d+)x(\d+)(.*)/", "$1x$2")}
+                        dimensions = ${String.split(this.sizes, 'x')}
+                        type = ${this.dimensions[0] == this.dimensions[1] ? 'square' : 'wide'}
+
+                        renderer = Neos.Fusion:Tag {
+                            tagName = ${props.type + props.sizes + 'logo'}
+                            attributes.src = Neos.Fusion:ResourceUri {
+                                resource = ${item}
+                            }
+                        }
+                    }
+                }
+                color = afx`<TileColor>{props.tileColor}</TileColor>`
+            }
+        }
+        notFound {
+            condition = true
+            notFoundPage = ${q(site).children('[instanceof Litespeed.Theme:Document.NotFound]').get(0)}
+            @context {
+                node = ${this.notFoundPage}
+                documentNode = ${this.notFoundPage}
+            }
+            type = ${props.notFoundPage}
+        }
+    }
+
+     @cache {
+        mode = 'cached'
+        entryIdentifier {
+            documentNode = ${site}
+            editPreviewMode = ${node.context.currentRenderingMode.name}
+            browserconfig = 'browserconfig'
+        }
+        entryTags {
+            1 = ${Neos.Caching.nodeTag(site)}
+        }
+    }
+}
+
+browserconfig = Litespeed.Style:Browserconfig

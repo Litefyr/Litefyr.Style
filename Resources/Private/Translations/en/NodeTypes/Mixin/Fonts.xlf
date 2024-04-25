@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2"
+    xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="" product-name="Litespeed.Style" source-language="en" datatype="plaintext">
+        <body>
+            <trans-unit id="groups.themeFonts" xml:space="preserve">
+                <source>Fonts</source>
+            </trans-unit>
+            <trans-unit id="properties.themeFontMain" xml:space="preserve">
+                <source>Main font</source>
+            </trans-unit>
+            <trans-unit id="properties.themeFontHeadline" xml:space="preserve">
+                <source>Headline</source>
+            </trans-unit>
+            <trans-unit id="properties.themeFontQuote" xml:space="preserve">
+                <source>Quotes</source>
+            </trans-unit>
+            <trans-unit id="properties.themeFontButton" xml:space="preserve">
+                <source>Buttons</source>
+            </trans-unit>
+            <trans-unit id="editor.characterListing" xml:space="preserve">
+                <source>Character listing</source>
+            </trans-unit>
+            <trans-unit id="editor.typeface" xml:space="preserve">
+                <source>Typeface</source>
+            </trans-unit>
+            <trans-unit id="editor.normalFontWeight" xml:space="preserve">
+                <source>Normal font weight</source>
+            </trans-unit>
+            <trans-unit id="editor.boldFontWeight" xml:space="preserve">
+                <source>Bold font weight</source>
+            </trans-unit>
+            <trans-unit id="editor.preview.headline" xml:space="preserve">
+                <source><![CDATA[All <strong>humans are born free & equal</strong> in dignity + rights.]]></source>
+            </trans-unit>
+            <trans-unit id="editor.preview.quote" xml:space="preserve">
+                <source><![CDATA[<blockquote>I have no special talent. I am only <strong>passionately</strong> curious.</blockquote><strong>Albert Einstein</strong>]]></source>
+            </trans-unit>
+            <trans-unit id="editor.preview.button" xml:space="preserve">
+                <source>learn more</source>
+            </trans-unit>
+            <trans-unit id="editor.preview.main" xml:space="preserve">
+                <source><![CDATA[Far far away, <strong>behind the word mountains,</strong> far from the countries Vokalia and Consonantia, there live the blind texts. <br><br>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. <strong>A small river named Duden flows by their place and supplies it with the necessary regelialia.</strong> It is a paradisematic country, in which roasted parts of sentences fly into your mouth. <br><br>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of <strong>Lorem Ipsum decided to leave</strong> for the far World of Grammar. <br><br> The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way. When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way. On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their projects again and again. And if she hasn’t been rewritten, then they are still using her.]]></source>
+            </trans-unit>
+            <trans-unit id="editor.preview.range" xml:space="preserve">
+                <source><![CDATA[ABCDEFGHIJKLMNOPQRSTUVWXYZ
+abcdefghijklmnopqrstuvwxyz
+0123456789!?.
+Pixel preview  Resize to fit zenith zone
+Frame  Group  Feedback  Reset
+Day day  Month month  Year year
+Hour hour  Minute minute  Second second
+Size  Overlay  Ork  Grids  Cursors
+Background  Desktop App  Lamp  Preferences
+Rectangle  Ellipsis  Component  Settings
+Pass–Through  Spacing  Help  Tutorials  Release Notes
+iOS Android Apple macOS Microsoft Windows  Onboarding
+12.4 pt  64%  90px  45 kg   12 o'clock  $64 $7  €64 €64  £7 £7
+elk  best  mnm DCGQOMN
+Identity  identity (M) [M] {M} <M>
+The quick brown fox jumps over the lazy dog
+Efraim  User account  Text Tool  Team Library
+Monster  Lars, stina
+jumping far—but not really—over the bar
+Open File  Ryan
+Documentation  Xerox
+War, what is it good for? Absolutely nothing
+We found a fix to the ffi problem
+Irrational  fi  ffi  fl  ffl
+rsms@notion.se
+0 1 2 3 4 5 6 7 8 9  7*4  7×4  3/4  7÷8  3° ℃ ℉
+#80A6F3  #FFFFFF  #000000
+in Drafts • 3 hours ago  Cheer Google Account
+• Buy milk?  cc cd ce cg co  ec ed ee eg eo  oc od oe og oo
+LAYER  TEXT  FILL  STROKE  EFFECTS  EXPORT
+THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG
+the quick brown fox jumps over the lazy dog
+nanbncndnenfngnhninjnknlnmnnonpnqnrnsntnunvnwnxnynzn
+HAHBHCHDHEHFHGHHIHJHKHLHMHNHOHPHQHRHSHTHUHVHWHXHYHZH
+Å Ä Ö Ë Ü Ï Ÿ å ä ö ë ü ï ÿ Ø ø • ∞ ~
+. ‥ … → ← ↑ ↓
+01 02 03 04 05 06 07 08 09 00
+11 12 13 14 15 16 17 18 19 10
+21 22 23 24 25 26 27 28 29 20
+31 32 33 34 35 36 37 38 39 30
+41 42 43 44 45 46 47 48 49 40
+51 52 53 54 55 56 57 58 59 50
+61 62 63 64 65 66 67 68 69 60
+71 72 73 74 75 76 77 78 79 70
+81 82 83 84 85 86 87 88 89 80
+91 92 93 94 95 96 97 98 99 90]]></source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

@@ -1,0 +1,67 @@
+'Litespeed.Style:Mixin.Fonts':
+  abstract: true
+  superTypes:
+    'Litespeed.Style:Mixin.Tab': true
+  ui:
+    inspector:
+      groups:
+        themeFonts:
+          label: i18n
+          position: 30
+          icon: font
+          tab: theme
+          collapsed: true
+  properties:
+    themeFontMain:
+      type: array
+      ui:
+        label: i18n
+        reloadIfChanged: true
+        inspector:
+          group: themeFonts
+          position: 10
+          editor: Litespeed.Style/FontEditor
+          editorOptions:
+            type: main
+            allowEmpty: false
+    themeFontHeadline:
+      type: array
+      ui:
+        label: i18n
+        reloadIfChanged: true
+        inspector:
+          group: themeFonts
+          position: 20
+          editor: Litespeed.Style/FontEditor
+          editorOptions:
+            type: headline
+            allowEmpty: true
+            mainFont: 'ClientEval: node.properties.themeFontMain'
+    themeFontQuote:
+      type: array
+      ui:
+        label: i18n
+        reloadIfChanged: true
+        inspector:
+          group: themeFonts
+          position: 30
+          editor: Litespeed.Style/FontEditor
+          editorOptions:
+            type: quote
+            allowEmpty: true
+            mainFont: 'ClientEval: node.properties.themeFontMain'
+    themeFontButton:
+      type: array
+      ui:
+        label: i18n
+        reloadIfChanged: true
+        inspector:
+          group: themeFonts
+          position: 40
+          editor: Litespeed.Style/FontEditor
+          editorOptions:
+            type: button
+            allowEmpty: true
+            roundedButton: 'ClientEval: node.properties.themeRoundedButton'
+            colors: 'ClientEval: node.properties.themeColorScheme == "dark" ? [node.properties.themeColorDarkMain?.oklch, node.properties.themeColorDarkMinor?.oklch, node.properties.themeColorDarkMinor2?.oklch] : [node.properties.themeColorLightMain?.oklch, node.properties.themeColorLightMinor?.oklch, node.properties.themeColorLightMinor2?.oklch]'
+            mainFont: 'ClientEval: node.properties.themeFontMain'

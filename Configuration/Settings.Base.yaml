@@ -1,0 +1,23 @@
+Base:
+  Theme:
+    flowCommandsOnStartup:
+      StyleCSS: style:css
+      StyleCodePen: style:codepen
+  Style:
+    codepenProperties:
+      # Add here you cli command to execute after a codepen property is published to live
+      # example:
+      # cliCommandAfterPublishToLive:
+      #   - 'node Build/Carbon.Pipeline/postcss.mjs --production --silent'
+      #   - 'php flow cache:clearincludeassets'
+      cliCommandAfterPublishToLive: null
+    additionalThemeSelector: {}
+    # Luminance in percent
+    colorOffset:
+      light: 99.9999
+      dark: 30
+    colorContrastThreshold: 0.65
+    default:
+      scheme: zinc
+      mainColor: '#65a30d'
+      rounded: 0

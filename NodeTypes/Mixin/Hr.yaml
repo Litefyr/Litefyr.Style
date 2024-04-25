@@ -1,0 +1,71 @@
+'Litespeed.Style:Mixin.Hr':
+  abstract: true
+  superTypes:
+    'Litespeed.Style:Mixin.Tab': true
+  ui:
+    inspector:
+      groups:
+        themeHr:
+          label: i18n
+          position: 50
+          icon: expand-arrows-alt
+          tab: theme
+          collapsed: true
+  properties:
+    themeHrSoft:
+      type: integer
+      defaultValue: 0
+      ui:
+        label: i18n
+        reloadPageIfChanged: true
+        inspector:
+          group: themeHr
+          position: 20
+          editor: 'Carbon.RangeEditor/Editor'
+          editorOptions:
+            minLabel: 'Litespeed.Style:NodeTypes.Mixin.Hr:properties.themeHrSoft.minLabel'
+            min: 0
+            max: 10
+            step: 1
+    themeHrImage:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: i18n
+        reloadPageIfChanged: true
+        inspector:
+          group: themeHr
+          position: 30
+    themeHrImageSize:
+      type: integer
+      defaultValue: 50
+      ui:
+        label: i18n
+        reloadPageIfChanged: true
+        inspector:
+          group: themeHr
+          position: 40
+          hidden: 'ClientEval: !node.properties.themeHrImage'
+          editor: 'Carbon.RangeEditor/Editor'
+          editorOptions:
+            min: 10
+            max: 320
+            step: 1
+    themeHrImagePosition:
+      type: string
+      defaultValue: center
+      ui:
+        label: i18n
+        reloadPageIfChanged: true
+        inspector:
+          group: themeHr
+          position: 50
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
+          hidden: 'ClientEval: !node.properties.themeHrImage'
+          editorOptions:
+            values:
+              top:
+                label: i18n
+              center:
+                label: i18n
+              bottom:
+                label: i18n

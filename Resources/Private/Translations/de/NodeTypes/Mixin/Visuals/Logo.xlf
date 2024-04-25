@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2"
+    xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="" product-name="Litespeed.Style" source-language="en" target-language="de" datatype="plaintext">
+        <body>
+            <trans-unit id="groups.themeLogo" xml:space="preserve">
+                <source>Logo</source>
+                <target>Logo</target>
+            </trans-unit>
+            <trans-unit id="properties.themeLogoData" xml:space="preserve">
+                <source>Markup</source>
+                <target>Markup</target>
+            </trans-unit>
+            <trans-unit id="properties.themeLogoData.ui.help.message" xml:space="preserve">
+                <source>If the image is to be inserted, this can be inserted with `{image}`.</source>
+                <target>Falls das Bild eingefügt werden soll, kann dies mit `{image}` eingefügt werden.</target>
+            </trans-unit>
+            <trans-unit id="properties.themeLogoAsset" xml:space="preserve">
+                <source>Image</source>
+                <target>Bild</target>
+            </trans-unit>
+            <trans-unit id="properties.themeLogoSizeInContent" xml:space="preserve">
+                <source>Maximum width in content</source>
+                <target>Maximale Breite im Inhalt</target>
+            </trans-unit>
+            <trans-unit id="properties.themeLogoDataContent" xml:space="preserve">
+                <source>Alternative markup in content</source>
+                <target>Alternatives Markup im Inhalt</target>
+            </trans-unit>
+             <trans-unit id="properties.themeLogoAssetContent" xml:space="preserve">
+                <source>Alternative image in content</source>
+                <target>Alternatives Bild im Inhalt</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

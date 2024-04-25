@@ -1,0 +1,4 @@
+backend.headIcons.backendCSS = Neos.Fusion:Tag {
+    tagName = 'style'
+    content = ${q(site).property('themeBackendCSS')}
+}

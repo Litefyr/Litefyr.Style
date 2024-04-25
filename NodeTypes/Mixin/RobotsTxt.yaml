@@ -1,0 +1,27 @@
+'Litespeed.Style:Mixin.RobotsTxt':
+  abstract: true
+  ui:
+    inspector:
+      groups:
+        robotsTxtData:
+          label: robots.txt
+          position: 40
+          icon: robot
+          tab: seo
+          collapsed: true
+  properties:
+    robotsTxtData:
+      type: string
+      ui:
+        label: Zusätzliche robots.txt Einträge
+        help:
+          message: |
+            Ein Eintrag pro Zeile. Beispiel:
+
+            * Disallow: /*docx$
+            * Disallow: /*doc$
+            * Disallow: /*pdf$
+        inspector:
+          group: robotsTxtData
+          position: 10
+          editor: Neos.Neos/Inspector/Editors/TextAreaEditor

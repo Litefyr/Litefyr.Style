@@ -1,0 +1,20 @@
+prototype(Litespeed.Theme:Component.Logo.PreviewFrame.Header) < prototype(Carbon.CodePen:PreviewFrame) {
+    body.content.custom = Litespeed.Presentation:Section.Header {
+        logoPositionRight = ${q(node).property('themeLogoPositionRight')}
+        logoMarginTop = ${q(node).property('themeLogoMarginTop')}
+        logoMarginBottom = ${q(node).property('themeLogoMarginBottom')}
+        clipPathBelowNavigation = ${q(node).property('themeClipPathEnabled') && q(node).property('themeClipPathBelowNavigation')}
+        colorSchemeSwitchter = ${q(node).property('themeColorScheme') == 'light dark' ? 'top' : null}
+        logoPreview = true
+        homeUri ='#'
+    }
+}
+
+prototype(Litespeed.Theme:Component.Logo.CodePen) < prototype(Litespeed.Theme:Component.Logo) {
+    node = ${node}
+}
+
+prototype(Litespeed.Theme:Component.Logo.CodePen.Content) < prototype(Litespeed.Theme:Component.Logo) {
+    node = ${node}
+    inContent = true
+}

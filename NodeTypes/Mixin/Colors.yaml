@@ -1,0 +1,271 @@
+'Litespeed.Style:Mixin.Colors':
+  abstract: true
+  superTypes:
+    'Litespeed.Style:Mixin.Tab': true
+  ui:
+    inspector:
+      groups:
+        themeColorScheme:
+          label: i18n
+          position: 10
+          icon: paint-roller
+          tab: theme
+        themeColorsLight:
+          label: i18n
+          position: 11
+          icon: sun
+          tab: theme
+          collapsed: true
+        themeColorsDark:
+          label: i18n
+          position: 12
+          icon: moon
+          tab: theme
+          collapsed: true
+  properties:
+    themeColorScheme:
+      type: string
+      defaultValue: light
+      ui:
+        label: 'Litespeed.Style:NodeTypes.Mixin.Colors:groups.themeColorScheme'
+        reloadPageIfChanged: true
+        inspector:
+          group: themeColorScheme
+          position: 10
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
+          editorOptions:
+            allowEmpty: false
+            values:
+              light:
+                icon: sun
+                label: 'Litespeed.Style:NodeTypes.Mixin.Colors:groups.themeColorsLight'
+              dark:
+                icon: moon
+                label: 'Litespeed.Style:NodeTypes.Mixin.Colors:groups.themeColorsDark'
+              'light dark':
+                icon: random
+                label: i18n
+      validation:
+        Neos.Neos/Validation/NotEmptyValidator: {}
+    themeColorSchemeSwitchter:
+      type: string
+      ui:
+        label: i18n
+        reloadPageIfChanged: true
+        inspector:
+          group: themeColorScheme
+          position: 20
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
+          hidden: 'ClientEval: node.properties.themeColorScheme !== "light dark"'
+          editorOptions:
+            allowEmpty: true
+            placeholder: i18n
+            values:
+              top:
+                label: i18n
+              bottom:
+                label: i18n
+              both:
+                label: i18n
+    themeColorLightBackground:
+      options:
+        preset: 'Carbon.TailwindColors.colors'
+      ui:
+        label: 'Litespeed.Style:NodeTypes.Mixin.Colors:background'
+        reloadPageIfChanged: true
+        inspector:
+          group: themeColorsLight
+          position: 10
+          hidden: 'ClientEval: node.properties.themeColorScheme === "dark"'
+          editorOptions:
+            collapsed: true
+            scheme: grayscale
+            disableStrength: [400, 500, 600, 700, 800, 900, 950, 1000]
+    themeColorLightText:
+      options:
+        preset: 'Carbon.TailwindColors.colors'
+      ui:
+        label: 'Litespeed.Style:NodeTypes.Mixin.Colors:text'
+        reloadPageIfChanged: true
+        inspector:
+          group: themeColorsLight
+          position: 20
+          hidden: 'ClientEval: node.properties.themeColorScheme === "dark"'
+          editorOptions:
+            collapsed: true
+            scheme: grayscale
+            disableStrength: [0, 50, 100, 200, 300, 400, 500, 600]
+    themeColorLightMain:
+      options:
+        preset: 'theme.color.optional'
+      type: array
+      ui:
+        label: 'Litespeed.Style:NodeTypes.Mixin.Colors:main'
+        reloadPageIfChanged: true
+        inspector:
+          group: themeColorsLight
+          position: 110
+          hidden: 'ClientEval: node.properties.themeColorScheme === "dark"'
+          editorOptions:
+            allowEmpty: false
+            showLuminance: true
+            collapsed: true
+    themeColorLightMinor:
+      options:
+        preset: 'theme.color.optional'
+      type: array
+      ui:
+        label: 'Litespeed.Style:NodeTypes.Mixin.Colors:minor'
+        reloadPageIfChanged: true
+        inspector:
+          group: themeColorsLight
+          position: 120
+          hidden: 'ClientEval: node.properties.themeColorScheme === "dark"'
+          editorOptions:
+            allowEmpty: false
+            showLuminance: true
+            collapsed: true
+    themeColorLightMinor2:
+      options:
+        preset: 'theme.color.optional'
+      type: array
+      ui:
+        label: 'Litespeed.Style:NodeTypes.Mixin.Colors:minor2'
+        reloadPageIfChanged: true
+        inspector:
+          group: themeColorsLight
+          position: 130
+          hidden: 'ClientEval: node.properties.themeColorScheme === "dark"'
+          editorOptions:
+            allowEmpty: false
+            showLuminance: true
+            collapsed: true
+    themeColorLightHeader:
+      options:
+        preset: 'theme.color.optional'
+      type: array
+      ui:
+        label: 'Litespeed.Style:NodeTypes.Mixin.Colors:header'
+        reloadPageIfChanged: true
+        inspector:
+          group: themeColorsLight
+          position: 200
+          hidden: 'ClientEval: node.properties.themeColorScheme === "dark"'
+          editorOptions:
+            showLuminance: true
+            collapsed: true
+    themeColorLightFooter:
+      options:
+        preset: 'theme.color.optional'
+      type: array
+      ui:
+        label: 'Litespeed.Style:NodeTypes.Mixin.Colors:footer'
+        reloadPageIfChanged: true
+        inspector:
+          group: themeColorsLight
+          position: 210
+          hidden: 'ClientEval: node.properties.themeColorScheme === "dark"'
+          editorOptions:
+            showLuminance: true
+            collapsed: true
+    themeColorDarkBackground:
+      options:
+        preset: 'Carbon.TailwindColors.colors'
+      ui:
+        label: 'Litespeed.Style:NodeTypes.Mixin.Colors:background'
+        reloadPageIfChanged: true
+        inspector:
+          group: themeColorsDark
+          position: 10
+          hidden: 'ClientEval: node.properties.themeColorScheme === "light"'
+          editorOptions:
+            scheme: grayscale
+            collapsed: true
+            disableStrength: [0, 50, 100, 200, 300, 400, 500, 600, 1000]
+    themeColorDarkText:
+      options:
+        preset: 'Carbon.TailwindColors.colors'
+      ui:
+        label: 'Litespeed.Style:NodeTypes.Mixin.Colors:text'
+        reloadPageIfChanged: true
+        inspector:
+          group: themeColorsDark
+          position: 20
+          hidden: 'ClientEval: node.properties.themeColorScheme === "light"'
+          editorOptions:
+            scheme: grayscale
+            collapsed: true
+            disableStrength: [0, 400, 500, 600, 700, 800, 900, 950]
+    themeColorDarkMain:
+      options:
+        preset: 'theme.color.optional'
+      type: array
+      ui:
+        label: 'Litespeed.Style:NodeTypes.Mixin.Colors:main'
+        reloadPageIfChanged: true
+        inspector:
+          group: themeColorsDark
+          position: 110
+          hidden: 'ClientEval: node.properties.themeColorScheme === "light"'
+          editorOptions:
+            allowEmpty: false
+            showLuminance: true
+            collapsed: true
+    themeColorDarkMinor:
+      options:
+        preset: 'theme.color.optional'
+      type: array
+      ui:
+        label: 'Litespeed.Style:NodeTypes.Mixin.Colors:minor'
+        reloadPageIfChanged: true
+        inspector:
+          group: themeColorsDark
+          position: 120
+          hidden: 'ClientEval: node.properties.themeColorScheme === "light"'
+          editorOptions:
+            allowEmpty: false
+            showLuminance: true
+            collapsed: true
+    themeColorDarkMinor2:
+      options:
+        preset: 'theme.color.optional'
+      type: array
+      ui:
+        label: 'Litespeed.Style:NodeTypes.Mixin.Colors:minor2'
+        reloadPageIfChanged: true
+        inspector:
+          group: themeColorsDark
+          position: 130
+          hidden: 'ClientEval: node.properties.themeColorScheme === "light"'
+          editorOptions:
+            allowEmpty: false
+            showLuminance: true
+            collapsed: true
+    themeColorDarkHeader:
+      options:
+        preset: 'theme.color.optional'
+      type: array
+      ui:
+        label: 'Litespeed.Style:NodeTypes.Mixin.Colors:header'
+        reloadPageIfChanged: true
+        inspector:
+          group: themeColorsDark
+          position: 200
+          hidden: 'ClientEval: node.properties.themeColorScheme === "light"'
+          editorOptions:
+            showLuminance: true
+            collapsed: true
+    themeColorDarkFooter:
+      options:
+        preset: 'theme.color.optional'
+      type: array
+      ui:
+        label: 'Litespeed.Style:NodeTypes.Mixin.Colors:footer'
+        reloadPageIfChanged: true
+        inspector:
+          group: themeColorsDark
+          position: 210
+          hidden: 'ClientEval: node.properties.themeColorScheme === "light"'
+          editorOptions:
+            showLuminance: true
+            collapsed: true

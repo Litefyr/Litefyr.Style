@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2"
+    xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="" product-name="Litespeed.Style" source-language="en" target-language="de" datatype="plaintext">
+        <body>
+            <trans-unit id="groups.themeClipPath" xml:space="preserve">
+                <source>Wave</source>
+                <target>Welle</target>
+            </trans-unit>
+            <trans-unit id="properties.themeClipPath" xml:space="preserve">
+                <source>Wave</source>
+                <target>Welle</target>
+            </trans-unit>
+            <trans-unit id="properties.themeClipPath.ui.help.message" xml:space="preserve">
+                <source>This can be used to define a wave that extends across the entire screen. The width and height of the wave can be adjusted. The color of the wave is taken from the main color scheme.</source>
+                <target>Hiermit kann eine Welle definiert werden, die über den gesamten Bildschirm reicht. Die Welle kann in der Breite und Höhe angepasst werden. Die Farbe der Welle wird aus dem Hauptfarbschema übernommen.</target>
+            </trans-unit>
+            <trans-unit id="editor.content" xml:space="preserve">
+                <source>Content</source>
+                <target>Inhalt</target>
+            </trans-unit>
+            <trans-unit id="editor.width" xml:space="preserve">
+                <source>Width</source>
+                <target>Breite</target>
+            </trans-unit>
+            <trans-unit id="editor.height" xml:space="preserve">
+                <source>Height</source>
+                <target>Höhe</target>
+            </trans-unit>
+            <trans-unit id="editor.offset" xml:space="preserve">
+                <source>Offset</source>
+                <target>Offset</target>
+            </trans-unit>
+            <trans-unit id="editor.amplitude" xml:space="preserve">
+                <source>Amplitude</source>
+                <target>Amplitude</target>
+            </trans-unit>
+            <trans-unit id="editor.frequency" xml:space="preserve">
+                <source>Frequency</source>
+                <target>Frequenz</target>
+            </trans-unit>
+            <trans-unit id="editor.points" xml:space="preserve">
+                <source>Number of points</source>
+                <target>Anzahl Punkte</target>
+            </trans-unit>
+            <trans-unit id="editor.phase" xml:space="preserve">
+                <source>Phase</source>
+                <target>Phase</target>
+            </trans-unit>
+            <trans-unit id="editor.asyncPhase" xml:space="preserve">
+                <source>Asynchronous phase</source>
+                <target>Asynchrone Phase</target>
+            </trans-unit>
+            <trans-unit id="properties.themeClipPathBelowNavigation" xml:space="preserve">
+                <source>Show below the navigation</source>
+                <target>Unterhalb der Navigation anzeigen</target>
+            </trans-unit>
+            <trans-unit id="properties.themeClipPathInContent" xml:space="preserve">
+                <source>Display on content elements</source>
+                <target>Bei Inhaltselementen anzeigen</target>
+            </trans-unit>
+            <trans-unit id="properties.themeClipPathAboveFooter" xml:space="preserve">
+                <source>Display above the footer</source>
+                <target>Oberhalb der Fusszeile anzeigen</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

@@ -1,0 +1,14 @@
+prototype(Neos.Seo:RobotsTxt) {
+    data.@apply.robotsTxtData = Neos.Fusion:Map {
+        items = ${Array.filter(Array.map(String.pregSplit(q(site).property('robotsTxtData') || '', '/\n/'), item => Carbon.String.removeNbsp(item)))}
+        keyRenderer = ${'dynamic-' + item}
+        itemRenderer = ${item}
+    }
+
+    @cache {
+        entryIdentifier.site = ${site}
+        entryTags {
+            1 = ${Neos.Caching.nodeTag(site)}
+        }
+    }
+}

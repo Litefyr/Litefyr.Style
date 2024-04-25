@@ -1,0 +1,11 @@
+prototype(Litespeed.Theme:Component.ScrollIndicator) {
+    // This is used for the Carbon.CodePen
+    node = ${site}
+
+    styleAndIcon = ${q(this.node).property('themeScrollIndicatorIcon')}
+    data = ${q(this.node).property('themeScrollIndicatorMarkup')}
+    content = ${this.data && this.data.html ? this.data.html : null}
+    theme = ${q(node).property('scrollIndicatorTheme') || q(this.node).property('themeScrollIndicatorTheme')}
+    size = ${q(this.node).property('themeScrollIndicatorSize')}
+    background = ${q(this.node).property('themeScrollIndicatorBackground')}
+}

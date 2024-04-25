@@ -1,0 +1,8 @@
+prototype(Litespeed.Style:Component.ScollIndicator.PreviewFrame) < prototype(Carbon.CodePen:PreviewFrame) {
+    body.content.class = null
+}
+
+prototype(Litespeed.Style:Component.ScollIndicator.CodePen) < prototype(Litespeed.Theme:Component.ScrollIndicator) {
+    node = ${node}
+    enabled = true
+}

@@ -1,0 +1,13 @@
+header {
+    colorSchemeSwitchter = ${q(site).property('themeColorSchemeSwitchter')}
+    colorSchemeSwitchter.@if.both = ${q(site).property('themeColorScheme') == 'light dark'}
+    logoPositionRight = ${q(site).property('themeLogoPositionRight')}
+    logoMarginTop = ${q(site).property('themeLogoMarginTop')}
+    logoMarginBottom = ${q(site).property('themeLogoMarginBottom')}
+    clipPathBelowNavigation = ${q(site).property('themeClipPathEnabled') && q(site).property('themeClipPathBelowNavigation')}
+    headerGap = ${q(site).property('themeHeaderGap')}
+    logo {
+        size = ${q(site).property('themeLogoSize') || 40}
+        height = ${this.size * 2}
+    }
+}

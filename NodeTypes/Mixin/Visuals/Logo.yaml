@@ -1,0 +1,89 @@
+'Litespeed.Style:Mixin.Visuals.Logo':
+  abstract: true
+  superTypes:
+    'Litespeed.Style:Mixin.Tab': true
+  ui:
+    inspector:
+      groups:
+        themeLogo:
+          label: i18n
+          position: 20
+          icon: flag
+          tab: theme
+          collapsed: true
+  properties:
+    themeLogoData:
+      type: array
+      defaultValue:
+        html: ''
+      ui:
+        label: i18n
+        reloadPageIfChanged: true
+        help:
+          message: i18n
+        inspector:
+          group: themeLogo
+          position: 10
+          editor: 'Carbon.CodePen/CodeEditor'
+          editorOptions:
+            previewFrame: 'Litespeed.Theme:Component.Logo.PreviewFrame.Header'
+            nodeRenderer: 'Litespeed.Theme:Component.Logo.CodePen'
+            tabs:
+              html:
+                label: HTML & AFX
+                icon: code
+                language: afx
+                completion: "ClientCompletion: ['{image}']"
+    themeLogoAsset:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: i18n
+        reloadPageIfChanged: true
+        inspector:
+          group: themeLogo
+          position: 20
+    themeLogoSizeInContent:
+      type: integer
+      defaultValue: 600
+      ui:
+        label: i18n
+        reloadPageIfChanged: true
+        inspector:
+          group: themeLogo
+          position: 100
+          editor: 'Carbon.RangeEditor/Editor'
+          editorOptions:
+            min: 100
+            max: 1280
+            step: 10
+            unit: px
+    themeLogoDataContent:
+      type: array
+      defaultValue:
+        html: ''
+      ui:
+        label: i18n
+        reloadPageIfChanged: true
+        help:
+          message: 'Litespeed.Style:NodeTypes.Mixin.Visuals.Logo:properties.themeLogoData.ui.help.help'
+        inspector:
+          group: themeLogo
+          position: 110
+          editor: 'Carbon.CodePen/CodeEditor'
+          editorOptions:
+            previewFrame: 'Carbon.CodePen:PreviewFrame'
+            nodeRenderer: 'Litespeed.Theme:Component.Logo.CodePen.Content'
+            tabs:
+              html:
+                label: HTML & AFX
+                icon: code
+                language: afx
+                completion: "ClientCompletion: ['{image}']"
+    themeLogoAssetContent:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: i18n
+        reloadPageIfChanged: true
+        inspector:
+          group: themeLogo
+          position: 120

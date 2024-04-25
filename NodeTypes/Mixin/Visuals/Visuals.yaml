@@ -1,0 +1,8 @@
+'Litespeed.Style:Mixin.Visuals':
+  abstract: true
+  superTypes:
+    'Litespeed.Style:Mixin.Visuals.Logo': true
+    'Litespeed.Style:Mixin.Visuals.Navigation': true
+    'Litespeed.Style:Mixin.Visuals.Footer': true
+    'Litespeed.Style:Mixin.Visuals.ClipPath': true
+    'Litespeed.Style:Mixin.Visuals.Rounded': true

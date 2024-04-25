@@ -1,0 +1,53 @@
+'Litespeed.Style:Mixin.Visuals.Footer':
+  abstract: true
+  superTypes:
+    'Litespeed.Style:Mixin.Tab': true
+  ui:
+    inspector:
+      groups:
+        themeFooter:
+          label: i18n
+          position: 22
+          icon: angle-down
+          tab: theme
+          collapsed: true
+  properties:
+    themeFooterSpacing:
+      type: integer
+      defaultValue: 32
+      ui:
+        label: i18n
+        reloadPageIfChanged: true
+        inspector:
+          group: themeFooter
+          position: 110
+          editor: 'Carbon.RangeEditor/Editor'
+          editorOptions:
+            min: 0
+            max: 160
+            step: 2
+            unit: 'px'
+    themeFooterShowLogo:
+      type: boolean
+      ui:
+        label: i18n
+        reloadPageIfChanged: true
+        inspector:
+          group: themeFooter
+          position: 120
+    themeLogoHeightInFooter:
+      type: integer
+      defaultValue: 40
+      ui:
+        label: i18n
+        reloadPageIfChanged: true
+        inspector:
+          group: themeFooter
+          position: 130
+          editor: 'Carbon.RangeEditor/Editor'
+          hidden: 'ClientEval: !node.properties.themeFooterShowLogo'
+          editorOptions:
+            min: 20
+            max: 240
+            step: 1
+            unit: px

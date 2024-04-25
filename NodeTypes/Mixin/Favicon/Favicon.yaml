@@ -1,0 +1,23 @@
+'Litespeed.Style:Mixin.Favicon':
+  abstract: true
+  superTypes:
+    'Litespeed.Style:Mixin.Tab': true
+  ui:
+    inspector:
+      groups:
+        themeFiles:
+          label: i18n
+          position: 110
+          icon: file-image
+          tab: theme
+          collapsed: true
+  properties:
+    themeFavicon:
+      type: array<Neos\Media\Domain\Model\Asset>
+      ui:
+        label: i18n
+        help:
+          message: i18n
+        inspector:
+          group: themeFiles
+          position: 10

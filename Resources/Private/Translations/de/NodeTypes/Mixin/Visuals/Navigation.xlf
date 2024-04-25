@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2"
+    xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="" product-name="Litespeed.Style" source-language="en" target-language="de" datatype="plaintext">
+        <body>
+            <trans-unit id="groups.themeNavigation" xml:space="preserve">
+                <source>Navigation</source>
+                <target>Navigation</target>
+            </trans-unit>
+            <trans-unit id="properties.themeHeaderGap" xml:space="preserve">
+                <source>Distance between navigation points</source>
+                <target>Abstand zwischen Navigationspunkten</target>
+            </trans-unit>
+            <trans-unit id="properties.themeLogoSize" xml:space="preserve">
+                <source>Height from the logo</source>
+                <target>Höhe vom Logo</target>
+            </trans-unit>
+            <trans-unit id="properties.themeLogoMarginTop" xml:space="preserve">
+                <source>Distance from the logo to the top</source>
+                <target>Abstand vom Logo nach oben</target>
+            </trans-unit>
+            <trans-unit id="properties.themeLogoMarginBottom" xml:space="preserve">
+                <source>Distance from the logo downwards</source>
+                <target>Abstand vom Logo nach unten</target>
+            </trans-unit>
+            <trans-unit id="properties.themeLogoPositionRight" xml:space="preserve">
+                <source>Position logo on the right</source>
+                <target>Logo rechts positionieren</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

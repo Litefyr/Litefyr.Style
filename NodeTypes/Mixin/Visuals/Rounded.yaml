@@ -1,0 +1,64 @@
+'Litespeed.Style:Mixin.Visuals.Rounded':
+  abstract: true
+  superTypes:
+    'Litespeed.Style:Mixin.Tab': true
+  ui:
+    inspector:
+      groups:
+        themeRounded:
+          label: i18n
+          position: 24
+          icon: square
+          tab: theme
+          collapsed: true
+  properties:
+    themeRoundedBox:
+      type: integer
+      defaultValue: 0
+      ui:
+        label: i18n
+        reloadPageIfChanged: true
+        inspector:
+          group: themeRounded
+          position: 10
+          editor: 'Carbon.RangeEditor/Editor'
+          editorOptions:
+            minLabel: 'Litespeed.Style:NodeTypes.Mixin.Visuals.Rounded:square'
+            min: 0
+            max: 24
+            step: 2
+            unit: px
+    themeRoundedImage:
+      type: integer
+      defaultValue: 0
+      ui:
+        label: i18n
+        reloadPageIfChanged: true
+        inspector:
+          group: themeRounded
+          position: 20
+          editor: 'Carbon.RangeEditor/Editor'
+          editorOptions:
+            minLabel: 'Litespeed.Style:NodeTypes.Mixin.Visuals.Rounded:square'
+            maxLabel: 'Litespeed.Style:NodeTypes.Mixin.Visuals.Rounded:rounded'
+            min: 0
+            max: 26
+            step: 2
+            unit: px
+    themeRoundedButton:
+      type: integer
+      defaultValue: 0
+      ui:
+        label: i18n
+        reloadPageIfChanged: true
+        inspector:
+          group: themeRounded
+          position: 30
+          editor: 'Carbon.RangeEditor/Editor'
+          editorOptions:
+            minLabel: 'Litespeed.Style:NodeTypes.Mixin.Visuals.Rounded:square'
+            maxLabel: 'Litespeed.Style:NodeTypes.Mixin.Visuals.Rounded:rounded'
+            min: 0
+            max: 26
+            step: 2
+            unit: px

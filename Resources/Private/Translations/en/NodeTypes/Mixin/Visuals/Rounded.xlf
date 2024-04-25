@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2"
+    xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="" product-name="Litespeed.Style" source-language="en" datatype="plaintext">
+        <body>
+            <trans-unit id="square" xml:space="preserve">
+                <source>Square</source>
+            </trans-unit>
+            <trans-unit id="rounded" xml:space="preserve">
+                <source>Rounded</source>
+            </trans-unit>
+            <trans-unit id="groups.themeRounded" xml:space="preserve">
+                <source>Roundings</source>
+            </trans-unit>
+            <trans-unit id="properties.themeRoundedBox" xml:space="preserve">
+                <source>Corners for boxes</source>
+            </trans-unit>
+            <trans-unit id="properties.themeRoundedImage" xml:space="preserve">
+                <source>Corners for images</source>
+            </trans-unit>
+            <trans-unit id="properties.themeRoundedButton" xml:space="preserve">
+                 <source>Corners for buttons</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

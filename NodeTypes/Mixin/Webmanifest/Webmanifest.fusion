@@ -1,0 +1,49 @@
+prototype(Litespeed.Style:Webmanifest) < prototype(Neos.Fusion:Component) {
+    name = ${q(site).property('themeWebmanifestName') || site.context.currentSite.name}
+    shortName = ${q(site).property('themeWebmanifestShortName') || this.name}
+    themeColor = ${q(site).property('themeWebmanifestThemeColor') || '#ffffff'}
+    backgroundColor = ${q(site).property('themeWebmanifestThemeBackgroundColor') || '#ffffff'}
+
+    icons = Neos.Fusion:Map {
+        items = ${q(site).property('themeFavicon')}
+        itemRenderer = ${String.startsWith(item.resource.filename, 'android-chrome-') ? item.resource : null}
+        @process.filter = ${Array.filter(value)}
+    }
+
+    renderer = Neos.Fusion:Http.Message {
+        httpResponseHead.headers.Content-Type = 'application/json'
+        data = Neos.Fusion:DataStructure {
+            @process.stringify = ${Json.stringify(Array.filter(value))}
+            name = ${props.name}
+            short_name = ${props.shortName}
+            theme_color = ${props.themeColor}
+            background_color = ${props.backgroundColor}
+            icons = Neos.Fusion:Map {
+                @process.value = ${Array.values(value)}
+                @if.hasIcons = ${Carbon.Array.check(props.icons)}
+                items = ${props.icons}
+                itemRenderer = Neos.Fusion:DataStructure {
+                    type = ${item.mediaType}
+                    sizes = ${String.pregReplace(item.filename, "/android-chrome-(\d+)x(\d+)(.*)/", "$1x$2")}
+                    src = Neos.Fusion:ResourceUri {
+                        resource = ${item}
+                    }
+                }
+            }
+        }
+    }
+
+    @cache {
+        mode = 'cached'
+        entryIdentifier {
+            documentNode = ${site}
+            editPreviewMode = ${node.context.currentRenderingMode.name}
+            browserconfig = 'browserconfig'
+        }
+        entryTags {
+            1 = ${Neos.Caching.nodeTag(site)}
+        }
+    }
+}
+
+webmanifest = Litespeed.Style:Webmanifest

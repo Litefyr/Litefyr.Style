@@ -1,0 +1,9 @@
+'Litespeed.Style:Mixin.Tab':
+  abstract: true
+  ui:
+    inspector:
+      tabs:
+        theme:
+          label: i18n
+          icon: paint-brush
+          position: end

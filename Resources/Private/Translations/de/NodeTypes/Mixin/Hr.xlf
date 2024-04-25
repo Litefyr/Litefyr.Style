@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2"
+    xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="" product-name="Litespeed.Style" source-language="en" target-language="de" datatype="plaintext">
+        <body>
+            <trans-unit id="groups.themeHr" xml:space="preserve">
+                <source>Configuration of the dividing line</source>
+                <target>Konfiguration der Trennlinie</target>
+            </trans-unit>
+            <trans-unit id="properties.themeHrSoft" xml:space="preserve">
+                <source>Soft separator</source>
+                <target>Weicher Trenner</target>
+            </trans-unit>
+            <trans-unit id="properties.themeHrSoft.minLabel" xml:space="preserve">
+                <source>Clear line</source>
+                <target>Klare Linie</target>
+            </trans-unit>
+            <trans-unit id="properties.themeHrImage" xml:space="preserve">
+                <source>Separator image</source>
+                <target>Trenner Bild</target>
+            </trans-unit>
+            <trans-unit id="properties.themeHrImageSize" xml:space="preserve">
+                <source>Width of separator image</source>
+                <target>Breite vom Trenner Bild</target>
+            </trans-unit>
+            <trans-unit id="properties.themeHrImagePosition" xml:space="preserve">
+                <source>Position separator image</source>
+                <target>Position Trenner Bild</target>
+            </trans-unit>
+            <trans-unit id="properties.themeHrImagePosition.selectBoxEditor.values.top" xml:space="preserve">
+                <source>Above the line</source>
+                <target>Oberhalb der Linie</target>
+            </trans-unit>
+            <trans-unit id="properties.themeHrImagePosition.selectBoxEditor.values.center" xml:space="preserve">
+                <source>Centered</source>
+                <target>Zentriert</target>
+            </trans-unit>
+            <trans-unit id="properties.themeHrImagePosition.selectBoxEditor.values.bottom" xml:space="preserve">
+                <source>Below the line</source>
+                <target>Unterhalb der Linie</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

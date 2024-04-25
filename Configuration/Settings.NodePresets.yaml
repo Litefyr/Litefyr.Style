@@ -1,0 +1,37 @@
+Neos:
+  Neos:
+    nodeTypes:
+      presets:
+        properties:
+          theme:
+            color:
+              blackOrWhite:
+                type: string
+                ui:
+                  reloadPageIfChanged: true
+                  inspector:
+                    editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
+                    editorOptions:
+                      values:
+                        black:
+                          label: Black
+                        white:
+                          label: White
+              required:
+                type: string
+                ui:
+                  reloadPageIfChanged: true
+                  inspector:
+                    editor: 'Carbon.ColorPicker/OKLCH'
+                    editorOptions:
+                      allowEmpty: false
+                validation:
+                  Neos.Neos/Validation/NotEmptyValidator: {}
+              optional:
+                type: string
+                ui:
+                  reloadPageIfChanged: true
+                  inspector:
+                    editor: 'Carbon.ColorPicker/OKLCH'
+                    editorOptions:
+                      allowEmpty: true

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2"
+    xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="" product-name="Litespeed.Style" source-language="en" target-language="de" datatype="plaintext">
+        <body>
+            <trans-unit id="groups.themeScroll" xml:space="preserve">
+                <source>Scroll indicator</source>
+                <target>Scroll Indikator</target>
+            </trans-unit>
+            <trans-unit id="properties.themeScrollIndicatorIcon" xml:space="preserve">
+                <source>Icon</source>
+                <target>Icon</target>
+            </trans-unit>
+            <trans-unit id="properties.themeScrollIndicatorMarkup" xml:space="preserve">
+                <source>Custom markup</source>
+                <target>Eigenes Markup</target>
+            </trans-unit>
+            <trans-unit id="properties.themeScrollIndicatorSize" xml:space="preserve">
+                <source>Size</source>
+                <target>Größe</target>
+            </trans-unit>
+            <trans-unit id="properties.themeScrollIndicatorBackground" xml:space="preserve">
+                <source>Enable background</source>
+                <target>Hintergrund aktivieren</target>
+            </trans-unit>
+            <trans-unit id="properties.themeScrollIndicatorRounded" xml:space="preserve">
+                <source>Rounding</source>
+                <target>Abrundung</target>
+            </trans-unit>
+            <trans-unit id="properties.themeScrollIndicatorRounded.minLabel" xml:space="preserve">
+                <source>Square</source>
+                <target>Eckig</target>
+            </trans-unit>
+            <trans-unit id="properties.themeScrollIndicatorRounded.maxLabel" xml:space="preserve">
+                <source>Rounded</source>
+                <target>Abgerundet</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

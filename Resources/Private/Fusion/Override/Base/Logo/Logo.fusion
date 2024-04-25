@@ -1,0 +1,14 @@
+prototype(Litespeed.Theme:Component.Logo) {
+    // This is used for the Carbon.CodePen
+    node = ${site}
+    inContent = false
+
+    imageDefault = ${q(this.node).property('themeLogoAsset')}
+    imageContent = ${q(this.node).property('themeLogoAssetContent')}
+    dataDefault = ${q(this.node).property('themeLogoData')}
+    dataContent = ${q(this.node).property('themeLogoDataContent')}
+
+    image = ${this.inContent && this.imageContent ? this.imageContent : this.imageDefault}
+    markup = ${this.inContent && this.dataContent && this.dataContent.html ? this.dataContent.html : (this.dataDefault && this.dataDefault.html ? this.dataDefault.html : null)}
+    markupRenderer = 'Litespeed.Style:Logo.Markup'
+}

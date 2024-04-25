@@ -1,0 +1,82 @@
+'Litespeed.Style:Mixin.Visuals.Navigation':
+  abstract: true
+  superTypes:
+    'Litespeed.Style:Mixin.Tab': true
+  ui:
+    inspector:
+      groups:
+        themeNavigation:
+          label: i18n
+          position: 21
+          icon: angle-up
+          tab: theme
+          collapsed: true
+  properties:
+    themeHeaderGap:
+      type: integer
+      defaultValue: 16
+      ui:
+        label: i18n
+        reloadIfChanged: true
+        inspector:
+          group: themeNavigation
+          position: 10
+          editor: 'Carbon.RangeEditor/Editor'
+          editorOptions:
+            min: 0
+            max: 80
+            step: 1
+            unit: 'px'
+    themeLogoSize:
+      type: integer
+      defaultValue: 40
+      ui:
+        label: i18n
+        reloadPageIfChanged: true
+        inspector:
+          group: themeNavigation
+          position: 30
+          editor: 'Carbon.RangeEditor/Editor'
+          editorOptions:
+            min: 20
+            max: 240
+            step: 1
+            unit: px
+    themeLogoMarginTop:
+      type: integer
+      defaultValue: 16
+      ui:
+        label: i18n
+        reloadPageIfChanged: true
+        inspector:
+          group: themeNavigation
+          position: 40
+          editor: 'Carbon.RangeEditor/Editor'
+          editorOptions:
+            min: 0
+            max: 'ClientEval: node.properties.themeLogoSize'
+            step: 1
+            unit: px
+    themeLogoMarginBottom:
+      type: integer
+      defaultValue: 16
+      ui:
+        label: i18n
+        reloadPageIfChanged: true
+        inspector:
+          group: themeNavigation
+          position: 50
+          editor: 'Carbon.RangeEditor/Editor'
+          editorOptions:
+            min: 'ClientEval: node.properties.themeLogoSize * -1'
+            max: 'ClientEval: node.properties.themeLogoSize'
+            step: 1
+            unit: px
+    themeLogoPositionRight:
+      type: boolean
+      ui:
+        label: i18n
+        reloadPageIfChanged: true
+        inspector:
+          group: themeNavigation
+          position: 60
