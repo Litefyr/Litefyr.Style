@@ -1,4 +1,4 @@
-'Litespeed.Theme:Document.HomePage':
+'Litespeed.Integration:Document.HomePage':
   superTypes:
     'Litespeed.Style:Mixin.Colors': true
     'Litespeed.Style:Mixin.Visuals': true

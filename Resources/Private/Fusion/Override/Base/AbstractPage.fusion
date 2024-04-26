@@ -1,4 +1,4 @@
-prototype(Litespeed.Theme:Document.AbstractPage) {
+prototype(Litespeed.Integration:Document.AbstractPage) {
     prototype(Litespeed.Presentation:Atom.Clippath.Component) {
         @if.hasClipPath = ${q(site).property('themeClipPathEnabled') && q(site).property('themeClipPathInContent')}
     }

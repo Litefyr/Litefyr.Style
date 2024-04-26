@@ -1,5 +1,5 @@
 Base:
-  Theme:
+  Integration:
     flowCommandsOnStartup:
       StyleCSS: style:css
       StyleCodePen: style:codepen

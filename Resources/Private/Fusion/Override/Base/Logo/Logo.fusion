@@ -1,4 +1,4 @@
-prototype(Litespeed.Theme:Component.Logo) {
+prototype(Litespeed.Integration:Component.Logo) {
     // This is used for the Carbon.CodePen
     node = ${site}
     inContent = false

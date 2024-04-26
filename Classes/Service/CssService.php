@@ -45,7 +45,9 @@ class CssService
     public function generateCss(NodeInterface $node): ?string
     {
         if (
-            !$node->getNodeType()->isOfType('Litespeed.Theme:Document.HomePage')
+            !$node
+                ->getNodeType()
+                ->isOfType('Litespeed.Integration:Document.HomePage')
         ) {
             return null;
         }

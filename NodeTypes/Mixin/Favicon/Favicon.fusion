@@ -1,5 +1,5 @@
 prototype(Litespeed.Style:Favicon) < prototype(Neos.Fusion:Component) {
-    notFoundPage = 'Litespeed.Theme:Document.NotFound'
+    notFoundPage = 'Litespeed.Integration:Document.NotFound'
 
     icon = Neos.Fusion:Map {
         items = ${q(site).property('themeFavicon')}
@@ -21,7 +21,7 @@ prototype(Litespeed.Style:Favicon) < prototype(Neos.Fusion:Component) {
         }
         notFound {
             condition = true
-            notFoundPage = ${q(site).children('[instanceof Litespeed.Theme:Document.NotFound]').get(0)}
+            notFoundPage = ${q(site).children('[instanceof Litespeed.Integration:Document.NotFound]').get(0)}
             @context {
                 node = ${this.notFoundPage}
                 documentNode = ${this.notFoundPage}

@@ -2,7 +2,7 @@
 
 namespace Litespeed\Style\Command;
 
-use Litespeed\Theme\Http\CommandHttpRequestHandler;
+use Litespeed\Integration\Http\CommandHttpRequestHandler;
 use Neos\Flow\Core\Bootstrap;
 use Litespeed\Style\Service\CssService;
 use Litespeed\Style\Service\CodePenService;

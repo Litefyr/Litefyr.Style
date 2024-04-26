@@ -1,4 +1,4 @@
-prototype(Litespeed.Theme:Component.Logo.PreviewFrame.Header) < prototype(Carbon.CodePen:PreviewFrame) {
+prototype(Litespeed.Integration:Component.Logo.PreviewFrame.Header) < prototype(Carbon.CodePen:PreviewFrame) {
     body.content.custom = Litespeed.Presentation:Section.Header {
         logoPositionRight = ${q(node).property('themeLogoPositionRight')}
         logoMarginTop = ${q(node).property('themeLogoMarginTop')}
@@ -10,11 +10,11 @@ prototype(Litespeed.Theme:Component.Logo.PreviewFrame.Header) < prototype(Carbon
     }
 }
 
-prototype(Litespeed.Theme:Component.Logo.CodePen) < prototype(Litespeed.Theme:Component.Logo) {
+prototype(Litespeed.Integration:Component.Logo.CodePen) < prototype(Litespeed.Integration:Component.Logo) {
     node = ${node}
 }
 
-prototype(Litespeed.Theme:Component.Logo.CodePen.Content) < prototype(Litespeed.Theme:Component.Logo) {
+prototype(Litespeed.Integration:Component.Logo.CodePen.Content) < prototype(Litespeed.Integration:Component.Logo) {
     node = ${node}
     inContent = true
 }

@@ -1,4 +1,4 @@
-prototype(Litespeed.Theme:Document.Lightbox.PhotoSwipe) {
+prototype(Litespeed.Integration:Document.Lightbox.PhotoSwipe) {
     prototype(Litespeed.Presentation:Atom.Clippath.Component) {
         @if.hasClipPath = ${q(site).property('themeClipPathEnabled') && q(site).property('themeClipPathInContent')}
     }

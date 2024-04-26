@@ -3,7 +3,7 @@ footer {
     colorSchemeSwitchter.@if.both = ${q(site).property('themeColorScheme') == 'light dark'}
     clipPathAboveFooter = ${q(site).property('themeClipPathEnabled') && q(site).property('themeClipPathAboveFooter')}
     spacing = ${q(site).property('themeFooterSpacing')}
-    logo = Litespeed.Theme:Component.Logo {
+    logo = Litespeed.Integration:Component.Logo {
         @if.show = ${q(site).property('themeFooterShowLogo')}
         class = 'p-0'
         size = null

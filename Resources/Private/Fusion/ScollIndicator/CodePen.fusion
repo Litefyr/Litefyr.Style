@@ -2,7 +2,7 @@ prototype(Litespeed.Style:Component.ScollIndicator.PreviewFrame) < prototype(Car
     body.content.class = null
 }
 
-prototype(Litespeed.Style:Component.ScollIndicator.CodePen) < prototype(Litespeed.Theme:Component.ScrollIndicator) {
+prototype(Litespeed.Style:Component.ScollIndicator.CodePen) < prototype(Litespeed.Integration:Component.ScrollIndicator) {
     node = ${node}
     enabled = true
 }
