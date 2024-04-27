@@ -1,5 +1,5 @@
 {
-    "name": "litespeed/style",
+    "name": "lspeed/style",
     "description": "Dynamic style for Litespeed",
     "type": "neos-litespeed",
     "license": "GPL-3.0-or-later",
