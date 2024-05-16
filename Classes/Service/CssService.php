@@ -1,16 +1,16 @@
 <?php
 
-namespace Litespeed\Style\Service;
+namespace Litefyr\Style\Service;
 
 use Neos\Flow\Annotations as Flow;
 use Neos\Fusion\Core\Cache\ContentCache;
 use Neos\ContentRepository\Domain\Model\NodeInterface;
-use Litespeed\Style\Service\FontService;
-use Litespeed\Style\Service\ClipPathService;
-use Litespeed\Style\Service\DividerService;
-use Litespeed\Style\Service\ColorService;
-use Litespeed\Style\Service\LogoService;
-use Litespeed\Style\Service\RoundedService;
+use Litefyr\Style\Service\FontService;
+use Litefyr\Style\Service\ClipPathService;
+use Litefyr\Style\Service\DividerService;
+use Litefyr\Style\Service\ColorService;
+use Litefyr\Style\Service\LogoService;
+use Litefyr\Style\Service\RoundedService;
 
 #[Flow\Scope('singleton')]
 class CssService
@@ -44,11 +44,7 @@ class CssService
      */
     public function generateCss(NodeInterface $node): ?string
     {
-        if (
-            !$node
-                ->getNodeType()
-                ->isOfType('Litespeed.Integration:Document.HomePage')
-        ) {
+        if (!$node->getNodeType()->isOfType('Litefyr.Integration:Document.HomePage')) {
             return null;
         }
 
@@ -70,18 +66,12 @@ class CssService
             'onEnd' => '',
             'backend' => '',
         ];
-        foreach (
-            [$fonts, $colors, $clipPath, $rounded, $divider, $logo]
-            as $value
-        ) {
+        foreach ([$fonts, $colors, $clipPath, $rounded, $divider, $logo] as $value) {
             if (isset($value['markup'])) {
                 $markup .= $value['markup'];
             }
             if (isset($value['CSS'])) {
-                foreach (
-                    ['onStart', 'root', 'light', 'dark', 'onEnd', 'backend']
-                    as $key
-                ) {
+                foreach (['onStart', 'root', 'light', 'dark', 'onEnd', 'backend'] as $key) {
                     if (isset($value['CSS'][$key])) {
                         $cssObject[$key] .= $value['CSS'][$key];
                     }
@@ -100,11 +90,7 @@ class CssService
             $CSS .= sprintf('.dark{%s}', $cssObject['dark']);
         } elseif ($cssObject['light'] || $cssObject['dark']) {
             // We have only one scheme
-            $CSS .= sprintf(
-                ':root{%s%s}',
-                $cssObject['light'],
-                $cssObject['dark']
-            );
+            $CSS .= sprintf(':root{%s%s}', $cssObject['light'], $cssObject['dark']);
         }
         $CSS .= $cssObject['onEnd'];
 
@@ -114,10 +100,7 @@ class CssService
         $node->setProperty('themeCSS', $CSS);
         $node->setProperty('themeCSSHash', substr(hash('sha256', $CSS), 0, 8));
         $node->setProperty('themeBackendCSS', $backendCSS);
-        $node->setProperty(
-            'themeWebmanifestThemeColor',
-            $colors['themeWebmanifestTheme']
-        );
+        $node->setProperty('themeWebmanifestThemeColor', $colors['themeWebmanifestTheme']);
         $node->setProperty('themeHeaderMarkup', $markup);
 
         return $CSS;
@@ -128,16 +111,12 @@ class CssService
      *
      * @param NodeInterface $node
      * @param string $propertyName
-     * @param $oldValue
-     * @param $newValue
+     * @param mixed $oldValue
+     * @param mixed $newValue
      * @return void
      */
-    public function update(
-        NodeInterface $node,
-        string $propertyName,
-        $oldValue,
-        $newValue
-    ): void {
+    public function update(NodeInterface $node, string $propertyName, $oldValue, $newValue): void
+    {
         $styleProperties = [
             // Rounded
             'themeRoundedBox',
@@ -229,7 +208,7 @@ class CssService
             'themeWebmanifestName',
         ];
         if ($needCSS || in_array($propertyName, $headTagsProperties)) {
-            $this->contentCache->flushByTag('Base_Style_HeadTags');
+            $this->contentCache->flushByTag('Style_HeadTags');
         }
     }
 }

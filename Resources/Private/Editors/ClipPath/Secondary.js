@@ -97,7 +97,7 @@ export default function SecondaryClipPath({ onChange, value, topColor, bottomCol
 
     const labels = {};
     labelArray.forEach((key) => {
-        labels[key] = i18nRegistry.translate(`Litespeed.Style:NodeTypes.Mixin.Visuals.ClipPath:editor.${key}`);
+        labels[key] = i18nRegistry.translate(`Litefyr.Style:NodeTypes.Mixin.Visuals.ClipPath:editor.${key}`);
     });
 
     return (

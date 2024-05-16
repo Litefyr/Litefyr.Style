@@ -1,0 +1,5 @@
+prototype(Litefyr.Integration:Document.Lightbox.PhotoSwipe) {
+    prototype(Litefyr.Presentation:Atom.Clippath.Component) {
+        @if.hasClipPath = ${q(site).property('themeClipPathEnabled') && q(site).property('themeClipPathInContent')}
+    }
+}

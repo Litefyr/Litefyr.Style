@@ -72,7 +72,7 @@ export default function ControlBar({
 
     const labels = {};
     labelArray.forEach((key) => {
-        labels[key] = i18nRegistry.translate(`Litespeed.Style:NodeTypes.Mixin.Fonts:editor.${key}`);
+        labels[key] = i18nRegistry.translate(`Litefyr.Style:NodeTypes.Mixin.Fonts:editor.${key}`);
     });
 
     return (

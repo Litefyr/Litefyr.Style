@@ -3,4 +3,4 @@
   options:
     fusionPathPatterns:
       - 'resource://Neos.Neos.Ui/Private/Fusion/Backend'
-      - 'resource://Litespeed.Style/Private/Backend'
+      - 'resource://Litefyr.Style/Private/Backend'

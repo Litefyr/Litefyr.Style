@@ -25,13 +25,13 @@ function Editor(props) {
 
     function onReset() {
         // This closes the secondary inspector
-        renderSecondaryInspector("LITESPEED_CLIPPATH_EDIT", () => null);
+        renderSecondaryInspector("LITEFYR_CLIPPATH_EDIT", () => null);
         commit({ ...value, top: null, bottom: null });
     }
 
     function handleOpenEditor() {
-        const { component: ClipPathEditorWrap } = secondaryEditorsRegistry.get("Litespeed.Style/ClipPathEditorWrap");
-        renderSecondaryInspector("LITESPEED_CLIPPATH_EDIT", () => (
+        const { component: ClipPathEditorWrap } = secondaryEditorsRegistry.get("Litefyr.Style/ClipPathEditorWrap");
+        renderSecondaryInspector("LITEFYR_CLIPPATH_EDIT", () => (
             <ClipPathEditorWrap
                 onChange={onChange}
                 value={value}

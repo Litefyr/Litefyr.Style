@@ -1,6 +1,6 @@
 <?php
 
-namespace Litespeed\Style\Service;
+namespace Litefyr\Style\Service;
 
 use Neos\Flow\Annotations as Flow;
 use Neos\ContentRepository\Domain\Model\NodeInterface;
@@ -17,7 +17,7 @@ class RoundedService
      * Return roun
      *
      * @param NodeInterface $node
-     * @return array
+     * @return array{rounded: array{box: string, image: string, button: string, scroller: string}, CSS: array{root: string}}
      */
     public function getRoudedValues(NodeInterface $node): array
     {

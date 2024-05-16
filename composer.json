@@ -1,7 +1,7 @@
 {
-    "name": "lspeed/style",
-    "description": "Dynamic style for Litespeed",
-    "type": "neos-litespeed",
+    "name": "litefyr/style",
+    "description": "Dynamic style for Litefyr",
+    "type": "neos-litefyr",
     "license": "GPL-3.0-or-later",
     "require": {
         "carbon/colorpicker-oklch" : "^0.1.4",
@@ -12,12 +12,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Litespeed\\Style\\": "Classes"
+            "Litefyr\\Style\\": "Classes"
         }
     },
     "keywords": [
         "flow",
         "neos",
-        "litespeed"
+        "litefyr"
     ]
 }

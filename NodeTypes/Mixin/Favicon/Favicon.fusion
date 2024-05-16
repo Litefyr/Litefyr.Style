@@ -1,5 +1,5 @@
-prototype(Litespeed.Style:Favicon) < prototype(Neos.Fusion:Component) {
-    notFoundPage = 'Litespeed.Integration:Document.NotFound'
+prototype(Litefyr.Style:Favicon) < prototype(Neos.Fusion:Component) {
+    notFoundPage = 'Litefyr.Integration:Document.NotFound'
 
     icon = Neos.Fusion:Map {
         items = ${q(site).property('themeFavicon')}
@@ -21,7 +21,7 @@ prototype(Litespeed.Style:Favicon) < prototype(Neos.Fusion:Component) {
         }
         notFound {
             condition = true
-            notFoundPage = ${q(site).children('[instanceof Litespeed.Integration:Document.NotFound]').get(0)}
+            notFoundPage = ${q(site).children('[instanceof Litefyr.Integration:Document.NotFound]').get(0)}
             @context {
                 node = ${this.notFoundPage}
                 documentNode = ${this.notFoundPage}
@@ -54,7 +54,7 @@ root {
     favicon {
         @position = 'start 1'
         condition = ${site && request.arguments.favicon}
-        renderer = Litespeed.Style:Favicon
+        renderer = Litefyr.Style:Favicon
     }
 
     @cache.entryIdentifier.favicon = ${request.arguments.favicon}

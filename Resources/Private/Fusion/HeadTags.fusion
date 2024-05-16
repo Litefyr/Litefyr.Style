@@ -1,4 +1,4 @@
-styleHeadTags = Litespeed.Style:HeadTags {
+styleHeadTags = Litefyr.Style:HeadTags {
     themeColor = ${q(site).property('themeWebmanifestThemeColor') || '#ffffff'}
     themeBrowserconfigTileColor = ${q(site).property('themeBrowserconfigTileColor') || '#da532c'}
     themeColorScheme = ${q(site).property('themeColorScheme')}
@@ -16,17 +16,17 @@ styleHeadTags = Litespeed.Style:HeadTags {
     @cache {
         mode = 'cached'
         entryIdentifier {
-            identifier = 'Base_Style_HeadTags'
+            identifier = 'Style_HeadTags'
             site = ${site}
         }
         entryTags {
-            headtags = 'Base_Style_HeadTags'
+            headtags = 'Style_HeadTags'
         }
     }
 }
 
 
-prototype(Litespeed.Style:HeadTags) < prototype(Neos.Fusion:Component) {
+prototype(Litefyr.Style:HeadTags) < prototype(Neos.Fusion:Component) {
     @private.icons = Neos.Fusion:Map {
         @if.hasItems = ${Carbon.Array.check(props.themeFavicon)}
         @process.filter = ${Array.filter(value)}

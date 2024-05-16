@@ -6,7 +6,7 @@ import clsx from "clsx";
 
 const neosifier = neos((globalRegistry) => ({
     i18nRegistry: globalRegistry.get("i18n"),
-    config: globalRegistry.get("frontendConfiguration").get("BaseStyleEditorsFont"),
+    config: globalRegistry.get("frontendConfiguration").get("LitefyrStyleEditorsFont"),
     secondaryEditorsRegistry: globalRegistry.get("inspector").get("secondaryEditors"),
 }));
 
@@ -34,13 +34,13 @@ function Editor(props) {
 
     function onReset() {
         // This closes the secondary inspector
-        renderSecondaryInspector("LITESPEED_FONT_EDIT", () => null);
+        renderSecondaryInspector("LITEFYR_FONT_EDIT", () => null);
         commit({});
     }
 
     function handleOpenEditor() {
-        const { component: FontEditorWrap } = secondaryEditorsRegistry.get("Litespeed.Style/FontEditorWrap");
-        renderSecondaryInspector("LITESPEED_FONT_EDIT", () => (
+        const { component: FontEditorWrap } = secondaryEditorsRegistry.get("Litefyr.Style/FontEditorWrap");
+        renderSecondaryInspector("LITEFYR_FONT_EDIT", () => (
             <FontEditorWrap onChange={onChange} value={value} options={options} i18nRegistry={i18nRegistry} />
         ));
     }

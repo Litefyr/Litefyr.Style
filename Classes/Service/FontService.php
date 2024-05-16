@@ -1,6 +1,6 @@
 <?php
 
-namespace Litespeed\Style\Service;
+namespace Litefyr\Style\Service;
 
 use Neos\Flow\Annotations as Flow;
 use Neos\ContentRepository\Domain\Model\NodeInterface;
@@ -8,21 +8,17 @@ use Neos\ContentRepository\Domain\Model\NodeInterface;
 #[Flow\Scope('singleton')]
 class FontService
 {
-    #[
-        Flow\InjectConfiguration(
-            'frontendConfiguration.BaseStyleEditorsFont',
-            'Neos.Neos.Ui'
-        )
-    ]
+    /**
+     * @var array<string, mixed>
+     */
+    #[Flow\InjectConfiguration('frontendConfiguration.LitefyrStyleEditorsFont', 'Neos.Neos.Ui')]
     protected array $fontSettings;
-
-    protected array $fonts = [];
 
     /**
      * Get font faces and preload tags from a site node
      *
-     * @param array $fonts
-     * @return array
+     * @param array{main?: mixed, headline?: mixed, quote?: mixed, button?: mixed} $fonts
+     * @return array{preloadTags: string, fontFaces: string}
      */
     protected function getFontFacesAndPreloadTags(array $fonts): array
     {
@@ -41,42 +37,22 @@ class FontService
             // The font is a variable font, so we only need to load one file
             if ($isVariableFont) {
                 $fontWeightFromSettings = $fontSettings['fontWeight'];
-                $filepath =
-                    $fontSettings['filepath'] ??
-                    sprintf('%s/%s.woff2', $folder, $name);
-                $fontFaces[] = $this->returnFontFace(
-                    $name,
-                    $fontWeightFromSettings,
-                    $filepath
-                );
+                $filepath = $fontSettings['filepath'] ?? sprintf('%s/%s.woff2', $folder, $name);
+                $fontFaces[] = $this->returnFontFace($name, $fontWeightFromSettings, $filepath);
                 $preloadTags[] = $this->fontPreload($filepath);
                 continue;
             }
 
-            $fontWeightNormal =
-                $font['userSettings']['fontWeight']['normal'] ?? 400;
-            $fontWeightBold =
-                $font['userSettings']['fontWeight']['bold'] ?? 600;
+            $fontWeightNormal = $font['userSettings']['fontWeight']['normal'] ?? 400;
+            $fontWeightBold = $font['userSettings']['fontWeight']['bold'] ?? 600;
 
-            $filepath =
-                $fontSettings['filepath'] ??
-                sprintf('%s/%s-%s.woff2', $folder, $name, $fontWeightNormal);
-            $fontFaces[] = $this->returnFontFace(
-                $name,
-                $fontWeightNormal,
-                $filepath
-            );
+            $filepath = $fontSettings['filepath'] ?? sprintf('%s/%s-%s.woff2', $folder, $name, $fontWeightNormal);
+            $fontFaces[] = $this->returnFontFace($name, $fontWeightNormal, $filepath);
             $preloadTags[] = $this->fontPreload($filepath);
 
             if ($fontWeightNormal != $fontWeightBold) {
-                $filepath =
-                    $fontSettings['filepath'] ??
-                    sprintf('%s/%s-%s.woff2', $folder, $name, $fontWeightBold);
-                $fontFaces[] = $this->returnFontFace(
-                    $name,
-                    $fontWeightBold,
-                    $filepath
-                );
+                $filepath = $fontSettings['filepath'] ?? sprintf('%s/%s-%s.woff2', $folder, $name, $fontWeightBold);
+                $fontFaces[] = $this->returnFontFace($name, $fontWeightBold, $filepath);
                 $preloadTags[] = $this->fontPreload($filepath);
             }
         }
@@ -95,11 +71,8 @@ class FontService
      * @param string $filepath
      * @return string
      */
-    protected function returnFontFace(
-        string $name,
-        string|int $fontWeight,
-        string $filepath
-    ): string {
+    protected function returnFontFace(string $name, string|int $fontWeight, string $filepath): string
+    {
         $format = pathinfo($filepath, PATHINFO_EXTENSION);
         return sprintf(
             '@font-face{font-family:%s;font-weight:%s;font-display:swap;font-style:normal;src: url("%s") format("%s")}',
@@ -119,17 +92,13 @@ class FontService
     protected function fontPreload(string $filepath): string
     {
         $format = pathinfo($filepath, PATHINFO_EXTENSION);
-        return sprintf(
-            '<link rel="preload" href="%s" as="font" type="font/%s" crossorigin>',
-            $filepath,
-            $format
-        );
+        return sprintf('<link rel="preload" href="%s" as="font" type="font/%s" crossorigin>', $filepath, $format);
     }
 
     /**
      * Get all font CSS properties
      *
-     * @param array $fonts
+     * @param array<string, array{font: string, style: mixed, userSettings: mixed}> $fonts
      * @return string
      */
     protected function getFontCssProperties(array $fonts): string
@@ -141,12 +110,7 @@ class FontService
             $fallback = $this->fontSettings['fallback'][$fontSettings['group']];
 
             // Font familiy definition
-            $fontProperties[] = sprintf(
-                '--font-%s:%s, %s;',
-                $key,
-                $name,
-                $fallback
-            );
+            $fontProperties[] = sprintf('--font-%s:%s, %s;', $key, $name, $fallback);
 
             // Font feature settings
             $fontProperties[] = sprintf(
@@ -182,7 +146,7 @@ class FontService
      * Return the fonts properties from a node
      *
      * @param NodeInterface $node
-     * @return array
+     * @return array{fonts: array{main?:mixed,headline?:mixed,quote?:mixed,button?:mixed}, markup: string, CSS: array{onStart: string, root: string}}
      */
     public function getFonts(NodeInterface $node): array
     {
@@ -200,7 +164,7 @@ class FontService
             'fonts' => $fonts,
             'markup' => $fontFacesAndPreloadTags['preloadTags'],
             'CSS' => [
-                'onStart' => $fontFacesAndPreloadTags['fontFaces'] ?? '',
+                'onStart' => $fontFacesAndPreloadTags['fontFaces'],
                 'root' => $this->getFontCssProperties($fonts),
             ],
         ];
@@ -209,8 +173,8 @@ class FontService
     /**
      * Make sure that the main font is set
      *
-     * @param array $fonts
-     * @return array
+     * @param array{main: mixed, headline: mixed, quote: mixed, button: mixed} $fonts
+     * @return array{main?: mixed, headline?: mixed, quote?: mixed, button?: mixed}
      */
     protected function makeSureMainFontIsSet(array $fonts): array
     {

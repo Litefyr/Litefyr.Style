@@ -1,4 +1,4 @@
-'Litespeed.Style:Mixin.Tab':
+'Litefyr.Style:Mixin.Tab':
   abstract: true
   ui:
     inspector:

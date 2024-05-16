@@ -16,9 +16,9 @@ const options = {
     },
     outdir: "Resources/Public/Editors",
     external: [
-        "/_Resources/Static/Packages/Litespeed.Style/Editors/Unbrotli.js",
-        "/_Resources/Static/Packages/Litespeed.Style/Editors/FontLib.js",
-        "/_Resources/Static/Packages/Litespeed.Style/Editors/Inflate.js",
+        "/_Resources/Static/Packages/Litefyr.Style/Editors/Unbrotli.js",
+        "/_Resources/Static/Packages/Litefyr.Style/Editors/FontLib.js",
+        "/_Resources/Static/Packages/Litefyr.Style/Editors/Inflate.js",
     ],
     alias: extensibilityMap,
     plugins: [
@@ -28,7 +28,7 @@ const options = {
             },
             cssModules: {
                 dashedIdents: true,
-                pattern: "litespeed-style-[hash]-[local]",
+                pattern: "litefyr-style-[hash]-[local]",
             },
         }),
     ],

@@ -1,18 +1,18 @@
 privilegeTargets:
   'Neos\ContentRepository\Security\Authorization\Privilege\Node\EditNodePropertyPrivilege':
-    'Litespeed.Style:ThemeProperties':
+    'Litefyr.Style:ThemeProperties':
       label: Edit the theme properties
       matcher: 'nodePropertyIsIn(["robotsTxtData", "themeBrowserconfigTileColor", "themeClipPath", "themeClipPathAboveFooter", "themeClipPathBelowNavigation", "themeClipPathInContent", "themeColorDarkBackground", "themeColorDarkFooter", "themeColorDarkHeader", "themeColorDarkMain", "themeColorDarkMinor", "themeColorDarkMinor2", "themeColorDarkText", "themeColorLightBackground", "themeColorLightFooter", "themeColorLightHeader", "themeColorLightMain", "themeColorLightMinor", "themeColorLightMinor2", "themeColorLightText", "themeColorScheme", "themeColorSchemeSwitchter", "themeFavicon", "themeFontButton", "themeFontHeadline", "themeFontMain", "themeFontQuote", "themeFooterShowLogo", "themeFooterSpacing", "themeHeaderGap", "themeHrImage", "themeHrImagePosition", "themeHrImageSize", "themeHrSoft", "themeLogoAsset", "themeLogoAssetContent", "themeLogoData", "themeLogoDataContent", "themeLogoHeightInFooter", "themeLogoMarginBottom", "themeLogoMarginTop", "themeLogoPositionRight", "themeLogoSize", "themeLogoSizeInContent", "themeRoundedBox", "themeRoundedButton", "themeRoundedImage", "themeScrollIndicatorBackground", "themeScrollIndicatorIcon", "themeScrollIndicatorMarkup", "themeScrollIndicatorRounded", "themeScrollIndicatorSize", "themeScrollIndicatorTheme", "themeWebmanifestName", "themeWebmanifestShortName", "themeWebmanifestThemeBackgroundColor", "themeWebmanifestThemeColor"])'
 
 roles:
   'Neos.Neos:Administrator':
     privileges:
-      - privilegeTarget: 'Litespeed.Style:ThemeProperties'
+      - privilegeTarget: 'Litefyr.Style:ThemeProperties'
         permission: GRANT
 
-  'Litespeed.Style:ThemeEditor':
+  'Litefyr.Style:ThemeEditor':
     label: Theme Styler
     description: Grants access to the properties to edit the look and feel of the website
     privileges:
-      - privilegeTarget: 'Litespeed.Style:ThemeProperties'
+      - privilegeTarget: 'Litefyr.Style:ThemeProperties'
         permission: GRANT

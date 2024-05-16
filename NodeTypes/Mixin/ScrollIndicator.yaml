@@ -1,4 +1,4 @@
-'Litespeed.Style:Mixin.ScollIndicator':
+'Litefyr.Style:Mixin.ScollIndicator':
   abstract: true
   ui:
     inspector:
@@ -37,8 +37,8 @@
           position: 20
           editor: 'Carbon.CodePen/CodeEditor'
           editorOptions:
-            previewFrame: 'Litespeed.Style:Component.ScollIndicator.PreviewFrame'
-            nodeRenderer: 'Litespeed.Style:Component.ScollIndicator.CodePen'
+            previewFrame: 'Litefyr.Style:Component.ScollIndicator.PreviewFrame'
+            nodeRenderer: 'Litefyr.Style:Component.ScollIndicator.CodePen'
             tabs:
               html:
                 label: HTML & AFX
@@ -48,7 +48,7 @@
       type: string
       defaultValue: default
       ui:
-        label: 'Litespeed.Integration:NodeTypes.Colors:color.default'
+        label: 'Litefyr.Integration:NodeTypes.Colors:color.default'
         reloadPageIfChanged: true
         inspector:
           position: 30
@@ -58,19 +58,19 @@
             allowEmpty: false
             values:
               main:
-                label: 'Litespeed.Integration:NodeTypes.Colors:color.main'
+                label: 'Litefyr.Integration:NodeTypes.Colors:color.main'
                 color: 'var(--color-theme-main)'
               minor:
-                label: 'Litespeed.Integration:NodeTypes.Colors:color.minor'
+                label: 'Litefyr.Integration:NodeTypes.Colors:color.minor'
                 color: 'var(--color-theme-minor)'
               minor2:
-                label: 'Litespeed.Integration:NodeTypes.Colors:color.minor2'
+                label: 'Litefyr.Integration:NodeTypes.Colors:color.minor2'
                 color: 'var(--color-theme-minor2)'
               gray:
-                label: 'Litespeed.Integration:NodeTypes.Colors:color.gray'
+                label: 'Litefyr.Integration:NodeTypes.Colors:color.gray'
                 color: 'var(--color-theme-gray)'
               default:
-                label: 'Litespeed.Integration:NodeTypes.Colors:color.text'
+                label: 'Litefyr.Integration:NodeTypes.Colors:color.text'
                 color: 'var(--color-theme-front)'
     themeScrollIndicatorSize:
       type: integer
@@ -108,8 +108,8 @@
           hidden: 'ClientEval: node.properties.themeScrollIndicatorBackground !== true'
           editor: 'Carbon.RangeEditor/Editor'
           editorOptions:
-            minLabel: 'Litespeed.Style:NodeTypes.Mixin.ScollIndicator:properties.themeScrollIndicatorRounded.minLabel'
-            maxLabel: 'Litespeed.Style:NodeTypes.Mixin.ScollIndicator:properties.themeScrollIndicatorRounded.maxLabel'
+            minLabel: 'Litefyr.Style:NodeTypes.Mixin.ScollIndicator:properties.themeScrollIndicatorRounded.minLabel'
+            maxLabel: 'Litefyr.Style:NodeTypes.Mixin.ScollIndicator:properties.themeScrollIndicatorRounded.maxLabel'
             min: 0
             max: 26
             step: 2

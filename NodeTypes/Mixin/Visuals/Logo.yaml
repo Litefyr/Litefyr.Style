@@ -1,7 +1,7 @@
-'Litespeed.Style:Mixin.Visuals.Logo':
+'Litefyr.Style:Mixin.Visuals.Logo':
   abstract: true
   superTypes:
-    'Litespeed.Style:Mixin.Tab': true
+    'Litefyr.Style:Mixin.Tab': true
   ui:
     inspector:
       groups:
@@ -26,8 +26,8 @@
           position: 10
           editor: 'Carbon.CodePen/CodeEditor'
           editorOptions:
-            previewFrame: 'Litespeed.Integration:Component.Logo.PreviewFrame.Header'
-            nodeRenderer: 'Litespeed.Integration:Component.Logo.CodePen'
+            previewFrame: 'Litefyr.Integration:Component.Logo.PreviewFrame.Header'
+            nodeRenderer: 'Litefyr.Integration:Component.Logo.CodePen'
             tabs:
               html:
                 label: HTML & AFX
@@ -65,14 +65,14 @@
         label: i18n
         reloadPageIfChanged: true
         help:
-          message: 'Litespeed.Style:NodeTypes.Mixin.Visuals.Logo:properties.themeLogoData.ui.help.help'
+          message: 'Litefyr.Style:NodeTypes.Mixin.Visuals.Logo:properties.themeLogoData.ui.help.help'
         inspector:
           group: themeLogo
           position: 110
           editor: 'Carbon.CodePen/CodeEditor'
           editorOptions:
             previewFrame: 'Carbon.CodePen:PreviewFrame'
-            nodeRenderer: 'Litespeed.Integration:Component.Logo.CodePen.Content'
+            nodeRenderer: 'Litefyr.Integration:Component.Logo.CodePen.Content'
             tabs:
               html:
                 label: HTML & AFX

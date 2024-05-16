@@ -1,7 +1,7 @@
-'Litespeed.Style:Mixin.Browserconfig':
+'Litefyr.Style:Mixin.Browserconfig':
   abstract: true
   superTypes:
-    'Litespeed.Style:Mixin.Tab': true
+    'Litefyr.Style:Mixin.Tab': true
   ui:
     inspector:
       groups:

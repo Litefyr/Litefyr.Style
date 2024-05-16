@@ -1,9 +1,9 @@
 <?php
 
-namespace Litespeed\Style;
+namespace Litefyr\Style;
 
-use Litespeed\Style\Service\CssService;
-use Litespeed\Style\Service\CodePenService;
+use Litefyr\Style\Service\CssService;
+use Litefyr\Style\Service\CodePenService;
 use Neos\ContentRepository\Domain\Model\Node;
 use Neos\ContentRepository\Domain\Model\Workspace;
 use Neos\Flow\Core\Bootstrap;
@@ -18,18 +18,8 @@ class Package extends BasePackage
     public function boot(Bootstrap $bootstrap): void
     {
         $dispatcher = $bootstrap->getSignalSlotDispatcher();
-        $dispatcher->connect(
-            Node::class,
-            'nodePropertyChanged',
-            CssService::class,
-            'update'
-        );
+        $dispatcher->connect(Node::class, 'nodePropertyChanged', CssService::class, 'update');
 
-        $dispatcher->connect(
-            Workspace::class,
-            'afterNodePublishing',
-            CodePenService::class,
-            'afterNodePublishing'
-        );
+        $dispatcher->connect(Workspace::class, 'afterNodePublishing', CodePenService::class, 'afterNodePublishing');
     }
 }

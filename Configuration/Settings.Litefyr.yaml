@@ -1,4 +1,4 @@
-Base:
+Litefyr:
   Integration:
     flowCommandsOnStartup:
       StyleCSS: style:css

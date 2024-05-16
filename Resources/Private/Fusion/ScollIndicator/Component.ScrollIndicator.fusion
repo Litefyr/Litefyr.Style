@@ -1,4 +1,4 @@
-prototype(Litespeed.Integration:Component.ScrollIndicator) {
+prototype(Litefyr.Integration:Component.ScrollIndicator) {
     // This is used for the Carbon.CodePen
     node = ${site}
 

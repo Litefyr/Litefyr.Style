@@ -1,5 +1,5 @@
-prototype(Litespeed.Style:Logo.Markup) {
-    @class = 'Litespeed\\Style\\FusionObjects\\LogoMarkupImplementation'
+prototype(Litefyr.Style:Logo.Markup) {
+    @class = 'Litefyr\\Style\\FusionObjects\\LogoMarkupImplementation'
     content = ${value}
     contextNodes = Neos.Fusion:DataStructure {
         node = ${node}

@@ -63,7 +63,7 @@ export default function SecondaryFont({ onChange, value, options, i18nRegistry }
         fetchData();
     }, []);
 
-    const previewClassName = "litespeed-font-preview";
+    const previewClassName = "litefyr-font-preview";
     const roundedButton = (() => {
         const rounded = options?.roundedButton || 0;
         return rounded >= 26 ? "9999px" : rounded / 16 + "rem";
@@ -73,7 +73,7 @@ export default function SecondaryFont({ onChange, value, options, i18nRegistry }
     const enableBold = options.type !== "button";
     const preview = state.rangePreview ? "range" : options.type;
     const mainFontCSS = options?.mainFont?.style ? mainFontStyle(options.mainFont.style, previewClassName) : "";
-    const previewText = i18nRegistry.translate(`Litespeed.Style:NodeTypes.Mixin.Fonts:editor.preview.${preview}`);
+    const previewText = i18nRegistry.translate(`Litefyr.Style:NodeTypes.Mixin.Fonts:editor.preview.${preview}`);
 
     return (
         <div className={style.secondaryGrid}>

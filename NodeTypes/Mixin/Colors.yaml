@@ -1,7 +1,7 @@
-'Litespeed.Style:Mixin.Colors':
+'Litefyr.Style:Mixin.Colors':
   abstract: true
   superTypes:
-    'Litespeed.Style:Mixin.Tab': true
+    'Litefyr.Style:Mixin.Tab': true
   ui:
     inspector:
       groups:
@@ -27,7 +27,7 @@
       type: string
       defaultValue: light
       ui:
-        label: 'Litespeed.Style:NodeTypes.Mixin.Colors:groups.themeColorScheme'
+        label: 'Litefyr.Style:NodeTypes.Mixin.Colors:groups.themeColorScheme'
         reloadPageIfChanged: true
         inspector:
           group: themeColorScheme
@@ -38,10 +38,10 @@
             values:
               light:
                 icon: sun
-                label: 'Litespeed.Style:NodeTypes.Mixin.Colors:groups.themeColorsLight'
+                label: 'Litefyr.Style:NodeTypes.Mixin.Colors:groups.themeColorsLight'
               dark:
                 icon: moon
-                label: 'Litespeed.Style:NodeTypes.Mixin.Colors:groups.themeColorsDark'
+                label: 'Litefyr.Style:NodeTypes.Mixin.Colors:groups.themeColorsDark'
               'light dark':
                 icon: random
                 label: i18n
@@ -71,7 +71,7 @@
       options:
         preset: 'Carbon.TailwindColors.colors'
       ui:
-        label: 'Litespeed.Style:NodeTypes.Mixin.Colors:background'
+        label: 'Litefyr.Style:NodeTypes.Mixin.Colors:background'
         reloadPageIfChanged: true
         inspector:
           group: themeColorsLight
@@ -85,7 +85,7 @@
       options:
         preset: 'Carbon.TailwindColors.colors'
       ui:
-        label: 'Litespeed.Style:NodeTypes.Mixin.Colors:text'
+        label: 'Litefyr.Style:NodeTypes.Mixin.Colors:text'
         reloadPageIfChanged: true
         inspector:
           group: themeColorsLight
@@ -100,7 +100,7 @@
         preset: 'theme.color.optional'
       type: array
       ui:
-        label: 'Litespeed.Style:NodeTypes.Mixin.Colors:main'
+        label: 'Litefyr.Style:NodeTypes.Mixin.Colors:main'
         reloadPageIfChanged: true
         inspector:
           group: themeColorsLight
@@ -115,7 +115,7 @@
         preset: 'theme.color.optional'
       type: array
       ui:
-        label: 'Litespeed.Style:NodeTypes.Mixin.Colors:minor'
+        label: 'Litefyr.Style:NodeTypes.Mixin.Colors:minor'
         reloadPageIfChanged: true
         inspector:
           group: themeColorsLight
@@ -130,7 +130,7 @@
         preset: 'theme.color.optional'
       type: array
       ui:
-        label: 'Litespeed.Style:NodeTypes.Mixin.Colors:minor2'
+        label: 'Litefyr.Style:NodeTypes.Mixin.Colors:minor2'
         reloadPageIfChanged: true
         inspector:
           group: themeColorsLight
@@ -145,7 +145,7 @@
         preset: 'theme.color.optional'
       type: array
       ui:
-        label: 'Litespeed.Style:NodeTypes.Mixin.Colors:header'
+        label: 'Litefyr.Style:NodeTypes.Mixin.Colors:header'
         reloadPageIfChanged: true
         inspector:
           group: themeColorsLight
@@ -159,7 +159,7 @@
         preset: 'theme.color.optional'
       type: array
       ui:
-        label: 'Litespeed.Style:NodeTypes.Mixin.Colors:footer'
+        label: 'Litefyr.Style:NodeTypes.Mixin.Colors:footer'
         reloadPageIfChanged: true
         inspector:
           group: themeColorsLight
@@ -172,7 +172,7 @@
       options:
         preset: 'Carbon.TailwindColors.colors'
       ui:
-        label: 'Litespeed.Style:NodeTypes.Mixin.Colors:background'
+        label: 'Litefyr.Style:NodeTypes.Mixin.Colors:background'
         reloadPageIfChanged: true
         inspector:
           group: themeColorsDark
@@ -186,7 +186,7 @@
       options:
         preset: 'Carbon.TailwindColors.colors'
       ui:
-        label: 'Litespeed.Style:NodeTypes.Mixin.Colors:text'
+        label: 'Litefyr.Style:NodeTypes.Mixin.Colors:text'
         reloadPageIfChanged: true
         inspector:
           group: themeColorsDark
@@ -201,7 +201,7 @@
         preset: 'theme.color.optional'
       type: array
       ui:
-        label: 'Litespeed.Style:NodeTypes.Mixin.Colors:main'
+        label: 'Litefyr.Style:NodeTypes.Mixin.Colors:main'
         reloadPageIfChanged: true
         inspector:
           group: themeColorsDark
@@ -216,7 +216,7 @@
         preset: 'theme.color.optional'
       type: array
       ui:
-        label: 'Litespeed.Style:NodeTypes.Mixin.Colors:minor'
+        label: 'Litefyr.Style:NodeTypes.Mixin.Colors:minor'
         reloadPageIfChanged: true
         inspector:
           group: themeColorsDark
@@ -231,7 +231,7 @@
         preset: 'theme.color.optional'
       type: array
       ui:
-        label: 'Litespeed.Style:NodeTypes.Mixin.Colors:minor2'
+        label: 'Litefyr.Style:NodeTypes.Mixin.Colors:minor2'
         reloadPageIfChanged: true
         inspector:
           group: themeColorsDark
@@ -246,7 +246,7 @@
         preset: 'theme.color.optional'
       type: array
       ui:
-        label: 'Litespeed.Style:NodeTypes.Mixin.Colors:header'
+        label: 'Litefyr.Style:NodeTypes.Mixin.Colors:header'
         reloadPageIfChanged: true
         inspector:
           group: themeColorsDark
@@ -260,7 +260,7 @@
         preset: 'theme.color.optional'
       type: array
       ui:
-        label: 'Litespeed.Style:NodeTypes.Mixin.Colors:footer'
+        label: 'Litefyr.Style:NodeTypes.Mixin.Colors:footer'
         reloadPageIfChanged: true
         inspector:
           group: themeColorsDark

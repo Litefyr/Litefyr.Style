@@ -1,7 +1,7 @@
-'Litespeed.Style:Mixin.Visuals.ClipPath':
+'Litefyr.Style:Mixin.Visuals.ClipPath':
   abstract: true
   superTypes:
-    'Litespeed.Style:Mixin.Tab': true
+    'Litefyr.Style:Mixin.Tab': true
   ui:
     inspector:
       groups:
@@ -22,7 +22,7 @@
         inspector:
           group: themeClipPath
           position: 10
-          editor: 'Litespeed.Style/ClipPathEditor'
+          editor: 'Litefyr.Style/ClipPathEditor'
           editorOptions:
             topColor: 'ClientEval: node.properties.themeColorScheme == "dark" ? node.properties.themeColorDarkMain?.oklch : node.properties.themeColorLightMain?.oklch'
             bottomColor: 'ClientEval: node.properties.themeColorScheme == "dark" ? node.properties.themeColorDarkMinor?.oklch : node.properties.themeColorLightMinor?.oklch'

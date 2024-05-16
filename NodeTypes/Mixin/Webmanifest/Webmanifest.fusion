@@ -1,4 +1,4 @@
-prototype(Litespeed.Style:Webmanifest) < prototype(Neos.Fusion:Component) {
+prototype(Litefyr.Style:Webmanifest) < prototype(Neos.Fusion:Component) {
     name = ${q(site).property('themeWebmanifestName') || site.context.currentSite.name}
     shortName = ${q(site).property('themeWebmanifestShortName') || this.name}
     themeColor = ${q(site).property('themeWebmanifestThemeColor') || '#ffffff'}
@@ -46,4 +46,4 @@ prototype(Litespeed.Style:Webmanifest) < prototype(Neos.Fusion:Component) {
     }
 }
 
-webmanifest = Litespeed.Style:Webmanifest
+webmanifest = Litefyr.Style:Webmanifest

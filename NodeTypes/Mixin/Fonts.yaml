@@ -1,7 +1,7 @@
-'Litespeed.Style:Mixin.Fonts':
+'Litefyr.Style:Mixin.Fonts':
   abstract: true
   superTypes:
-    'Litespeed.Style:Mixin.Tab': true
+    'Litefyr.Style:Mixin.Tab': true
   ui:
     inspector:
       groups:
@@ -20,7 +20,7 @@
         inspector:
           group: themeFonts
           position: 10
-          editor: Litespeed.Style/FontEditor
+          editor: Litefyr.Style/FontEditor
           editorOptions:
             type: main
             allowEmpty: false
@@ -32,7 +32,7 @@
         inspector:
           group: themeFonts
           position: 20
-          editor: Litespeed.Style/FontEditor
+          editor: Litefyr.Style/FontEditor
           editorOptions:
             type: headline
             allowEmpty: true
@@ -45,7 +45,7 @@
         inspector:
           group: themeFonts
           position: 30
-          editor: Litespeed.Style/FontEditor
+          editor: Litefyr.Style/FontEditor
           editorOptions:
             type: quote
             allowEmpty: true
@@ -58,7 +58,7 @@
         inspector:
           group: themeFonts
           position: 40
-          editor: Litespeed.Style/FontEditor
+          editor: Litefyr.Style/FontEditor
           editorOptions:
             type: button
             allowEmpty: true

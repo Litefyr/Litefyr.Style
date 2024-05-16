@@ -1,2 +1,2 @@
 include: **/*.fusion
-include: nodetypes://Litespeed.Style/**/*.fusion
+include: nodetypes://Litefyr.Style/**/*.fusion

@@ -5,7 +5,8 @@
     "copy": "cp node_modules/lib-font/lib-font.browser.js ./Resources/Public/Editors/FontLib.js;cp node_modules/lib-font/lib/unbrotli.js ./Resources/Public/Editors/Unbrotli.js;cp node_modules/lib-font/lib/inflate.js ./Resources/Public/Editors/Inflate.js",
     "build": "pnpm copy;node ./build.mjs --production",
     "watch": "pnpm copy;node ./build.mjs --watch",
-    "dev": "pnpm copy;node ./build.mjs"
+    "dev": "pnpm copy;node ./build.mjs",
+    "pipeline": "pnpm install; pnpm build"
   },
   "devDependencies": {
     "@neos-project/neos-ui-extensibility": "^8.3.7",

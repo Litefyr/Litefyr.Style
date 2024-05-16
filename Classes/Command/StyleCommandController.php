@@ -1,11 +1,11 @@
 <?php
 
-namespace Litespeed\Style\Command;
+namespace Litefyr\Style\Command;
 
-use Litespeed\Integration\Http\CommandHttpRequestHandler;
-use Neos\Flow\Core\Bootstrap;
-use Litespeed\Style\Service\CssService;
-use Litespeed\Style\Service\CodePenService;
+use Litefyr\Integration\Http\CommandHttpRequestHandler;
+use Litefyr\Style\Service\CodePenService;
+use Litefyr\Style\Service\CssService;
+use Neos\ContentRepository\Domain\Model\NodeInterface;
 use Neos\ContentRepository\Domain\Repository\WorkspaceRepository;
 use Neos\ContentRepository\Domain\Service\ContentDimensionCombinator;
 use Neos\ContentRepository\Domain\Service\ContextFactoryInterface;
@@ -14,6 +14,7 @@ use Neos\Eel\FlowQuery\FlowQuery;
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Cli\CommandController;
 use Neos\Flow\Cli\Exception\StopCommandException;
+use Neos\Flow\Core\Bootstrap;
 use Neos\Neos\Domain\Service\SiteService;
 
 #[Flow\Scope('singleton')]
@@ -55,16 +56,10 @@ class StyleCommandController extends CommandController
             $name = $site->getName();
             $css = $this->cssService->generateCss($site);
             if ($css) {
-                $this->outputLine(
-                    '<comment> Generated CSS for site "%s" </comment>',
-                    [$name]
-                );
+                $this->outputLine('<comment> Generated CSS for site "%s" </comment>', [$name]);
                 $this->outputLine($css);
             } else {
-                $this->outputLine(
-                    '<error> No CSS generated for site "%s" </error>',
-                    [$name]
-                );
+                $this->outputLine('<error> No CSS generated for site "%s" </error>', [$name]);
             }
             $this->outputLine();
         }
@@ -75,49 +70,37 @@ class StyleCommandController extends CommandController
     /**
      * Save instances from CodePen property into the temporary directory
      *
-     * This generates a temporary file for each CodePen property in the Litespeed.Style package.
+     * This generates a temporary file for each CodePen property in the Litefyr.Style package.
      *
      * @param string|null $identifier If set, only this node get processed, add multiple nodes seperates with comma
      * @param string|null $markup Need identifier also to be set. If set, this markup will be used instead of the node markup. Need to be base64 encoded. Used internaly to make some task asychronus
      * @return void
      */
-    public function codepenCommand(
-        ?string $identifier = null,
-        ?string $markup = null
-    ): void {
+    public function codepenCommand(?string $identifier = null, ?string $markup = null): void
+    {
         if (isset($markup)) {
             if (!isset($identifier)) {
-                $this->outputLine(
-                    '<error> Please set also the identifier </error>'
-                );
+                $this->outputLine('<error> Please set also the identifier </error>');
                 $this->quit(1);
             }
 
             if (str_contains($identifier, ',')) {
-                $this->outputLine(
-                    '<error> If markup is set, only one identifier is allowed </error>'
-                );
+                $this->outputLine('<error> If markup is set, only one identifier is allowed </error>');
                 $this->quit(1);
             }
 
-            $this->outputLine(
-                '<comment> Get Node with identifier "%s"... </comment>',
-                [$identifier]
-            );
+            $this->outputLine('<comment> Get Node with identifier "%s"... </comment>', [$identifier]);
 
             $sites = $this->getSiteNodes('live');
             $node = $this->findNodes($sites, $identifier, true);
 
             if (!$node) {
-                $this->outputLine(
-                    '<error> Node with identifier "%s" not found </error>',
-                    [$identifier]
-                );
+                $this->outputLine('<error> Node with identifier "%s" not found </error>', [$identifier]);
                 $this->quit(1);
             }
 
             $markup = base64_decode($markup);
-            $this->codePenService->processSingleNode($node, $markup);
+            $this->codePenService->processSingleNode($node[0], $markup);
             return;
         }
 
@@ -134,11 +117,8 @@ class StyleCommandController extends CommandController
 
         $nodes = $this->findNodes($sites, $identifier, false);
 
-        if (!count($nodes)) {
-            $this->outputLine(
-                '<error> No node with identifier "%s" found </error>',
-                [$identifier]
-            );
+        if (!$nodes) {
+            $this->outputLine('<error> No node with identifier "%s" found </error>', [$identifier]);
             $this->quit(1);
         }
 
@@ -152,23 +132,20 @@ class StyleCommandController extends CommandController
     /**
      * Find nodes by identifier
      *
-     * @param array $siteNodes
+     * @param NodeInterface[] $siteNodes
      * @param string $identifier
      * @param boolean $singleNode
-     * @return mixed
+     * @return NodeInterface[]|null
      */
-    private function findNodes(
-        array $siteNodes,
-        string $identifier,
-        bool $singleNode = false
-    ) {
+    private function findNodes(array $siteNodes, string $identifier, bool $singleNode = false): ?array
+    {
         $nodes = [];
         $identifiers = explode(',', $identifier);
         foreach ($siteNodes as $site) {
             $siteIdentifier = $site->getIdentifier();
             if (in_array($siteIdentifier, $identifiers)) {
                 if ($singleNode) {
-                    return $site;
+                    return [$site];
                 }
                 $nodes[] = $site;
             }
@@ -176,24 +153,31 @@ class StyleCommandController extends CommandController
 
         $flowQuery = new FlowQuery($siteNodes);
         foreach ($identifiers as $id) {
+            // @phpstan-ignore-next-line
             $findNodes = $flowQuery->find('#' . $id)->get();
             if (!count($findNodes)) {
                 continue;
             }
             if ($singleNode) {
-                return $findNodes[0];
+                return [$findNodes[0]];
             }
             $nodes = array_merge($nodes, $findNodes);
         }
 
-        return array_filter(array_unique($nodes));
+        $nodes = array_filter(array_unique($nodes));
+
+        if (count($nodes)) {
+            return $nodes;
+        }
+
+        return null;
     }
 
     /**
      * Get site nodes
      *
      * @param string $workspace
-     * @return array
+     * @return NodeInterface[]
      */
     private function getSiteNodes(string $workspace = 'live'): array
     {
@@ -201,12 +185,9 @@ class StyleCommandController extends CommandController
         $this->bootstrap->setActiveRequestHandler($requestHandler);
 
         $this->outputLine();
-        /** @noinspection PhpUndefinedMethodInspection */
+        // @phpstan-ignore-next-line
         if ($this->workspaceRepository->countByName($workspace) === 0) {
-            $this->outputLine(
-                '<error> Workspace "%s" does not exist </error>',
-                [$workspace]
-            );
+            $this->outputLine('<error> Workspace "%s" does not exist </error>', [$workspace]);
             $this->quit();
         }
 
@@ -217,16 +198,11 @@ class StyleCommandController extends CommandController
             'inaccessibleContentShown' => true,
         ];
         $baseContext = $this->contextFactory->create($contextProperties);
-        $baseContextSitesNode = $baseContext->getNode(
-            SiteService::SITES_ROOT_PATH
-        );
+        $baseContextSitesNode = $baseContext->getNode(SiteService::SITES_ROOT_PATH);
+        // $baseContextSitesNode can also be null
+        // @phpstan-ignore-next-line
         if (!$baseContextSitesNode) {
-            $this->outputLine(
-                sprintf(
-                    '<error> Could not find "%s" root node </error>',
-                    SiteService::SITES_ROOT_PATH
-                )
-            );
+            $this->outputLine(sprintf('<error> Could not find "%s" root node </error>', SiteService::SITES_ROOT_PATH));
             $this->quit();
         }
         $baseContextSiteNodes = $baseContextSitesNode->getChildNodes();
@@ -240,11 +216,9 @@ class StyleCommandController extends CommandController
             $this->quit();
         }
         $sites = [];
-        foreach (
-            $this->dimensionCombinator->getAllAllowedCombinations()
-            as $dimensionCombination
-        ) {
+        foreach ($this->dimensionCombinator->getAllAllowedCombinations() as $dimensionCombination) {
             $flowQuery = new FlowQuery($baseContextSiteNodes);
+            // @phpstan-ignore-next-line
             $siteNodes = $flowQuery
                 ->context([
                     'dimensions' => $dimensionCombination,

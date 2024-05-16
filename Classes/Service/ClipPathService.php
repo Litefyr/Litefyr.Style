@@ -1,6 +1,6 @@
 <?php
 
-namespace Litespeed\Style\Service;
+namespace Litefyr\Style\Service;
 
 use Neos\Flow\Annotations as Flow;
 use Neos\ContentRepository\Domain\Model\NodeInterface;
@@ -12,7 +12,7 @@ class ClipPathService
      * Read values from the node and return the clip path CSS property
      *
      * @param NodeInterface $node
-     * @return string
+     * @return array{CSS:array{root:string,onEnd:string}}
      */
     public function getClipPath(NodeInterface $node): array
     {
@@ -34,8 +34,7 @@ class ClipPathService
             // Clip path utliities
             // clippath:hidden Hide the elment
             // clippath:bg-transparent Make the background transparent
-            $utilityClasses =
-                '.clippath\:hidden{display:none}.clippath\:bg-transparent{background-color:transparent}';
+            $utilityClasses = '.clippath\:hidden{display:none}.clippath\:bg-transparent{background-color:transparent}';
             // Important variants
             $utilityClasses .=
                 '.clippath\:\!hidden{display:none !important}.clippath\:\!bg-transparent{background-color:transparent !important}';
@@ -52,8 +51,8 @@ class ClipPathService
     /**
      * Add the CSS property for the clip path
      *
-     * @param array $config
-     * @return string
+     * @param array{top?:string,bottom?:string,height:int,width:int} $config
+     * @return string|null
      */
     protected function getCustomClipPathCssProperty(array $config): ?string
     {
@@ -79,21 +78,13 @@ class ClipPathService
             '--clippath-display:block;',
             '--clippath-display-top:block;',
             '--clippath-display-bottom:block;',
-            sprintf(
-                '--clippath-ratio:%s / %s;',
-                $config['width'],
-                $config['height']
-            ),
+            sprintf('--clippath-ratio:%s / %s;', $config['width'], $config['height']),
             sprintf('--clippath-margin:-%s%%;', $height),
             sprintf('--clippath-height:%svw;', $height),
             sprintf('--clippath-height-half:%svw;', $height / 2),
             $identicalTopAndBottom ? sprintf('--clippath-path:%s;', $path) : '',
             sprintf('--clippath-path-top:polygon(%s,%s);', $topStart, $top),
-            sprintf(
-                '--clippath-path-bottom:polygon(%s,%s);',
-                $bottomStart,
-                $bottom
-            ),
+            sprintf('--clippath-path-bottom:polygon(%s,%s);', $bottomStart, $bottom),
         ]);
     }
 }

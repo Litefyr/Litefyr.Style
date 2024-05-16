@@ -1,11 +1,12 @@
 <?php
 
-namespace Litespeed\Style\FusionObjects;
+namespace Litefyr\Style\FusionObjects;
 
 use Garagist\ContentBox\FusionService\Service\FusionService;
+use Neos\ContentRepository\Domain\Model\NodeInterface;
 use Neos\Flow\Annotations as Flow;
-use Neos\Fusion\FusionObjects\AbstractFusionObject;
 use Neos\Fusion\Exception;
+use Neos\Fusion\FusionObjects\AbstractFusionObject;
 
 /**
  * Renderer LogoMarkup Fusion Object
@@ -21,7 +22,7 @@ class LogoMarkupImplementation extends AbstractFusionObject
     }
 
     /**
-     * @return [NodeInterface]
+     * @return array<string, NodeInterface>
      */
     public function getContextNodes(): array
     {

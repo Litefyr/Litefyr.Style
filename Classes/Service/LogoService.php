@@ -1,6 +1,6 @@
 <?php
 
-namespace Litespeed\Style\Service;
+namespace Litefyr\Style\Service;
 
 use Neos\Flow\Annotations as Flow;
 use Neos\ContentRepository\Domain\Model\NodeInterface;
@@ -12,12 +12,12 @@ class LogoService
      * Get sizes for the logo
      *
      * @param NodeInterface $node
-     * @return string
+     * @return array{config: array{size: float, size-content: float}, CSS: array{root: string}}
      */
     public function getLogoSizes(NodeInterface $node): array
     {
-        $size = $node->getProperty('themeLogoSize') ?? null;
-        $size = ($logoSize ?? 40) / 1.25;
+        $logoSize = $node->getProperty('themeLogoSize') ?? 40;
+        $size = $logoSize / 1.25;
         $sizeInContent = $node->getProperty('themeLogoSizeInContent');
         $sizeInContent = $sizeInContent ? $sizeInContent : 600;
 

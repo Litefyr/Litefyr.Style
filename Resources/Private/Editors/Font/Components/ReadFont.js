@@ -4,9 +4,9 @@ async function readFont(font, pluginConfig = {}) {
     const { folder, fonts } = pluginConfig;
     const config = fonts[font];
     if (!FontLib) {
-        await import("/_Resources/Static/Packages/Litespeed.Style/Editors/Inflate.js");
-        await import("/_Resources/Static/Packages/Litespeed.Style/Editors/Unbrotli.js");
-        const { Font } = await import("/_Resources/Static/Packages/Litespeed.Style/Editors/FontLib.js");
+        await import("/_Resources/Static/Packages/Litefyr.Style/Editors/Inflate.js");
+        await import("/_Resources/Static/Packages/Litefyr.Style/Editors/Unbrotli.js");
+        const { Font } = await import("/_Resources/Static/Packages/Litefyr.Style/Editors/FontLib.js");
         FontLib = Font;
     }
 

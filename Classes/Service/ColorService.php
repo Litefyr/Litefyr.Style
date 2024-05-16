@@ -1,38 +1,54 @@
 <?php
 
-namespace Litespeed\Style\Service;
+namespace Litefyr\Style\Service;
 
 use Neos\Flow\Annotations as Flow;
 use Neos\ContentRepository\Domain\Model\NodeInterface;
 use Carbon\ColorPicker\OKLCH\EelHelper\ConvertHelper;
 
+/**
+ * @phpstan-type ColorCoords array{l:float,c:float,h:float}
+ * @phpstan-type CustomProperty array{coords:string,oklch:string,hex:string}
+ * @phpstan-type ColorArray array{hex:string,oklch:string,coords:ColorCoords,customProperty:CustomProperty}
+ * @phpstan-type SchemeArray array{back:mixed,front:mixed,main:mixed,minor:mixed,minor2:mixed,gray:mixed,header:mixed|null,footer:mixed}
+ */
 #[Flow\Scope('singleton')]
 class ColorService
 {
     #[Flow\Inject]
     protected ConvertHelper $convert;
 
-    #[
-        Flow\InjectConfiguration(
-            'frontendConfiguration.CarbonTailwindColors.colors',
-            'Neos.Neos.Ui'
-        )
-    ]
+    /**
+     * @var array<string,mixed>
+     */
+    #[Flow\InjectConfiguration('frontendConfiguration.CarbonTailwindColors.colors', 'Neos.Neos.Ui')]
     protected array $colors;
 
+    /**
+     * @var array{scheme:string,mainColor:string,rounded:int}
+     */
     #[Flow\InjectConfiguration('default')]
     protected array $default;
 
+    /**
+     * @var array<string,array<string,string>>
+     */
     #[Flow\InjectConfiguration('additionalThemeSelector')]
     protected $additionalThemeSelector;
 
+    /**
+     * @var array{light:float|int,dark:float|int}
+     */
     #[Flow\InjectConfiguration('colorOffset')]
     protected array $colorOffset;
 
     #[Flow\InjectConfiguration('colorContrastThreshold')]
     protected float $colorContrastThreshold;
 
-    protected array $fallbackMain;
+    /**
+     * @var null|ColorArray
+     */
+    protected $fallbackMain = null;
 
     const WHITE = [
         'l' => 1,
@@ -50,14 +66,12 @@ class ColorService
      * Get color from node and store them in the color objects
      *
      * @param NodeInterface $node
-     * @return array
+     * @return array{light:mixed,dark:mixed,scheme:mixed,CSS:mixed,themeWebmanifestTheme:string}
      */
     public function getColors(NodeInterface $node): array
     {
         $scheme = $node->getProperty('themeColorScheme') ?? 'light';
-        $this->fallbackMain = $this->convert->toOkLch(
-            $this->default['mainColor']
-        );
+        $this->fallbackMain = $this->convert->toOkLch($this->default['mainColor']);
 
         $light = null;
         $dark = null;
@@ -65,29 +79,20 @@ class ColorService
 
         if (str_contains($scheme, 'light')) {
             $light = $this->getColorsFromScheme($node, 'Light');
-            $themeWebmanifestTheme['light'] =
-                $light['header']['hex'] ?? ($light['main']['hex'] ?? null);
+            $themeWebmanifestTheme['light'] = $light['header']['hex'] ?? ($light['main']['hex'] ?? null);
         }
 
         if (str_contains($scheme, 'dark')) {
             $dark = $this->getColorsFromScheme($node, 'Dark');
-            $themeWebmanifestTheme['dark'] =
-                $dark['header']['hex'] ?? ($dark['main']['hex'] ?? null);
+            $themeWebmanifestTheme['dark'] = $dark['header']['hex'] ?? ($dark['main']['hex'] ?? null);
         }
 
         return [
             'light' => $light,
             'dark' => $dark,
             'scheme' => $scheme,
-            'CSS' => $this->generateCSSVariables(
-                $scheme,
-                $light,
-                $dark,
-                $themeWebmanifestTheme
-            ),
-            'themeWebmanifestTheme' =>
-                $themeWebmanifestTheme['light'] ??
-                $themeWebmanifestTheme['dark'],
+            'CSS' => $this->generateCSSVariables($scheme, $light, $dark, $themeWebmanifestTheme),
+            'themeWebmanifestTheme' => $themeWebmanifestTheme['light'] ?? ($themeWebmanifestTheme['dark'] ?? ''),
         ];
     }
 
@@ -95,56 +100,39 @@ class ColorService
      * Get color from tailwind color group selector
      *
      * @param NodeInterface $node
-     * @param string $property
+     * @param string $propertyName
      * @param boolean $isLight
-     * @return array
+     * @return array{group:string,strength:int,color:ColorArray|null}
      */
-    protected function getColorFromGroup(
-        NodeInterface $node,
-        string $propertyName,
-        bool $isLight
-    ): array {
+    protected function getColorFromGroup(NodeInterface $node, string $propertyName, bool $isLight): array
+    {
         $property = $node->getProperty($propertyName);
         $scheme = $property['group'] ?? $this->default['scheme'];
         $strength =
             $property['strength'] ??
-            (str_contains($propertyName, 'Background')
-                ? ($isLight
-                    ? 0
-                    : 950)
-                : ($isLight
-                    ? 900
-                    : 100));
+            (str_contains($propertyName, 'Background') ? ($isLight ? 0 : 950) : ($isLight ? 900 : 100));
         return [
             'group' => $scheme,
             'strength' => $strength,
-            'color' => $this->convert->toOkLch(
-                $this->getColorBasedOnSettings($scheme, $strength)
-            ),
+            'color' => $this->convert->toOkLch($this->getColorBasedOnSettings($scheme, $strength) ?? ''),
         ];
     }
 
     /**
      * Get the background variant
      *
-     * @param array $background
+     * @param array{strength:int,group:string} $background
      * @param boolean $isLight
-     * @return array
+     * @return ColorArray|null
      */
-    protected function getBackgroundVariant(
-        array $background,
-        bool $isLight
-    ): array {
+    protected function getBackgroundVariant(array $background, bool $isLight): ?array
+    {
         $strength = $background['strength'];
         if ($strength == 50 || $strength == 950) {
             $strength += 50;
         }
-        $strength = $isLight
-            ? min($strength + 100, 400)
-            : max($strength - 100, 600);
-        return $this->convert->toOkLch(
-            $this->getColorBasedOnSettings($background['group'], $strength)
-        );
+        $strength = $isLight ? min($strength + 100, 400) : max($strength - 100, 600);
+        return $this->convert->toOkLch($this->getColorBasedOnSettings($background['group'], $strength) ?? '');
     }
 
     /**
@@ -152,52 +140,26 @@ class ColorService
      *
      * @param NodeInterface $node
      * @param string $scheme
-     * @return array
+     * @return SchemeArray
      */
-    protected function getColorsFromScheme(
-        NodeInterface $node,
-        string $scheme
-    ): array {
+    protected function getColorsFromScheme(NodeInterface $node, string $scheme): array
+    {
         $isLight = $scheme === 'Light';
-        $background = $this->getColorFromGroup(
-            $node,
-            sprintf('themeColor%sBackground', $scheme),
-            $isLight
-        );
-        $text = $this->getColorFromGroup(
-            $node,
-            sprintf('themeColor%sText', $scheme),
-            $isLight
-        );
+        $background = $this->getColorFromGroup($node, sprintf('themeColor%sBackground', $scheme), $isLight);
+        $text = $this->getColorFromGroup($node, sprintf('themeColor%sText', $scheme), $isLight);
 
-        $main =
-            $this->getColor($node, sprintf('themeColor%sMain', $scheme)) ??
-            $this->fallbackMain;
+        $main = $this->getColor($node, sprintf('themeColor%sMain', $scheme)) ?? $this->fallbackMain;
         $gray = $this->getBackgroundVariant($background, $isLight);
 
         return [
             'back' => $background['color'],
             'front' => $text['color'],
             'main' => $main,
-            'minor' =>
-                $this->getColor($node, sprintf('themeColor%sMinor', $scheme)) ??
-                $main,
-            'minor2' =>
-                $this->getColor(
-                    $node,
-                    sprintf('themeColor%sMinor2', $scheme)
-                ) ?? $main,
+            'minor' => $this->getColor($node, sprintf('themeColor%sMinor', $scheme)) ?? $main,
+            'minor2' => $this->getColor($node, sprintf('themeColor%sMinor2', $scheme)) ?? $main,
             'gray' => $gray,
-            'header' =>
-                $this->getColor(
-                    $node,
-                    sprintf('themeColor%sHeader', $scheme)
-                ) ?? null,
-            'footer' =>
-                $this->getColor(
-                    $node,
-                    sprintf('themeColor%sFooter', $scheme)
-                ) ?? $gray,
+            'header' => $this->getColor($node, sprintf('themeColor%sHeader', $scheme)) ?? null,
+            'footer' => $this->getColor($node, sprintf('themeColor%sFooter', $scheme)) ?? $gray,
         ];
     }
 
@@ -206,7 +168,7 @@ class ColorService
      *
      * @param NodeInterface $node
      * @param string $property
-     * @return array|null
+     * @return ColorArray|null
      */
     protected function getColor(NodeInterface $node, string $property): ?array
     {
@@ -221,9 +183,10 @@ class ColorService
      * Generate CSS variables from the colors
      *
      * @param string $scheme
-     * @param array|null light scheme config
-     * @param array|null dark scheme config
-     * @return array
+     * @param SchemeArray|null $light scheme config
+     * @param SchemeArray|null $dark scheme config
+     * @param array{light?:string,dark?:string}|null $themeWebmanifestTheme
+     * @return array{onStart:string,root:string,light:string,dark:string,backend:string}
      */
     protected function generateCSSVariables(
         string $scheme,
@@ -236,23 +199,11 @@ class ColorService
         $darkCSS = $this->generateCSSVariablesFromScheme($dark);
         $oneScheme = $light == null || $dark == null;
 
-        if (
-            !empty($themeWebmanifestTheme['light']) &&
-            $themeWebmanifestTheme['light']
-        ) {
-            $rootCSS .= sprintf(
-                '--color-theme-light:%s;',
-                $themeWebmanifestTheme['light']
-            );
+        if (!empty($themeWebmanifestTheme['light'])) {
+            $rootCSS .= sprintf('--color-theme-light:%s;', $themeWebmanifestTheme['light']);
         }
-        if (
-            !empty($themeWebmanifestTheme['dark']) &&
-            $themeWebmanifestTheme['dark']
-        ) {
-            $rootCSS .= sprintf(
-                '--color-theme-dark:%s;',
-                $themeWebmanifestTheme['dark']
-            );
+        if (!empty($themeWebmanifestTheme['dark'])) {
+            $rootCSS .= sprintf('--color-theme-dark:%s;', $themeWebmanifestTheme['dark']);
         }
 
         return [
@@ -264,6 +215,10 @@ class ColorService
         ];
     }
 
+    /**
+     * @param SchemeArray|null $scheme
+     * @return string
+     */
     protected function generateBackendCSSVariables(?array $scheme): string
     {
         if (!$scheme) {
@@ -281,37 +236,40 @@ class ColorService
         return $CSS;
     }
 
-    protected function generateCustomPropertyFromColorOrCoords(
-        string $colorName,
-        array $config
-    ): string {
+    /**
+     * @param string $colorName
+     * @param array{l?:int|float,c?:int|float,h?:int|float,coords?:array{l:int|float,c:int|float,h:int|float}} $config
+     * @return string
+     */
+    protected function generateCustomPropertyFromColorOrCoords(string $colorName, array $config): string
+    {
         $css = '';
         $coords = $config['coords'] ?? $config;
         foreach ($coords as $key => $value) {
+            if (is_array($value)) {
+                continue;
+            }
             $css .= sprintf('--color-%s-%s:%s;', $colorName, $key, $value);
         }
         return $css;
     }
 
-    protected function getTextContrastColor(
-        string $name,
-        array $color,
-        bool $setoffset = false
-    ): string {
+    /**
+     * @param string $name
+     * @param array{coords:ColorCoords} $color
+     * @param boolean $setoffset
+     * @return string
+     */
+    protected function getTextContrastColor(string $name, array $color, bool $setoffset = false): string
+    {
         // luminance with value 0 is black, 1 is white
         $luminance = $color['coords']['l'];
 
         if (!$setoffset) {
             if ($luminance > $this->colorContrastThreshold) {
-                return $this->generateCustomPropertyFromColorOrCoords(
-                    $name,
-                    self::BLACK
-                );
+                return $this->generateCustomPropertyFromColorOrCoords($name, self::BLACK);
             }
-            return $this->generateCustomPropertyFromColorOrCoords(
-                $name,
-                self::WHITE
-            );
+            return $this->generateCustomPropertyFromColorOrCoords($name, self::WHITE);
         }
 
         if ($luminance > $this->colorContrastThreshold) {
@@ -329,6 +287,10 @@ class ColorService
         return $this->generateCustomPropertyFromColorOrCoords($name, $coords);
     }
 
+    /**
+     * @param string $theme
+     * @return string
+     */
     protected function getThemeSelector(string $theme): string
     {
         $value = sprintf('[data-theme="%s"]', $theme);
@@ -347,7 +309,7 @@ class ColorService
     /**
      * Generate CSS variables from the color scheme
      *
-     * @param array $colors
+     * @param array{back?:mixed,front?:mixed,main?:mixed,minor?:mixed,minor2?:mixed,gray?:mixed,header?:mixed,footer?:mixed}|null $colors
      * @return string
      */
     protected function generateCSSVariablesFromScheme(?array $colors): string
@@ -357,94 +319,46 @@ class ColorService
         }
 
         // default
-        $default = $this->generateCustomPropertyFromColorOrCoords(
-            'back',
-            $colors['back']
-        );
-        $default .= $this->generateCustomPropertyFromColorOrCoords(
-            'front',
-            $colors['front']
-        );
-        $default .= $this->generateCustomPropertyFromColorOrCoords(
-            'accent',
-            $colors['main']
-        );
+        $default = $this->generateCustomPropertyFromColorOrCoords('back', $colors['back']);
+        $default .= $this->generateCustomPropertyFromColorOrCoords('front', $colors['front']);
+        $default .= $this->generateCustomPropertyFromColorOrCoords('accent', $colors['main']);
 
         // inverted
-        $inverted = $this->generateCustomPropertyFromColorOrCoords(
-            'back',
-            $colors['front']
-        );
-        $inverted .= $this->generateCustomPropertyFromColorOrCoords(
-            'front',
-            $colors['back']
-        );
-        $inverted .= $this->generateCustomPropertyFromColorOrCoords(
-            'accent',
-            $colors['main']
-        );
+        $inverted = $this->generateCustomPropertyFromColorOrCoords('back', $colors['front']);
+        $inverted .= $this->generateCustomPropertyFromColorOrCoords('front', $colors['back']);
+        $inverted .= $this->generateCustomPropertyFromColorOrCoords('accent', $colors['main']);
 
         // main
-        $main = $this->generateCustomPropertyFromColorOrCoords(
-            'back',
-            $colors['main']
-        );
+        $main = $this->generateCustomPropertyFromColorOrCoords('back', $colors['main']);
         $main .= $this->getTextContrastColor('front', $colors['main'], true);
         $main .= $this->getTextContrastColor('accent', $colors['main']);
 
         // minor
-        $minor = $this->generateCustomPropertyFromColorOrCoords(
-            'back',
-            $colors['minor']
-        );
+        $minor = $this->generateCustomPropertyFromColorOrCoords('back', $colors['minor']);
         $minor .= $this->getTextContrastColor('front', $colors['minor'], true);
         $minor .= $this->getTextContrastColor('accent', $colors['minor']);
 
         // minor2
-        $minor2 = $this->generateCustomPropertyFromColorOrCoords(
-            'back',
-            $colors['minor2']
-        );
-        $minor2 .= $this->getTextContrastColor(
-            'front',
-            $colors['minor2'],
-            true
-        );
+        $minor2 = $this->generateCustomPropertyFromColorOrCoords('back', $colors['minor2']);
+        $minor2 .= $this->getTextContrastColor('front', $colors['minor2'], true);
         $minor2 .= $this->getTextContrastColor('accent', $colors['minor2']);
 
         // gray
-        $gray = $this->generateCustomPropertyFromColorOrCoords(
-            'back',
-            $colors['gray']
-        );
+        $gray = $this->generateCustomPropertyFromColorOrCoords('back', $colors['gray']);
         $gray .= $this->getTextContrastColor('front', $colors['gray'], true);
         $gray .= $this->getTextContrastColor('accent', $colors['gray']);
 
         // header
-        if ($colors['header']) {
-            $header = $this->generateCustomPropertyFromColorOrCoords(
-                'back',
-                $colors['header']
-            );
-            $header .= $this->getTextContrastColor(
-                'front',
-                $colors['header'],
-                true
-            );
+        if (isset($colors['header'])) {
+            $header = $this->generateCustomPropertyFromColorOrCoords('back', $colors['header']);
+            $header .= $this->getTextContrastColor('front', $colors['header'], true);
             $header .= $this->getTextContrastColor('accent', $colors['header']);
         }
 
         // footer
-        if ($colors['footer']) {
-            $footer = $this->generateCustomPropertyFromColorOrCoords(
-                'back',
-                $colors['footer']
-            );
-            $footer .= $this->getTextContrastColor(
-                'front',
-                $colors['footer'],
-                10
-            );
+        if (isset($colors['footer'])) {
+            $footer = $this->generateCustomPropertyFromColorOrCoords('back', $colors['footer']);
+            $footer .= $this->getTextContrastColor('front', $colors['footer'], true);
             $footer .= $this->getTextContrastColor('accent', $colors['footer']);
         }
 
@@ -455,11 +369,7 @@ class ColorService
             $this->getThemeSelector('default'),
             $default
         );
-        $CSS .= sprintf(
-            '%s{%s}',
-            $this->getThemeSelector('inverted'),
-            $inverted
-        );
+        $CSS .= sprintf('%s{%s}', $this->getThemeSelector('inverted'), $inverted);
         $CSS .= sprintf(
             '%s,:is([data-theme="default"],[data-theme="minor"],[data-theme="minor2"],[data-theme="gray"]) [data-theme="nested"]{%s}',
             $this->getThemeSelector('main'),
@@ -473,18 +383,10 @@ class ColorService
         $CSS .= sprintf('%s{%s}', $this->getThemeSelector('minor2'), $minor2);
         $CSS .= sprintf('%s{%s}', $this->getThemeSelector('gray'), $gray);
         if (isset($header)) {
-            $CSS .= sprintf(
-                '%s{%s}',
-                $this->getThemeSelector('header'),
-                $header
-            );
+            $CSS .= sprintf('%s{%s}', $this->getThemeSelector('header'), $header);
         }
         if (isset($footer)) {
-            $CSS .= sprintf(
-                '%s{%s}',
-                $this->getThemeSelector('footer'),
-                $footer
-            );
+            $CSS .= sprintf('%s{%s}', $this->getThemeSelector('footer'), $footer);
         }
 
         return $CSS;
@@ -497,10 +399,8 @@ class ColorService
      * @param int|string $strength
      * @return string|null
      */
-    protected function getColorBasedOnSettings(
-        string $group,
-        int|string $strength
-    ): ?string {
+    protected function getColorBasedOnSettings(string $group, int|string $strength): ?string
+    {
         $strength = (int) $strength;
         $group = $this->colors[$group];
 

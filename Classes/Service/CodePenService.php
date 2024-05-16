@@ -1,6 +1,6 @@
 <?php
 
-namespace Litespeed\Style\Service;
+namespace Litefyr\Style\Service;
 
 use Neos\ContentRepository\Domain\Model\NodeInterface;
 use Neos\ContentRepository\Domain\Model\Workspace;
@@ -15,20 +15,15 @@ use function sprintf;
 class CodePenService
 {
     const DIRECTORY = 'CodePenStorage';
-    const PROPERTIES = [
-        'themeScrollIndicatorMarkup',
-        'themeLogoData',
-        'themeLogoDataContent',
-    ];
+    const PROPERTIES = ['themeScrollIndicatorMarkup', 'themeLogoData', 'themeLogoDataContent'];
     const MARKUP_PROPERTY = 'html';
 
     protected string $directory;
 
-    #[
-        Flow\InjectConfiguration(
-            'codepenProperties.cliCommandAfterPublishToLive'
-        )
-    ]
+    /**
+     * @var string[]
+     */
+    #[Flow\InjectConfiguration('codepenProperties.cliCommandAfterPublishToLive')]
     protected $cliCommandAfterPublishToLive;
 
     /**
@@ -38,10 +33,8 @@ class CodePenService
      */
     public function initializeObject(): void
     {
-        $this->directory = Files::concatenatePaths([
-            FLOW_PATH_DATA,
-            self::DIRECTORY,
-        ]);
+        // @phpstan-ignore-next-line
+        $this->directory = Files::concatenatePaths([FLOW_PATH_DATA, self::DIRECTORY]);
     }
 
     /**
@@ -51,14 +44,9 @@ class CodePenService
      * @param Workspace $targetWorkspace
      * @return void
      */
-    public function afterNodePublishing(
-        NodeInterface $node,
-        Workspace $targetWorkspace
-    ): void {
-        if (
-            !$targetWorkspace->isPublicWorkspace() ||
-            !$this->hasCorrectNodeType($node)
-        ) {
+    public function afterNodePublishing(NodeInterface $node, Workspace $targetWorkspace): void
+    {
+        if (!$targetWorkspace->isPublicWorkspace() || !$this->hasCorrectNodeType($node)) {
             return;
         }
 
@@ -86,10 +74,8 @@ class CodePenService
      * @param NodeInterface $node
      * @param string|null $markup
      */
-    public function processSingleNode(
-        NodeInterface $node,
-        ?string $markup = null
-    ) {
+    public function processSingleNode(NodeInterface $node, ?string $markup = null): void
+    {
         $filename = $this->getNodeVariantFileName($node);
         $this->writeFile($filename, $markup ?? '');
         $this->runCliCommandAfterPublishToLive();
@@ -157,8 +143,8 @@ class CodePenService
     protected function hasCorrectNodeType(NodeInterface $node): bool
     {
         $nodeType = $node->getNodeType();
-        return $nodeType->isOfType('Litespeed.Style:Mixin.Visuals.Logo') ||
-            $nodeType->isOfType('Litespeed.Style:Mixin.ScollIndicator');
+        return $nodeType->isOfType('Litefyr.Style:Mixin.Visuals.Logo') ||
+            $nodeType->isOfType('Litefyr.Style:Mixin.ScollIndicator');
     }
 
     /**
@@ -173,10 +159,7 @@ class CodePenService
             return;
         }
         $iterator = new RecursiveIteratorIterator(
-            new RecursiveDirectoryIterator(
-                $dirPath,
-                RecursiveDirectoryIterator::SKIP_DOTS
-            ),
+            new RecursiveDirectoryIterator($dirPath, RecursiveDirectoryIterator::SKIP_DOTS),
             RecursiveIteratorIterator::CHILD_FIRST
         );
         foreach ($iterator as $file) {
@@ -192,7 +175,7 @@ class CodePenService
     /**
      * Run cli command
      *
-     * @param string|array|null $command
+     * @param string|string[]|null $command
      * @return boolean Returns true if the command was executed
      */
     protected function runCliCommand($command = null): bool
@@ -205,6 +188,7 @@ class CodePenService
         }
         if (is_array($command) && count($command)) {
             foreach ($command as $commandItem) {
+                // @phpstan-ignore-next-line
                 exec(sprintf('cd %s && %s', FLOW_PATH_ROOT, $commandItem));
             }
             return true;
@@ -229,10 +213,7 @@ class CodePenService
      */
     protected function updateInfoFile(): void
     {
-        $this->writeFile(
-            $this->directory . '/_LastUpdate.txt',
-            date('Y-m-d H:i:s', time())
-        );
+        $this->writeFile($this->directory . '/_LastUpdate.txt', date('Y-m-d H:i:s', time()));
     }
 
     /**
@@ -244,8 +225,14 @@ class CodePenService
      */
     protected function writeFile(string $filename, string $content): void
     {
+        if (!$filename) {
+            return;
+        }
         try {
             $file = fopen($filename, 'w');
+            if (!$file) {
+                return;
+            }
             fwrite($file, $content);
             fclose($file);
         } catch (\Throwable $th) {
@@ -293,9 +280,8 @@ class CodePenService
      * @param NodeInterface $nodeVariant
      * @return string
      */
-    protected function getNodeVariantFileName(
-        NodeInterface $nodeVariant
-    ): string {
+    protected function getNodeVariantFileName(NodeInterface $nodeVariant): string
+    {
         $nodeDimensionVariants = [];
         foreach ($nodeVariant->getDimensions() as $key => $dimension) {
             $nodeDimensionVariants[] = $key . '-' . implode('-', $dimension);

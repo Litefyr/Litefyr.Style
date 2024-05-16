@@ -1,7 +1,7 @@
-'Litespeed.Style:Mixin.Visuals.Footer':
+'Litefyr.Style:Mixin.Visuals.Footer':
   abstract: true
   superTypes:
-    'Litespeed.Style:Mixin.Tab': true
+    'Litefyr.Style:Mixin.Tab': true
   ui:
     inspector:
       groups:

@@ -1,8 +1,8 @@
-'Litespeed.Style:Mixin.Visuals':
+'Litefyr.Style:Mixin.Visuals':
   abstract: true
   superTypes:
-    'Litespeed.Style:Mixin.Visuals.Logo': true
-    'Litespeed.Style:Mixin.Visuals.Navigation': true
-    'Litespeed.Style:Mixin.Visuals.Footer': true
-    'Litespeed.Style:Mixin.Visuals.ClipPath': true
-    'Litespeed.Style:Mixin.Visuals.Rounded': true
+    'Litefyr.Style:Mixin.Visuals.Logo': true
+    'Litefyr.Style:Mixin.Visuals.Navigation': true
+    'Litefyr.Style:Mixin.Visuals.Footer': true
+    'Litefyr.Style:Mixin.Visuals.ClipPath': true
+    'Litefyr.Style:Mixin.Visuals.Rounded': true
