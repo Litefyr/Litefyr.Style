@@ -1,27 +1,27 @@
 :root {
-  --litefyr-primary-blue: #00adee;
-  --litefyrrimary-blue-hover: #35c3f8;
-  --litefyrrimary-violet: #26224c;
-  --litefyrontrast-darkest: #141414;
-  --litefyrontrast-neutral: #323232;
-  --litefyrighlight: #ff8700;
-  --litefyrounded: 2px;
+  --primary-blue: #00adee;
+  --primary-blue-hover: #35c3f8;
+  --primary-violet: #26224c;
+  --contrast-darkest: #141414;
+  --contrast-neutral: #323232;
+  --highlight: #ff8700;
+  --rounded: 2px;
 }
 
 .bgBlue {
-  background-color: var(--litefyrrimary-blue);
+  background-color: var(--primary-blue);
 }
 
 .bgViolet {
-  background-color: var(--litefyrrimary-violet);
+  background-color: var(--primary-violet);
 }
 
 .highlight {
-  box-shadow: 0 0 0 2px var(--litefyrighlight);
+  box-shadow: 0 0 0 2px var(--highlight);
 }
 
 .rounded {
-  border-radius: var(--litefyrounded);
+  border-radius: var(--rounded);
 }
 
 .primaryWrapper {
@@ -98,7 +98,7 @@
     content: "";
     position: absolute;
     z-index: -10;
-    background: var(--litefyrrimary-blue);
+    background: var(--primary-blue);
     inset: 0;
     opacity: 0.4;
   }
@@ -106,8 +106,8 @@
 
 .previewOutput {
   position: relative;
-  background: var(--litefyrontrast-darkest);
-  border: 1px dashed var(--litefyrontrast-neutral);
+  background: var(--contrast-darkest);
+  border: 1px dashed var(--contrast-neutral);
   border-radius: 2px;
   cursor: pointer;
   padding: 0;
@@ -133,7 +133,7 @@
     }
 
     & > div {
-      background-color: var(--litefyrrimary-blue);
+      background-color: var(--primary-blue);
     }
   }
 }
@@ -225,7 +225,7 @@
 
 .range input {
   appearance: none;
-  background: var(--litefyrontrast-neutral);
+  background: var(--contrast-neutral);
   cursor: pointer;
   height: 25px;
   outline: none;
@@ -235,7 +235,7 @@
 
 .range input::-webkit-slider-thumb {
   appearance: none;
-  background: var(--litefyrrimary-blue);
+  background: var(--primary-blue);
   border-radius: 5px;
   box-shadow:
     0 0 0 #000,
@@ -249,7 +249,7 @@
 
 .range input::-webkit-slider-thumb:hover,
 .range input::-webkit-slider-thumb:focus {
-  background: var(--litefyrrimary-blue-hover);
+  background: var(--primary-blue-hover);
 }
 
 .range input::-webkit-slider-thumb:active {
@@ -258,7 +258,7 @@
 
 .range input::-moz-range-thumb {
   appearance: none;
-  background: var(--litefyrrimary-blue);
+  background: var(--primary-blue);
   border-radius: 5px;
   box-shadow:
     0 0 0 #000,
@@ -272,7 +272,7 @@
 
 .range input::-moz-range-thumb:hover,
 .range input::-moz-range-thumb:focus {
-  background: var(--litefyrrimary-blue-hover);
+  background: var(--primary-blue-hover);
 }
 
 .range input::-moz-range-thumb:active {
