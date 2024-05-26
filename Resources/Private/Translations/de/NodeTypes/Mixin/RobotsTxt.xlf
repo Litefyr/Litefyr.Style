@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2"
+    xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="" product-name="Litefyr.Style" source-language="en" target-language="de" datatype="plaintext">
+        <body>
+            <trans-unit id="groups.robotsTxtData" xml:space="preserve">
+                <source>robots.txt</source>
+                <target>robots.txt</target>
+            </trans-unit>
+            <trans-unit id="properties.robotsTxtData" xml:space="preserve">
+                <source>Additional robots.txt entries</source>
+                <target>Zusätzliche robots.txt Einträge</target>
+            </trans-unit>
+           <trans-unit id="properties.robotsTxtData.ui.help.message" xml:space="preserve">
+            <source>One entry per line. Example:
+
+* Disallow: /*docx$
+* Disallow: /*doc$
+* Disallow: /*pdf$</source>
+            <target>Ein Eintrag pro Zeile. Beispiel:
+
+* Disallow: /*docx$
+* Disallow: /*doc$
+* Disallow: /*pdf$</target>
+           </trans-unit>
+        </body>
+    </file>
+</xliff>

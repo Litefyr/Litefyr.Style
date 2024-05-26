@@ -4,7 +4,7 @@
     inspector:
       groups:
         robotsTxtData:
-          label: robots.txt
+          label: i18n
           position: 40
           icon: robot
           tab: seo
@@ -13,14 +13,9 @@
     robotsTxtData:
       type: string
       ui:
-        label: Zusätzliche robots.txt Einträge
+        label: i18n
         help:
-          message: |
-            Ein Eintrag pro Zeile. Beispiel:
-
-            * Disallow: /*docx$
-            * Disallow: /*doc$
-            * Disallow: /*pdf$
+          message: i18n
         inspector:
           group: robotsTxtData
           position: 10

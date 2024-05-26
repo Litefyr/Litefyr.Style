@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2"
+    xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="" product-name="Litefyr.Style" source-language="en" datatype="plaintext">
+        <body>
+            <trans-unit id="groups.robotsTxtData" xml:space="preserve">
+                <source>robots.txt</source>
+            </trans-unit>
+            <trans-unit id="properties.robotsTxtData" xml:space="preserve">
+                <source>Additional robots.txt entries</source>
+            </trans-unit>
+           <trans-unit id="properties.robotsTxtData.ui.help.message" xml:space="preserve">
+            <source>One entry per line. Example:
+
+* Disallow: /*docx$
+* Disallow: /*doc$
+* Disallow: /*pdf$</source>
+           </trans-unit>
+        </body>
+    </file>
+</xliff>
