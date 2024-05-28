@@ -3,7 +3,7 @@ import React from "react";
 import { style } from "../../Components";
 
 export function calculate(state) {
-    const { width, height, offset, amplitude, frequency, points, phase, asyncPhaseEnable, asyncPhase } = state;
+    const { height, offset, amplitude, frequency, points, phase, asyncPhaseEnable, asyncPhase } = state;
     let scaledPoints = points;
     if (scaledPoints > 6) {
         const pointsScale = {

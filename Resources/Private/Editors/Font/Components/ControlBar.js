@@ -1,9 +1,8 @@
 import React from "react";
 import clsx from "clsx";
-import { Icon, style } from "../../Components";
+import { style } from "../../Components";
 import RangeInput from "./RangeInput";
 import { SelectBox, CheckBox } from "@neos-project/react-ui-components";
-import { nanoid } from "nanoid";
 import readFont from "./ReadFont";
 
 export default function ControlBar({

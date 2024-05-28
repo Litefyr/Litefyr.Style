@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 import style from "../../Components/Style.module.css";
-import { IconButton, Icon, Button } from "@neos-project/react-ui-components";
+import { IconButton } from "@neos-project/react-ui-components";
 import { nanoid } from "nanoid";
 
 export default function RangeInput({ value, label, min = 0, max = 100, step = 1, onChange, onReset }) {

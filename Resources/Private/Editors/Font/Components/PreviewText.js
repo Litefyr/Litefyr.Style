@@ -10,13 +10,12 @@ const neosifier = neos((globalRegistry) => ({
 
 export default neosifier(PreviewText);
 
-function PreviewText({ text, style, type, colorConfig, colors }) {
+function PreviewText({ text, style, type, colors }) {
     const blockQuoteElements = parseTags(text, "blockquote").map(({ tagName, text }) => ({
         tagName,
         text: parseTags(text, "strong"),
     }));
 
-    const strongElements = parseTags(text, "strong");
     const isButton = type === "button";
 
     colors = colors.filter((color) => !!color);

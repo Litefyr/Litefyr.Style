@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { CheckBox } from "@neos-project/react-ui-components";
 import clsx from "clsx";
 import { style } from "../Components";
 import { ControlBar, generateAllFontFaces, PreviewText, readFont } from "./Components";
