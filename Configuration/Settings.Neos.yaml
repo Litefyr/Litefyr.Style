@@ -111,6 +111,9 @@ Neos:
             Lemonada:
               group: Display
               fontWeight: '300 700'
+            Lexend:
+              group: Sans Serif
+              fontWeight: '100 900'
             MavenPro:
               group: Sans Serif
               fontWeight: '400 900'

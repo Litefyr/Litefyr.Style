@@ -65,7 +65,7 @@
         label: i18n
         reloadPageIfChanged: true
         help:
-          message: 'Litefyr.Style:NodeTypes.Mixin.Visuals.Logo:properties.themeLogoData.ui.help.help'
+          message: 'Litefyr.Style:NodeTypes.Mixin.Visuals.Logo:properties.themeLogoData.ui.help.message'
         inspector:
           group: themeLogo
           position: 110
