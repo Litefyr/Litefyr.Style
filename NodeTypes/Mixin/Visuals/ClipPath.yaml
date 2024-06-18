@@ -14,6 +14,8 @@
   properties:
     themeClipPath:
       type: array
+      search:
+        indexing: false
       ui:
         label: i18n
         reloadPageIfChanged: true
@@ -29,6 +31,8 @@
 
     themeClipPathBelowNavigation:
       type: boolean
+      search:
+        indexing: false
       ui:
         label: i18n
         reloadPageIfChanged: true
@@ -38,6 +42,8 @@
           hidden: 'ClientEval: node.properties.themeClipPath.top ? false : true'
     themeClipPathInContent:
       type: boolean
+      search:
+        indexing: false
       defaultValue: true
       ui:
         label: i18n
@@ -48,6 +54,8 @@
           hidden: 'ClientEval: node.properties.themeClipPath.top ? false : true'
     themeClipPathAboveFooter:
       type: boolean
+      search:
+        indexing: false
       defaultValue: true
       ui:
         label: i18n

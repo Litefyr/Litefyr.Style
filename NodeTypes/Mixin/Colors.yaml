@@ -26,6 +26,8 @@
     themeColorScheme:
       type: string
       defaultValue: light
+      search:
+        indexing: false
       ui:
         label: 'Litefyr.Style:NodeTypes.Mixin.Colors:groups.themeColorScheme'
         reloadPageIfChanged: true
@@ -49,6 +51,8 @@
         Neos.Neos/Validation/NotEmptyValidator: {}
     themeColorSchemeSwitchter:
       type: string
+      search:
+        indexing: false
       ui:
         label: i18n
         reloadPageIfChanged: true
@@ -70,6 +74,8 @@
     themeColorLightBackground:
       options:
         preset: 'Carbon.TailwindColors.colors'
+      search:
+        indexing: false
       ui:
         label: 'Litefyr.Style:NodeTypes.Mixin.Colors:background'
         reloadPageIfChanged: true
@@ -84,6 +90,8 @@
     themeColorLightText:
       options:
         preset: 'Carbon.TailwindColors.colors'
+      search:
+        indexing: false
       ui:
         label: 'Litefyr.Style:NodeTypes.Mixin.Colors:text'
         reloadPageIfChanged: true
@@ -99,6 +107,8 @@
       options:
         preset: 'theme.color.optional'
       type: array
+      search:
+        indexing: false
       ui:
         label: 'Litefyr.Style:NodeTypes.Mixin.Colors:main'
         reloadPageIfChanged: true
@@ -114,6 +124,8 @@
       options:
         preset: 'theme.color.optional'
       type: array
+      search:
+        indexing: false
       ui:
         label: 'Litefyr.Style:NodeTypes.Mixin.Colors:minor'
         reloadPageIfChanged: true
@@ -129,6 +141,8 @@
       options:
         preset: 'theme.color.optional'
       type: array
+      search:
+        indexing: false
       ui:
         label: 'Litefyr.Style:NodeTypes.Mixin.Colors:minor2'
         reloadPageIfChanged: true
@@ -144,6 +158,8 @@
       options:
         preset: 'theme.color.optional'
       type: array
+      search:
+        indexing: false
       ui:
         label: 'Litefyr.Style:NodeTypes.Mixin.Colors:header'
         reloadPageIfChanged: true
@@ -158,6 +174,8 @@
       options:
         preset: 'theme.color.optional'
       type: array
+      search:
+        indexing: false
       ui:
         label: 'Litefyr.Style:NodeTypes.Mixin.Colors:footer'
         reloadPageIfChanged: true
@@ -171,6 +189,8 @@
     themeColorDarkBackground:
       options:
         preset: 'Carbon.TailwindColors.colors'
+      search:
+        indexing: false
       ui:
         label: 'Litefyr.Style:NodeTypes.Mixin.Colors:background'
         reloadPageIfChanged: true
@@ -185,6 +205,8 @@
     themeColorDarkText:
       options:
         preset: 'Carbon.TailwindColors.colors'
+      search:
+        indexing: false
       ui:
         label: 'Litefyr.Style:NodeTypes.Mixin.Colors:text'
         reloadPageIfChanged: true
@@ -200,6 +222,8 @@
       options:
         preset: 'theme.color.optional'
       type: array
+      search:
+        indexing: false
       ui:
         label: 'Litefyr.Style:NodeTypes.Mixin.Colors:main'
         reloadPageIfChanged: true
@@ -215,6 +239,8 @@
       options:
         preset: 'theme.color.optional'
       type: array
+      search:
+        indexing: false
       ui:
         label: 'Litefyr.Style:NodeTypes.Mixin.Colors:minor'
         reloadPageIfChanged: true
@@ -230,6 +256,8 @@
       options:
         preset: 'theme.color.optional'
       type: array
+      search:
+        indexing: false
       ui:
         label: 'Litefyr.Style:NodeTypes.Mixin.Colors:minor2'
         reloadPageIfChanged: true
@@ -245,6 +273,8 @@
       options:
         preset: 'theme.color.optional'
       type: array
+      search:
+        indexing: false
       ui:
         label: 'Litefyr.Style:NodeTypes.Mixin.Colors:header'
         reloadPageIfChanged: true
@@ -259,6 +289,8 @@
       options:
         preset: 'theme.color.optional'
       type: array
+      search:
+        indexing: false
       ui:
         label: 'Litefyr.Style:NodeTypes.Mixin.Colors:footer'
         reloadPageIfChanged: true

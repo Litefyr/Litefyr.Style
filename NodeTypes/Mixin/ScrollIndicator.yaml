@@ -12,6 +12,8 @@
   properties:
     themeScrollIndicatorIcon:
       type: string
+      search:
+        indexing: false
       ui:
         label: i18n
         reloadPageIfChanged: true
@@ -29,6 +31,8 @@
       type: array
       defaultValue:
         html: ''
+      search:
+        indexing: false
       ui:
         label: i18n
         reloadPageIfChanged: true
@@ -47,6 +51,8 @@
     themeScrollIndicatorTheme:
       type: string
       defaultValue: default
+      search:
+        indexing: false
       ui:
         label: 'Litefyr.Integration:NodeTypes.Colors:color.default'
         reloadPageIfChanged: true
@@ -75,6 +81,8 @@
     themeScrollIndicatorSize:
       type: integer
       defaultValue: 34
+      search:
+        indexing: false
       ui:
         label: i18n
         reloadPageIfChanged: true
@@ -90,6 +98,8 @@
     themeScrollIndicatorBackground:
       type: boolean
       defaultValue: true
+      search:
+        indexing: false
       ui:
         label: i18n
         reloadPageIfChanged: true
@@ -99,6 +109,8 @@
     themeScrollIndicatorRounded:
       type: integer
       defaultValue: 26
+      search:
+        indexing: false
       ui:
         label: i18n
         reloadPageIfChanged: true

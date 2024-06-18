@@ -14,6 +14,8 @@
   properties:
     themeLogoData:
       type: array
+      search:
+        indexing: false
       defaultValue:
         html: ''
       ui:
@@ -36,6 +38,8 @@
                 completion: "ClientCompletion: ['{image}']"
     themeLogoAsset:
       type: Neos\Media\Domain\Model\ImageInterface
+      search:
+        indexing: false
       ui:
         label: i18n
         reloadPageIfChanged: true
@@ -45,6 +49,8 @@
     themeLogoSizeInContent:
       type: integer
       defaultValue: 600
+      search:
+        indexing: false
       ui:
         label: i18n
         reloadPageIfChanged: true
@@ -59,6 +65,8 @@
             unit: px
     themeLogoDataContent:
       type: array
+      search:
+        indexing: false
       defaultValue:
         html: ''
       ui:
@@ -81,6 +89,8 @@
                 completion: "ClientCompletion: ['{image}']"
     themeLogoAssetContent:
       type: Neos\Media\Domain\Model\ImageInterface
+      search:
+        indexing: false
       ui:
         label: i18n
         reloadPageIfChanged: true

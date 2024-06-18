@@ -12,6 +12,8 @@
   properties:
     robotsTxtData:
       type: string
+      search:
+        indexing: false
       ui:
         label: i18n
         help:

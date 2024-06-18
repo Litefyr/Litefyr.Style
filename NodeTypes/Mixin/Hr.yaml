@@ -15,6 +15,8 @@
     themeHrSoft:
       type: integer
       defaultValue: 0
+      search:
+        indexing: false
       ui:
         label: i18n
         reloadPageIfChanged: true
@@ -29,6 +31,8 @@
             step: 1
     themeHrImage:
       type: Neos\Media\Domain\Model\ImageInterface
+      search:
+        indexing: false
       ui:
         label: i18n
         reloadPageIfChanged: true
@@ -38,6 +42,8 @@
     themeHrImageSize:
       type: integer
       defaultValue: 50
+      search:
+        indexing: false
       ui:
         label: i18n
         reloadPageIfChanged: true
@@ -53,6 +59,8 @@
     themeHrImagePosition:
       type: string
       defaultValue: center
+      search:
+        indexing: false
       ui:
         label: i18n
         reloadPageIfChanged: true

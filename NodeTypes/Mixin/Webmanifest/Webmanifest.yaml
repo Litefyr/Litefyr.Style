@@ -14,6 +14,8 @@
   properties:
     themeWebmanifestName:
       type: string
+      search:
+        indexing: false
       ui:
         label: i18n
         inspector:
@@ -21,6 +23,8 @@
           position: 10
     themeWebmanifestShortName:
       type: string
+      search:
+        indexing: false
       ui:
         label: i18n
         inspector:
@@ -30,9 +34,13 @@
             placeholder: 'ClientEval: node.properties.themeWebmanifestName'
     themeWebmanifestThemeColor:
       type: string
+      search:
+        indexing: false
     themeWebmanifestThemeBackgroundColor:
       options:
         preset: 'theme.color.optional'
+      search:
+        indexing: false
       ui:
         label: i18n
         inspector:

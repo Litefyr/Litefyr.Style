@@ -15,6 +15,8 @@
     themeHeaderGap:
       type: integer
       defaultValue: 16
+      search:
+        indexing: false
       ui:
         label: i18n
         reloadIfChanged: true
@@ -30,6 +32,8 @@
     themeLogoSize:
       type: integer
       defaultValue: 40
+      search:
+        indexing: false
       ui:
         label: i18n
         reloadPageIfChanged: true
@@ -45,6 +49,8 @@
     themeLogoMarginTop:
       type: integer
       defaultValue: 16
+      search:
+        indexing: false
       ui:
         label: i18n
         reloadPageIfChanged: true
@@ -60,6 +66,8 @@
     themeLogoMarginBottom:
       type: integer
       defaultValue: 16
+      search:
+        indexing: false
       ui:
         label: i18n
         reloadPageIfChanged: true
@@ -74,6 +82,8 @@
             unit: px
     themeLogoPositionRight:
       type: boolean
+      search:
+        indexing: false
       ui:
         label: i18n
         reloadPageIfChanged: true

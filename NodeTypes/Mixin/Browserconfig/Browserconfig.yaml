@@ -13,6 +13,8 @@
           collapsed: true
   properties:
     themeBrowserconfigTileColor:
+      search:
+        indexing: false
       options:
         preset: 'theme.color.optional'
       ui:

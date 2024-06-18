@@ -15,6 +15,8 @@
     themeRoundedBox:
       type: integer
       defaultValue: 0
+      search:
+        indexing: false
       ui:
         label: i18n
         reloadPageIfChanged: true
@@ -31,6 +33,8 @@
     themeRoundedImage:
       type: integer
       defaultValue: 0
+      search:
+        indexing: false
       ui:
         label: i18n
         reloadPageIfChanged: true
@@ -48,6 +52,8 @@
     themeRoundedButton:
       type: integer
       defaultValue: 0
+      search:
+        indexing: false
       ui:
         label: i18n
         reloadPageIfChanged: true

@@ -12,15 +12,25 @@
   properties:
     themeBackendCSS:
       type: string
+      search:
+        indexing: false
     themeCSS:
       type: string
+      search:
+        indexing: false
     themeCSSHash:
       type: string
+      search:
+        indexing: false
     themeHeaderMarkup:
       type: string
+      search:
+        indexing: false
     themeClipPathEnabled:
       type: boolean
       defaultValue: false
+      search:
+        indexing: false
     footerNavigationMultiColumn:
       ui:
         inspector:
