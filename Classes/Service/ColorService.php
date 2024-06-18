@@ -293,7 +293,13 @@ class ColorService
      */
     protected function getThemeSelector(string $theme): string
     {
-        $value = sprintf('[data-theme="%s"]', $theme);
+        $value = sprintf(
+            '[data-theme="%s"],.focus-within\:theme-%s:focus-within,.focus\:theme-%s:focus,.hover\:theme-%s:hover',
+            $theme,
+            $theme,
+            $theme,
+            $theme
+        );
         $additional = $this->additionalThemeSelector[$theme] ?? null;
 
         if ($additional) {
