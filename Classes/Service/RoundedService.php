@@ -25,6 +25,7 @@ class RoundedService
             'box' => $this->getValue($node, 'themeRoundedBox'),
             'image' => $this->getValue($node, 'themeRoundedImage'),
             'button' => $this->getValue($node, 'themeRoundedButton'),
+            'input' => $this->getValue($node, 'themeRoundedInput', false),
             'scroller' => $this->getValue($node, 'themeScrollIndicatorRounded'),
         ];
         $CSS = '';
@@ -46,12 +47,12 @@ class RoundedService
      * @param string $property
      * @return string
      */
-    protected function getValue(NodeInterface $node, string $property): string
+    protected function getValue(NodeInterface $node, string $property, bool $canBeFull = true): string
     {
         $value = $node->getProperty($property) ?? $this->default;
 
         // The value 26 means full rounded
-        if ($value >= 26) {
+        if ($canBeFull && $value >= 26) {
             return self::FULL_ROUND;
         }
         return sprintf('%srem', $value / 16);

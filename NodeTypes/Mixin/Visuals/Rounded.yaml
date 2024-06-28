@@ -68,3 +68,21 @@
             max: 26
             step: 2
             unit: px
+    themeRoundedInput:
+      type: integer
+      defaultValue: 0
+      search:
+        indexing: false
+      ui:
+        label: i18n
+        reloadPageIfChanged: true
+        inspector:
+          group: themeRounded
+          position: 40
+          editor: 'Carbon.RangeEditor/Editor'
+          editorOptions:
+            minLabel: 'Litefyr.Style:NodeTypes.Mixin.Visuals.Rounded:square'
+            min: 0
+            max: 30
+            step: 2
+            unit: px

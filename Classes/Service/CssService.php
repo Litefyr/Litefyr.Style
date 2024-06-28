@@ -122,6 +122,7 @@ class CssService
             'themeRoundedBox',
             'themeRoundedImage',
             'themeRoundedButton',
+            'themeRoundedInput',
 
             // Colors
             'themeColorScheme',

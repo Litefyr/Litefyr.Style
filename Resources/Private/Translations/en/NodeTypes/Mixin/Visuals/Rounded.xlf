@@ -21,6 +21,9 @@
             <trans-unit id="properties.themeRoundedButton" xml:space="preserve">
                  <source>Corners for buttons</source>
             </trans-unit>
+            <trans-unit id="properties.themeRoundedInput" xml:space="preserve">
+                 <source>Corners for form elements</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

@@ -27,6 +27,10 @@
                  <source>Corners for buttons</source>
                 <target>Ecken bei Buttons</target>
             </trans-unit>
+            <trans-unit id="properties.themeRoundedInput" xml:space="preserve">
+                 <source>Corners for form elements</source>
+                <target>Ecken bei Formularelementen</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
