@@ -63,6 +63,12 @@ Neos:
             Caveat:
               group: Handwriting
               fontWeight: '400 700'
+            Chivo:
+              group: Sans Serif
+              fontWeight: '100 900'
+            Chivo-Italic:
+              group: Sans Serif
+              fontWeight: '100 900'
             Cinzel:
               group: Serif
               fontWeight: '400 900'
