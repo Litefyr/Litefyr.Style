@@ -246,17 +246,49 @@ class ColorService
     }
 
     /**
+     * @param array{l?:int|float,c?:int|float,h?:int|float,coords?:array{l:int|float,c:int|float,h:int|float}} $config
+     * @return array
+     */
+    protected function getMinMaxLuminanceFromColorOrCoords(array $config, bool $invert = false): array
+    {
+        $coords = $config['coords'] ?? $config;
+        $luminance = $coords['l'];
+
+        if (
+            (!$invert && $luminance > $this->colorContrastThreshold) ||
+            ($invert && $luminance <= $this->colorContrastThreshold)
+        ) {
+            return [
+                'min' => $this->colorContrastThreshold,
+                'max' => 1,
+            ];
+        }
+
+        return [
+            'min' => 0,
+            'max' => $this->colorContrastThreshold,
+        ];
+    }
+
+    /**
      * @param string $colorName
      * @param array{l?:int|float,c?:int|float,h?:int|float,coords?:array{l:int|float,c:int|float,h:int|float}} $config
+     * @param array{min:float,max:float}|null $config
      * @return string
      */
-    protected function generateCustomPropertyFromColorOrCoords(string $colorName, array $config): string
-    {
+    protected function generateCustomPropertyFromColorOrCoords(
+        string $colorName,
+        array $config,
+        ?array $minMaxLuminance = null
+    ): string {
         $css = '';
         $coords = $config['coords'] ?? $config;
         foreach ($coords as $key => $value) {
             if (is_array($value)) {
                 continue;
+            }
+            if ($minMaxLuminance && $key === 'l') {
+                $value = min(max($value, $minMaxLuminance['min']), $minMaxLuminance['max']);
             }
             $css .= sprintf('--color-%s-%s:%s;', $colorName, $key, $value);
         }
@@ -334,14 +366,20 @@ class ColorService
         }
 
         // default
+        $defaultMinMaxLuminance = $this->getMinMaxLuminanceFromColorOrCoords($colors['back'], true);
         $default = $this->generateCustomPropertyFromColorOrCoords('back', $colors['back']);
         $default .= $this->generateCustomPropertyFromColorOrCoords('front', $colors['front']);
-        $default .= $this->generateCustomPropertyFromColorOrCoords('accent', $colors['main']);
+        $default .= $this->generateCustomPropertyFromColorOrCoords('accent', $colors['main'], $defaultMinMaxLuminance);
 
         // inverted
+        $invertedMinMaxLuminance = $this->getMinMaxLuminanceFromColorOrCoords($colors['front'], true);
         $inverted = $this->generateCustomPropertyFromColorOrCoords('back', $colors['front']);
         $inverted .= $this->generateCustomPropertyFromColorOrCoords('front', $colors['back']);
-        $inverted .= $this->generateCustomPropertyFromColorOrCoords('accent', $colors['main']);
+        $inverted .= $this->generateCustomPropertyFromColorOrCoords(
+            'accent',
+            $colors['main'],
+            $invertedMinMaxLuminance
+        );
 
         // main
         $main = $this->generateCustomPropertyFromColorOrCoords('back', $colors['main']);

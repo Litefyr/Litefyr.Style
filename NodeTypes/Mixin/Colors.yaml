@@ -85,7 +85,6 @@
           hidden: 'ClientEval: node.properties.themeColorScheme === "dark"'
           editorOptions:
             collapsed: true
-            allowEmpty: true
     themeColorLightMain:
       options:
         preset: 'theme.color.optional'
