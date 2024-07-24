@@ -5,7 +5,7 @@
     "license": "GPL-3.0-or-later",
     "require": {
         "carbon/colorpicker-oklch" : "^0.1.4",
-        "carbon/tailwindcolors": "^0.1",
+        "carbon/tailwindcolors": "^0.1.6",
         "carbon/codepen": "^0.2.11",
         "carbon/rangeeditor": "^0.1",
         "garagist/contentboxfusionservice": "^2.2"

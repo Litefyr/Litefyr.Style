@@ -71,13 +71,13 @@
                 label: i18n
               both:
                 label: i18n
-    themeColorLightBackground:
+    themeColorLight:
       options:
-        preset: 'Carbon.TailwindColors.colors'
+        preset: 'Carbon.TailwindColors.backgroundAndForeground'
       search:
         indexing: false
       ui:
-        label: 'Litefyr.Style:NodeTypes.Mixin.Colors:background'
+        label: 'Litefyr.Style:NodeTypes.Mixin.Colors:backgroundAndText'
         reloadPageIfChanged: true
         inspector:
           group: themeColorsLight
@@ -85,24 +85,7 @@
           hidden: 'ClientEval: node.properties.themeColorScheme === "dark"'
           editorOptions:
             collapsed: true
-            scheme: grayscale
-            disableStrength: [400, 500, 600, 700, 800, 900, 950, 1000]
-    themeColorLightText:
-      options:
-        preset: 'Carbon.TailwindColors.colors'
-      search:
-        indexing: false
-      ui:
-        label: 'Litefyr.Style:NodeTypes.Mixin.Colors:text'
-        reloadPageIfChanged: true
-        inspector:
-          group: themeColorsLight
-          position: 20
-          hidden: 'ClientEval: node.properties.themeColorScheme === "dark"'
-          editorOptions:
-            collapsed: true
-            scheme: grayscale
-            disableStrength: [0, 50, 100, 200, 300, 400, 500, 600]
+            allowEmpty: true
     themeColorLightMain:
       options:
         preset: 'theme.color.optional'
@@ -186,38 +169,20 @@
           editorOptions:
             showLuminance: true
             collapsed: true
-    themeColorDarkBackground:
+    themeColorDark:
       options:
-        preset: 'Carbon.TailwindColors.colors'
+        preset: 'Carbon.TailwindColors.backgroundAndForeground'
       search:
         indexing: false
       ui:
-        label: 'Litefyr.Style:NodeTypes.Mixin.Colors:background'
+        label: 'Litefyr.Style:NodeTypes.Mixin.Colors:backgroundAndText'
         reloadPageIfChanged: true
         inspector:
           group: themeColorsDark
           position: 10
           hidden: 'ClientEval: node.properties.themeColorScheme === "light"'
           editorOptions:
-            scheme: grayscale
             collapsed: true
-            disableStrength: [0, 50, 100, 200, 300, 400, 500, 600, 1000]
-    themeColorDarkText:
-      options:
-        preset: 'Carbon.TailwindColors.colors'
-      search:
-        indexing: false
-      ui:
-        label: 'Litefyr.Style:NodeTypes.Mixin.Colors:text'
-        reloadPageIfChanged: true
-        inspector:
-          group: themeColorsDark
-          position: 20
-          hidden: 'ClientEval: node.properties.themeColorScheme === "light"'
-          editorOptions:
-            scheme: grayscale
-            collapsed: true
-            disableStrength: [0, 400, 500, 600, 700, 800, 900, 950]
     themeColorDarkMain:
       options:
         preset: 'theme.color.optional'

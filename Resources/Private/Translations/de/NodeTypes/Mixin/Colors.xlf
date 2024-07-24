@@ -39,13 +39,9 @@
                 <source><![CDATA[Top & bottom]]></source>
                 <target><![CDATA[Oben & unten]]></target>
             </trans-unit>
-            <trans-unit id="background" xml:space="preserve">
-                <source>Background color of the website</source>
-                <target>Hintergrundfarbe der Website</target>
-            </trans-unit>
-            <trans-unit id="text" xml:space="preserve">
-                <source>Text color of the website</source>
-                <target>Textfarbe der Website</target>
+            <trans-unit id="backgroundAndText" xml:space="preserve">
+                <source>Background and text color of the website</source>
+                <target>Hintergrund- und Textfarbe der Website</target>
             </trans-unit>
             <trans-unit id="header" xml:space="preserve">
                 <source>Header color</source>

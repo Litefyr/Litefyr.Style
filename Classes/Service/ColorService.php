@@ -125,14 +125,13 @@ class ColorService
      * @param boolean $isLight
      * @return ColorArray|null
      */
-    protected function getBackgroundVariant(array $background, bool $isLight): ?array
+    protected function getBackgroundVariant(string $group, int $strength, bool $isLight): ?array
     {
-        $strength = $background['strength'];
         if ($strength == 50 || $strength == 950) {
             $strength += 50;
         }
         $strength = $isLight ? min($strength + 100, 400) : max($strength - 100, 600);
-        return $this->convert->toOkLch($this->getColorBasedOnSettings($background['group'], $strength) ?? '');
+        return $this->convert->toOkLch($this->getColorBasedOnSettings($group, $strength) ?? '');
     }
 
     /**
@@ -145,15 +144,25 @@ class ColorService
     protected function getColorsFromScheme(NodeInterface $node, string $scheme): array
     {
         $isLight = $scheme === 'Light';
-        $background = $this->getColorFromGroup($node, sprintf('themeColor%sBackground', $scheme), $isLight);
-        $text = $this->getColorFromGroup($node, sprintf('themeColor%sText', $scheme), $isLight);
+        $backgroundAndText = $node->getProperty(sprintf('themeColor%s', $scheme));
+        $backHex = $backgroundAndText ? $backgroundAndText['hex'][0] : ($isLight ? '#ffffff' : '#111111');
+        $frontHex = $backgroundAndText ? $backgroundAndText['hex'][1] : ($isLight ? '#111111' : '#efefef');
 
         $main = $this->getColor($node, sprintf('themeColor%sMain', $scheme)) ?? $this->fallbackMain;
-        $gray = $this->getBackgroundVariant($background, $isLight);
+
+        if ($backgroundAndText) {
+            $gray = $this->getBackgroundVariant(
+                $backgroundAndText['group'],
+                $backgroundAndText['strength'][0],
+                $isLight
+            );
+        } else {
+            $gray = $this->convert->toOkLch($isLight ? '#DDDDDD' : '#222222');
+        }
 
         return [
-            'back' => $background['color'],
-            'front' => $text['color'],
+            'back' => $this->convert->toOkLch($backHex),
+            'front' => $this->convert->toOkLch($frontHex),
             'main' => $main,
             'minor' => $this->getColor($node, sprintf('themeColor%sMinor', $scheme)) ?? $main,
             'minor2' => $this->getColor($node, sprintf('themeColor%sMinor2', $scheme)) ?? $main,

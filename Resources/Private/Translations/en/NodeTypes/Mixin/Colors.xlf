@@ -30,11 +30,8 @@
             <trans-unit id="properties.themeColorSchemeSwitchter.selectBoxEditor.values.both" xml:space="preserve">
                 <source><![CDATA[Top & bottom]]></source>
             </trans-unit>
-            <trans-unit id="background" xml:space="preserve">
-                <source>Background color of the website</source>
-            </trans-unit>
-            <trans-unit id="text" xml:space="preserve">
-                <source>Text color of the website</source>
+            <trans-unit id="backgroundAndText" xml:space="preserve">
+                <source>Background and text color of the website</source>
             </trans-unit>
             <trans-unit id="header" xml:space="preserve">
                 <source>Header color</source>

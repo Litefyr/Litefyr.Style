@@ -126,15 +126,13 @@ class CssService
 
             // Colors
             'themeColorScheme',
-            'themeColorLightBackground',
-            'themeColorLightText',
+            'themeColorLight',
             'themeColorLightMain',
             'themeColorLightMinor',
             'themeColorLightMinor2',
             'themeColorLightHeader',
             'themeColorLightFooter',
-            'themeColorDarkBackground',
-            'themeColorDarkText',
+            'themeColorDark',
             'themeColorDarkMain',
             'themeColorDarkMinor',
             'themeColorDarkMinor2',
