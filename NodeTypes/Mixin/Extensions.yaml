@@ -1,0 +1,4 @@
+'Litefyr.Style:Mixin.Extensions':
+  abstract: true
+  superTypes:
+    'Litefyr.Style:Mixin.Tab': true

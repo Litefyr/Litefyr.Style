@@ -9,6 +9,7 @@
     'Litefyr.Style:Mixin.Favicon': true
     'Litefyr.Style:Mixin.RobotsTxt': true
     'Litefyr.Style:Mixin.ScollIndicator': true
+    'Litefyr.Style:Mixin.Extensions': true
   properties:
     themeBackendCSS:
       type: string
