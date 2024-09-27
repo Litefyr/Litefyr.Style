@@ -12,13 +12,13 @@
       options:
         onlyMatchSiteNodes: true
 
-- name: 'Browserconfig'
-  uriPattern: '{node}browserconfig.xml'
+- name: 'Favicon: icon.svg'
+  uriPattern: '{node}icon.svg'
   defaults:
     '@package': 'Neos.Neos'
     '@controller': 'Frontend\Node'
     '@action': 'show'
-    '@format': 'browserconfig'
+    '@format': 'favicon-svg'
   httpMethods: ['GET']
   routeParts:
     node:
@@ -26,13 +26,13 @@
       options:
         onlyMatchSiteNodes: true
 
-- name: 'site.webmanifest'
-  uriPattern: '{node}site.webmanifest'
+- name: 'Favicon: apple-touch-icon.png'
+  uriPattern: '{node}apple-touch-icon.png'
   defaults:
     '@package': 'Neos.Neos'
     '@controller': 'Frontend\Node'
     '@action': 'show'
-    '@format': 'webmanifest'
+    '@format': 'favicon-png'
   httpMethods: ['GET']
   routeParts:
     node:
@@ -40,59 +40,13 @@
       options:
         onlyMatchSiteNodes: true
 
-- name: 'Favicon: android-chrome'
-  uriPattern: '{node}android-chrome-{size}.{fileextension}'
+- name: 'Favicon: favicon-96x96.png'
+  uriPattern: '{node}favicon-96x96.png'
   defaults:
     '@package': 'Neos.Neos'
     '@controller': 'Frontend\Node'
     '@action': 'show'
-    'favicon': 'android-chrome-'
-    'fileextension': 'png'
-  httpMethods: ['GET']
-  routeParts:
-    node:
-      handler: 'Neos\Neos\Routing\FrontendNodeRoutePartHandlerInterface'
-      options:
-        onlyMatchSiteNodes: true
-
-- name: 'Favicon: apple-touch-icon'
-  uriPattern: '{node}apple-touch-icon.{fileextension}'
-  defaults:
-    '@package': 'Neos.Neos'
-    '@controller': 'Frontend\Node'
-    '@action': 'show'
-    'favicon': 'apple-touch-icon'
-    'fileextension': 'png'
-  httpMethods: ['GET']
-  routeParts:
-    node:
-      handler: 'Neos\Neos\Routing\FrontendNodeRoutePartHandlerInterface'
-      options:
-        onlyMatchSiteNodes: true
-
-- name: 'Favicon: apple-touch-icon-precomposed'
-  uriPattern: '{node}apple-touch-icon-precomposed.{fileextension}'
-  defaults:
-    '@package': 'Neos.Neos'
-    '@controller': 'Frontend\Node'
-    '@action': 'show'
-    'favicon': 'apple-touch-icon-precomposed'
-    'fileextension': 'png'
-  httpMethods: ['GET']
-  routeParts:
-    node:
-      handler: 'Neos\Neos\Routing\FrontendNodeRoutePartHandlerInterface'
-      options:
-        onlyMatchSiteNodes: true
-
-- name: 'Favicon: favicon with size'
-  uriPattern: '{node}favicon-{size}.{fileextension}'
-  defaults:
-    '@package': 'Neos.Neos'
-    '@controller': 'Frontend\Node'
-    '@action': 'show'
-    'favicon': 'favicon-'
-    'fileextension': 'png'
+    '@format': 'favicon-96-png'
   httpMethods: ['GET']
   routeParts:
     node:
@@ -101,43 +55,12 @@
         onlyMatchSiteNodes: true
 
 - name: 'Favicon: favicon.ico'
-  uriPattern: '{node}favicon.{fileextension}'
+  uriPattern: '{node}favicon.ico'
   defaults:
     '@package': 'Neos.Neos'
     '@controller': 'Frontend\Node'
     '@action': 'show'
-    'favicon': 'favicon'
-    'fileextension': 'ico'
-  httpMethods: ['GET']
-  routeParts:
-    node:
-      handler: 'Neos\Neos\Routing\FrontendNodeRoutePartHandlerInterface'
-      options:
-        onlyMatchSiteNodes: true
-
-- name: 'Favicon: mstile'
-  uriPattern: '{node}mstile-{size}.{fileextension}'
-  defaults:
-    '@package': 'Neos.Neos'
-    '@controller': 'Frontend\Node'
-    '@action': 'show'
-    'favicon': 'mstile-'
-    'fileextension': 'png'
-  httpMethods: ['GET']
-  routeParts:
-    node:
-      handler: 'Neos\Neos\Routing\FrontendNodeRoutePartHandlerInterface'
-      options:
-        onlyMatchSiteNodes: true
-
-- name: 'Favicon: favicon.ico'
-  uriPattern: '{node}safari-pinned-tab.{fileextension}'
-  defaults:
-    '@package': 'Neos.Neos'
-    '@controller': 'Frontend\Node'
-    '@action': 'show'
-    'favicon': 'safari-pinned-tab'
-    'fileextension': 'svg'
+    '@format': 'favicon-ico'
   httpMethods: ['GET']
   routeParts:
     node:

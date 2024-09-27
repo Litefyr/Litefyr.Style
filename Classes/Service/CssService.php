@@ -10,7 +10,9 @@ use Litefyr\Style\Service\ClipPathService;
 use Litefyr\Style\Service\DividerService;
 use Litefyr\Style\Service\ColorService;
 use Litefyr\Style\Service\LogoService;
+use Litefyr\Style\Service\OpacityService;
 use Litefyr\Style\Service\RoundedService;
+use Litefyr\Style\Service\ShadowService;
 
 #[Flow\Scope('singleton')]
 class CssService
@@ -36,6 +38,12 @@ class CssService
     #[Flow\Inject]
     protected LogoService $logoService;
 
+    #[Flow\Inject]
+    protected ShadowService $shadowService;
+
+    #[Flow\Inject]
+    protected OpacityService $opacityService;
+
     /**
      * Generate dynamic CSS
      *
@@ -55,6 +63,8 @@ class CssService
         $rounded = $this->roundedService->getRoudedValues($node);
         $divider = $this->dividerService->getDivider($node);
         $logo = $this->logoService->getLogoSizes($node);
+        $shadow = $this->shadowService->getShadows($node);
+        $opacities = $this->opacityService->getOpacities($node);
 
         // Generate the global CSS
         $markup = '';
@@ -66,7 +76,7 @@ class CssService
             'onEnd' => '',
             'backend' => '',
         ];
-        foreach ([$fonts, $colors, $clipPath, $rounded, $divider, $logo] as $value) {
+        foreach ([$fonts, $colors, $clipPath, $rounded, $divider, $logo, $shadow, $opacities] as $value) {
             if (isset($value['markup'])) {
                 $markup .= $value['markup'];
             }
@@ -100,7 +110,7 @@ class CssService
         $node->setProperty('themeCSS', $CSS);
         $node->setProperty('themeCSSHash', substr(hash('sha256', $CSS), 0, 8));
         $node->setProperty('themeBackendCSS', $backendCSS);
-        $node->setProperty('themeWebmanifestThemeColor', $colors['themeWebmanifestTheme']);
+        $node->setProperty('colorThemeMeta', $colors['colorThemeMeta']);
         $node->setProperty('themeHeaderMarkup', $markup);
 
         return $CSS;
@@ -118,6 +128,26 @@ class CssService
     public function update(NodeInterface $node, string $propertyName, $oldValue, $newValue): void
     {
         $styleProperties = [
+            //Shadows
+            'themeShadowDropdown',
+            'themeShadowDialog',
+            'themeShadowTeaser',
+            'themeShadowTeaserHover',
+            'themeShadowTeaserTextbox',
+            'themeShadowTeaserTextboxHover',
+            'themeShadowTeaserPlain',
+            'themeShadowTeaserPlainHover',
+            'themeShadowImageTextbox',
+            'themeShadowAssetsListThumbnail',
+            'themeShadowAssetsListThumbnailHover',
+            'themeShadowBentobox',
+            'themeShadowBentoboxHover',
+            'themeShadowBlockquoteWithImage',
+            'themeShadowFactsAndFigures',
+
+            // Opacities
+            'themeOpacityImageWithTextOverlay',
+
             // Rounded
             'themeRoundedBox',
             'themeRoundedImage',
@@ -138,6 +168,9 @@ class CssService
             'themeColorDarkMinor2',
             'themeColorDarkHeader',
             'themeColorDarkFooter',
+            'themeColorContrastThreshold',
+            'themeColorContrastLightnessMin',
+            'themeColorContrastLightnessMax',
 
             // Divider
             'themeHrSoft',
@@ -200,12 +233,7 @@ class CssService
             return;
         }
 
-        $headTagsProperties = [
-            'themeFavicon',
-            'themeWebmanifestThemeColor',
-            'themeBrowserconfigTileColor',
-            'themeWebmanifestName',
-        ];
+        $headTagsProperties = ['themeFaviconSvg', 'themeFaviconPng'];
         if ($needCSS || in_array($propertyName, $headTagsProperties)) {
             $this->contentCache->flushByTag('Style_HeadTags');
         }

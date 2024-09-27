@@ -5,21 +5,50 @@
   ui:
     inspector:
       groups:
-        themeFiles:
+        themeFavicon:
           label: i18n
           position: 110
           icon: file-image
           tab: theme
           collapsed: true
   properties:
-    themeFavicon:
+    themeFaviconSvg:
+      type: array
       search:
         indexing: false
-      type: array<Neos\Media\Domain\Model\Asset>
+      defaultValue:
+        svg: ''
       ui:
         label: i18n
         help:
           message: i18n
         inspector:
-          group: themeFiles
+          group: themeFavicon
           position: 10
+          editor: 'Carbon.CodePen/CodeEditor'
+          editorOptions:
+            previewFrame: 'Litefyr.Style:Favicon.SVG.PreviewFrame'
+            nodeRenderer: 'Litefyr.Style:Favicon.SVG.CodePen'
+            tabs:
+              svg:
+                label: SVG
+                icon: code
+                language: html
+    themeFaviconPng:
+      type: 'Neos\Media\Domain\Model\ImageInterface'
+      ui:
+        label: i18n
+        inspector:
+          group: themeFavicon
+          position: 20
+          editorOptions:
+            features:
+              crop: true
+            constraints:
+              mediaTypes: ['image/png', 'image/jpg', 'image/jpeg', 'image/webp']
+            crop:
+              aspectRatio:
+                forceCrop: true
+                locked:
+                  width: 1
+                  height: 1

@@ -1,0 +1,50 @@
+prototype(Litefyr.Style:Favicon.PNG) < prototype(Neos.Fusion:Component) {
+    asset = ${q(site).property('themeFaviconPng')}
+    size = 180
+
+    @if.set = ${this.asset}
+    renderer = Neos.Neos:ImageUri {
+        @process.readFile = ${value ? File.readFile(value) : null}
+        asset = ${props.asset}
+        width = ${props.size}
+        height = ${props.size}
+        allowCropping = true
+        allowUpScaling = true
+    }
+}
+
+favicon-png = Litefyr.Style:Favicon.Case {
+    contentType = 'image/png'
+    content = Litefyr.Style:Favicon.PNG
+
+    @cache {
+        mode = 'cached'
+        entryIdentifier {
+            documentNode = ${site}
+            editPreviewMode = ${node.context.currentRenderingMode.name}
+            faviconPNG = 'faviconPNG'
+        }
+        entryTags {
+            1 = ${Neos.Caching.nodeTag(site)}
+        }
+    }
+}
+
+favicon-96-png = Litefyr.Style:Favicon.Case {
+    contentType = 'image/png'
+    content = Litefyr.Style:Favicon.PNG {
+        size = 96
+    }
+
+    @cache {
+        mode = 'cached'
+        entryIdentifier {
+            documentNode = ${site}
+            editPreviewMode = ${node.context.currentRenderingMode.name}
+            faviconPNG = 'favicon96PNG'
+        }
+        entryTags {
+            1 = ${Neos.Caching.nodeTag(site)}
+        }
+    }
+}

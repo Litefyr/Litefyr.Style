@@ -1,0 +1,24 @@
+prototype(Litefyr.Style:Favicon.SVG.PreviewFrame) < prototype(Carbon.CodePen:PreviewFrame) {
+    head {
+        stylesheets.theme >
+        svg = afx`
+            <style>
+                {StaticResource.content('Litefyr.Style', 'Private/Fusion/CodePen/Favicon/Inline.css')}
+            </style>
+            <script>
+                {StaticResource.content('Litefyr.Style', 'Private/Fusion/CodePen/Favicon/Inline.js')}
+            </script>
+        `
+    }
+
+    body.content {
+        enableColorSchemeSwitchter = false
+        custom = afx`
+            <div id="carbon-codepen-preview"></div>
+            <button class="toggle" title="Toggle" type="button" onClick="toggleColorScheme()">
+                <Litefyr.Presentation:Atom.Icon icon="scheme-light" attributes.class="icon-light" />
+                <Litefyr.Presentation:Atom.Icon icon="scheme-dark" attributes.class="icon-dark" />
+            </button>
+        `
+    }
+}

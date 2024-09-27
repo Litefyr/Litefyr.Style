@@ -1,0 +1,50 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px;
+  background-color: white;
+  transition: background-color 0.5s;
+}
+
+.dark body {
+  background-color: black;
+}
+
+svg {
+  width: 48px;
+  transition: all 0.5s;
+}
+
+.icon-dark,
+.icon-light {
+  fill: currentColor;
+  width: 15px;
+  height: 40px;
+}
+
+.icon-light,
+.dark .icon-dark {
+  display: block;
+}
+
+.icon-dark,
+.dark .icon-light {
+  display: none;
+}
+
+.toggle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 40px;
+  width: 40px;
+  padding: 0;
+  color: #fff;
+  cursor: pointer;
+  background-color: #00b5ff;
+  border: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

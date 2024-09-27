@@ -1,4 +1,4 @@
-/Resources/Private/Editors
+/Resources/Private/Editors export-ignore
 /.gitattributes export-ignore
 /.nvmrc export-ignore
 /build.mjs export-ignore

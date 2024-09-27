@@ -1,0 +1,58 @@
+prototype(Litefyr.Style:Favicon.SVG) < prototype(Neos.Fusion:Component) {
+    // This is used for the Carbon.CodePen
+    node = ${site}
+    data = ${q(this.node).property('themeFaviconSvg')}
+
+    colorLight = ${q(this.node).property('themeColorLight')}
+    colorDark = ${q(this.node).property('themeColorDark')}
+    mainLight = ${q(this.node).property('themeColorLightMain')}
+    mainDark = ${q(this.node).property('themeColorDarkMain')}
+    minorLight = ${q(this.node).property('themeColorLightMinor')}
+    minorDark = ${q(this.node).property('themeColorDarkMinor')}
+    headerLight = ${q(this.node).property('themeColorLightHeader')}
+    headerDark = ${q(this.node).property('themeColorDarkHeader')}
+
+    @private {
+        replaceMap = Neos.Fusion:DataStructure {
+            bg-light = ${props.colorLight ? props.colorLight[0] : '#fff'}
+            fg-light = ${props.colorLight ? props.colorLight[1] : '#000'}
+            bg-dark = ${props.colorDark ? props.colorDark[0] : '#000'}
+            fg-dark = ${props.colorDark ? props.colorDark[1] : '#fff'}
+            main-light = ${props.mainLight ? props.mainLight.hex : '#000'}
+            main-dark = ${props.mainDark ? props.mainDark.hex : '#fff'}
+            minor-light = ${props.minorLight ? props.minorLight.hex : '#000'}
+            minor-dark = ${props.minorDark ? props.minorDark.hex : '#fff'}
+            header-light = ${props.headerLight ? props.headerLight.hex : '#000'}
+            header-dark = ${props.headerDark ? props.headerDark.hex : '#fff'}
+        }
+        svg = Neos.Fusion:Reduce {
+            items = ${private.replaceMap}
+            initialValue = ${props.data.svg}
+            itemReducer = ${String.replace(carry, 'var(--' + itemKey + ')', item)}
+        }
+    }
+
+    @if.set = ${this.data && this.data.svg}
+    renderer = ${Presentation.sanitizeSVG(private.svg)}
+}
+
+prototype(Litefyr.Style:Favicon.SVG.CodePen) < prototype(Litefyr.Style:Favicon.SVG) {
+    node = ${node}
+}
+
+favicon-svg = Litefyr.Style:Favicon.Case {
+    contentType = 'image/svg+xml'
+    content = Litefyr.Style:Favicon.SVG
+
+    @cache {
+        mode = 'cached'
+        entryIdentifier {
+            documentNode = ${site}
+            editPreviewMode = ${node.context.currentRenderingMode.name}
+            faviconSVG = 'faviconSVG'
+        }
+        entryTags {
+            1 = ${Neos.Caching.nodeTag(site)}
+        }
+    }
+}

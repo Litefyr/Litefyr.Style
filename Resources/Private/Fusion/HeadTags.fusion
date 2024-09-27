@@ -1,10 +1,10 @@
-styleHeadTags = Litefyr.Style:HeadTags {
-    themeColor = ${q(site).property('themeWebmanifestThemeColor') || '#ffffff'}
-    themeBrowserconfigTileColor = ${q(site).property('themeBrowserconfigTileColor') || '#da532c'}
+styleHeadTags = Neos.Fusion:Component {
+    themeColor = ${q(site).property('themeColorMeta') || '#ffffff'}
     themeColorScheme = ${q(site).property('themeColorScheme')}
     themeHeaderMarkup = ${q(site).property('themeHeaderMarkup')}
-    name = ${q(site).property('themeWebmanifestName') || site.context.currentSite.name}
-    themeFavicon = ${q(site).property('themeFavicon')}
+    name = ${site.context.currentSite.name}
+    themeFaviconSvg = ${q(site).property('themeFaviconSvg')}
+    themeFaviconPng = ${q(site).property('themeFaviconPng')}
     themeCSS = ${q(site).property('themeCSS')}
     themeCSSLink = Neos.Neos:NodeUri {
         node = ${site}
@@ -12,6 +12,20 @@ styleHeadTags = Litefyr.Style:HeadTags {
     }
     themeCSSHash = ${q(site).property('themeCSSHash')}
     inBackend = ${node.context.inBackend}
+
+    renderer = afx`
+        {props.themeHeaderMarkup}
+        <meta @if={props.themeColorScheme} name="color-scheme" content={props.themeColorScheme} />
+        <style @if={props.inBackend} data-style="themeCSS">{props.themeCSS}</style>
+        <link @if={!props.inBackend} rel="stylesheet" href={props.themeCSSLink + '?v=' + props.themeCSSHash} />
+        <meta @if={props.themeColor} name="theme-color" content={props.themeColor} />
+        <meta @if={props.name} name="apple-mobile-web-app-title" content={props.name} />
+        <meta @if={props.name} name="application-name" content={props.name} />
+        <link @if={props.themeFaviconPng} rel="icon" href="/favicon.ico" sizes="32x32" />
+        <link @if={props.themeFaviconSvg && props.themeFaviconSvg.svg} rel="icon" href="/icon.svg" type="image/svg+xml" />
+        <link @if={props.themeFaviconPng} rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link @if={props.themeFaviconPng} rel="icon" href="/favicon-96x96.png" sizes="96x96" />
+    `
 
     @cache {
         mode = 'cached'
@@ -23,70 +37,4 @@ styleHeadTags = Litefyr.Style:HeadTags {
             headtags = 'Style_HeadTags'
         }
     }
-}
-
-
-prototype(Litefyr.Style:HeadTags) < prototype(Neos.Fusion:Component) {
-    @private.icons = Neos.Fusion:Map {
-        @if.hasItems = ${Carbon.Array.check(props.themeFavicon)}
-        @process.filter = ${Array.filter(value)}
-        items = ${props.themeFavicon}
-        itemRenderer = Neos.Fusion:Case {
-            faviconIco {
-                condition = ${item.resource.filename == 'favicon.ico'}
-                renderer = Neos.Fusion:DataStructure {
-                    rel  = 'shortcut icon'
-                    href = Neos.Fusion:ResourceUri {
-                        resource = ${item.resource}
-                    }
-                }
-            }
-            favicon {
-                condition = ${String.startsWith(item.resource.filename, 'favicon-')}
-                renderer = Neos.Fusion:DataStructure {
-                    rel  = 'icon'
-                    type = ${item.resource.mediaType}
-                    sizes = ${String.pregReplace(item.resource.filename, "/favicon-(\d+)x(\d+)(.*)/", "$1x$2")}
-                    href = Neos.Fusion:ResourceUri {
-                        resource = ${item.resource}
-                    }
-                }
-            }
-            apple {
-                condition = ${String.startsWith(item.resource.filename, 'apple-touch-icon')}
-                renderer = Neos.Fusion:DataStructure {
-                    rel = ${Array.first(String.split(item.resource.filename, '.'))}
-                    sizes = '180x180'
-                    href = Neos.Fusion:ResourceUri {
-                        resource = ${item.resource}
-                    }
-                }
-            }
-            maskIcon {
-                condition = ${item.resource.filename == 'safari-pinned-tab.svg'}
-                renderer = Neos.Fusion:DataStructure {
-                    rel = 'mask-icon'
-                    color = ${props.themeBrowserconfigTileColor}
-                    href = Neos.Fusion:ResourceUri {
-                        resource = ${item.resource}
-                    }
-                }
-            }
-        }
-    }
-
-    renderer = afx`
-        {props.themeHeaderMarkup}
-        <meta @if={props.themeColorScheme} name="color-scheme" content={props.themeColorScheme} />
-        <style @if={props.inBackend} data-style="themeCSS">{props.themeCSS}</style>
-        <link @if={!props.inBackend} rel="stylesheet" href={props.themeCSSLink + '?v=' + props.themeCSSHash} />
-        <link rel="manifest" href="/site.webmanifest" />
-        <meta name="apple-mobile-web-app-title" content={props.name} />
-        <meta name="application-name" content={props.name} />
-        <meta name="msapplication-TileColor" content={props.themeBrowserconfigTileColor} />
-        <meta name="theme-color" content={props.themeColor} />
-        <Neos.Fusion:Loop items={private.icons} @if={Carbon.Array.check(private.icons)}>
-            <link {...item} />
-        </Neos.Fusion:Loop>
-    `
 }

@@ -6,3 +6,5 @@
     'Litefyr.Style:Mixin.Visuals.Footer': true
     'Litefyr.Style:Mixin.Visuals.ClipPath': true
     'Litefyr.Style:Mixin.Visuals.Rounded': true
+    'Litefyr.Style:Mixin.Visuals.Shadows': true
+    'Litefyr.Style:Mixin.Visuals.Opacities': true

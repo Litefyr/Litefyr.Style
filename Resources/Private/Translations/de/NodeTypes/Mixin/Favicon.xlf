@@ -3,37 +3,59 @@
     xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file original="" product-name="Litefyr.Style" source-language="en" target-language="de" datatype="plaintext">
         <body>
-            <trans-unit id="groups.themeFiles" xml:space="preserve">
+            <trans-unit id="groups.themeFavicon" xml:space="preserve">
                 <source>Favicons</source>
                 <target>Favicons</target>
             </trans-unit>
-            <trans-unit id="properties.themeFavicon" xml:space="preserve">
-                <source>Favicons</source>
-                <target>Favicons</target>
+            <trans-unit id="properties.themeFaviconSvg" xml:space="preserve">
+                <source>SVG variant</source>
+                <target>SVG Variante</target>
             </trans-unit>
-            <trans-unit id="properties.themeFavicon.ui.help.message" xml:space="preserve">
-                <source>This files are uses as favicons for the website.
+            <trans-unit id="properties.themeFaviconSvg.ui.help.message" xml:space="preserve">
+                <source>You can create icons using [favicon.io](https://favicon.io) or [realfavicongenerator.net](https://realfavicongenerator.net/svg-favicon/).
 
-Only these filenames are supported: ([W] == width, [H] == height)
+### Dynamic color replacement
 
-* favicon.ico
-* favicon-[W]x[H].png
-* apple-touch-icon.png
-* apple-touch-icon-precomposed.png
-* android-chrome-[W]x[H].png
-* mstile-[W]x[H].png
-* safari-pinned-tab.svg</source>
-                <target>Diese Dateien werden als Favicons für die Website verwendet.
+Following colors properties will be replaced with the hex color value from the choosen color:
 
-Nur diese Dateinamen werden unterstützt: ([W] == Breite, [H] == Höhe)
+* `var(--bg-light)`
+* `var(--fg-light)`
+* `var(--bg-dark)`
+* `var(--fg-dark)`
+* `var(--main-light)`
+* `var(--main-dark)`
+* `var(--minor-light)`
+* `var(--minor-dark)`
+* `var(--header-light)`
+* `var(--header-dark)`
 
-* favicon.ico
-* favicon-[W]x[H].png
-* apple-touch-icon.png
-* apple-touch-icon-precomposed.png
-* android-chrome-[B]x[H].png
-* mstile-[W]x[H].png
-* safari-pinned-tab.svg</target>
+### Additional articles
+
+[Building an adaptive favicon](https://web.dev/articles/building/an-adaptive-favicon)</source>
+                <target>Icons können mit [favicon.io](https://favicon.io) oder [realfavicongenerator.net](https://realfavicongenerator.net/svg-favicon/) erstellt werden.
+
+### Dynamische Farbersetzung
+
+Die folgenden Farbeigenschaften werden durch den Hexadezimalwert der gewählten Farbe ersetzt:
+
+* `var(--bg-light)`
+* `var(--fg-light)`
+* `var(--bg-dark)`
+* `var(--fg-dark)`
+* `var(--main-light)`
+* `var(--main-dark)`
+* `var(--minor-light)`
+* `var(--minor-dark)`
+* `var(--header-light)`
+* `var(--header-dark)`
+
+### Zusätzliche Artikel
+
+[Building an adaptive favicon](https://web.dev/articles/building/an-adaptive-favicon)</target>
+            </trans-unit>
+            <trans-unit id="properties.themeFaviconPng" xml:space="preserve">
+                <source>PNG variant</source>
+                <target>PNG Variante</target>
             </trans-unit>
         </body>
     </file>

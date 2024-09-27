@@ -36,14 +36,11 @@ class ColorService
     #[Flow\InjectConfiguration('additionalThemeSelector')]
     protected $additionalThemeSelector;
 
-    /**
-     * @var array{light:float|int,dark:float|int}
-     */
-    #[Flow\InjectConfiguration('colorOffset')]
-    protected array $colorOffset;
-
-    #[Flow\InjectConfiguration('colorContrastThreshold')]
     protected float $colorContrastThreshold;
+
+    protected float $minContrastLightness;
+
+    protected float $maxContrastLightness;
 
     /**
      * @var null|ColorArray
@@ -66,34 +63,47 @@ class ColorService
      * Get color from node and store them in the color objects
      *
      * @param NodeInterface $node
-     * @return array{light:mixed,dark:mixed,scheme:mixed,CSS:mixed,themeWebmanifestTheme:string}
+     * @return array{light:mixed,dark:mixed,scheme:mixed,CSS:mixed,colorThemeMeta:string}
      */
     public function getColors(NodeInterface $node): array
     {
+        $this->setColorContrast($node);
         $scheme = $node->getProperty('themeColorScheme') ?? 'light';
         $this->fallbackMain = $this->convert->toOkLch($this->default['mainColor']);
 
         $light = null;
         $dark = null;
-        $themeWebmanifestTheme = [];
+        $colorThemeMeta = [];
 
         if (str_contains($scheme, 'light')) {
             $light = $this->getColorsFromScheme($node, 'Light');
-            $themeWebmanifestTheme['light'] = $light['header']['hex'] ?? ($light['main']['hex'] ?? null);
+            $colorThemeMeta['light'] = $light['header']['hex'] ?? ($light['main']['hex'] ?? null);
         }
 
         if (str_contains($scheme, 'dark')) {
             $dark = $this->getColorsFromScheme($node, 'Dark');
-            $themeWebmanifestTheme['dark'] = $dark['header']['hex'] ?? ($dark['main']['hex'] ?? null);
+            $colorThemeMeta['dark'] = $dark['header']['hex'] ?? ($dark['main']['hex'] ?? null);
         }
 
         return [
             'light' => $light,
             'dark' => $dark,
             'scheme' => $scheme,
-            'CSS' => $this->generateCSSVariables($scheme, $light, $dark, $themeWebmanifestTheme),
-            'themeWebmanifestTheme' => $themeWebmanifestTheme['light'] ?? ($themeWebmanifestTheme['dark'] ?? ''),
+            'CSS' => $this->generateCSSVariables($scheme, $light, $dark, $colorThemeMeta),
+            'colorThemeMeta' => $colorThemeMeta['light'] ?? ($colorThemeMeta['dark'] ?? ''),
         ];
+    }
+
+    /**
+     * Set color contrast
+     *
+     * @param NodeInterface $node
+     */
+    protected function setColorContrast(NodeInterface $node): void
+    {
+        $this->colorContrastThreshold = ($node->getProperty('themeColorContrastThreshold') ?? 65) / 100;
+        $this->minContrastLightness = ($node->getProperty('themeColorContrastLightnessMin') ?? 5) / 100;
+        $this->maxContrastLightness = ($node->getProperty('themeColorContrastLightnessMax') ?? 95) / 100;
     }
 
     /**
@@ -194,25 +204,27 @@ class ColorService
      * @param string $scheme
      * @param SchemeArray|null $light scheme config
      * @param SchemeArray|null $dark scheme config
-     * @param array{light?:string,dark?:string}|null $themeWebmanifestTheme
+     * @param array{light?:string,dark?:string}|null $colorThemeMeta
      * @return array{onStart:string,root:string,light:string,dark:string,backend:string}
      */
-    protected function generateCSSVariables(
-        string $scheme,
-        ?array $light,
-        ?array $dark,
-        ?array $themeWebmanifestTheme
-    ): array {
-        $rootCSS = sprintf('color-scheme:%s;', $scheme);
+    protected function generateCSSVariables(string $scheme, ?array $light, ?array $dark, ?array $colorThemeMeta): array
+    {
+        $rootCSS = sprintf(
+            '--tw-infinite:99999;--tw-lightness-threshold:%s;--tw-min-contrast-lightness:%s;--tw-max-contrast-lightness:%s;',
+            $this->colorContrastThreshold,
+            $this->minContrastLightness,
+            $this->maxContrastLightness
+        );
+        $rootCSS .= sprintf('color-scheme:%s;', $scheme);
         $lightCSS = $this->generateCSSVariablesFromScheme($light);
         $darkCSS = $this->generateCSSVariablesFromScheme($dark);
         $oneScheme = $light == null || $dark == null;
 
-        if (!empty($themeWebmanifestTheme['light'])) {
-            $rootCSS .= sprintf('--color-theme-light:%s;', $themeWebmanifestTheme['light']);
+        if (!empty($colorThemeMeta['light'])) {
+            $rootCSS .= sprintf('--color-theme-light:%s;', $colorThemeMeta['light']);
         }
-        if (!empty($themeWebmanifestTheme['dark'])) {
-            $rootCSS .= sprintf('--color-theme-dark:%s;', $themeWebmanifestTheme['dark']);
+        if (!empty($colorThemeMeta['dark'])) {
+            $rootCSS .= sprintf('--color-theme-dark:%s;', $colorThemeMeta['dark']);
         }
 
         return [
@@ -313,11 +325,8 @@ class ColorService
             return $this->generateCustomPropertyFromColorOrCoords($name, self::WHITE);
         }
 
-        if ($luminance > $this->colorContrastThreshold) {
-            $luminance = $this->colorOffset['dark'] / 100;
-        } else {
-            $luminance = $this->colorOffset['light'] / 100;
-        }
+        $luminance =
+            $luminance > $this->colorContrastThreshold ? $this->minContrastLightness : $this->maxContrastLightness;
 
         $coords = [
             'l' => min(max($luminance, 0), 1),

@@ -4,8 +4,6 @@
     'Litefyr.Style:Mixin.Visuals': true
     'Litefyr.Style:Mixin.Fonts': true
     'Litefyr.Style:Mixin.Hr': true
-    'Litefyr.Style:Mixin.Browserconfig': true
-    'Litefyr.Style:Mixin.Webmanifest': true
     'Litefyr.Style:Mixin.Favicon': true
     'Litefyr.Style:Mixin.RobotsTxt': true
     'Litefyr.Style:Mixin.ScollIndicator': true

@@ -1,0 +1,105 @@
+'Litefyr.Style:Mixin.Visuals.Shadows':
+  abstract: true
+  superTypes:
+    'Litefyr.Style:Mixin.Tab': true
+  ui:
+    inspector:
+      groups:
+        themeShadows:
+          label: i18n
+          position: 25
+          icon: adjust
+          tab: theme
+          collapsed: true
+  properties:
+    themeShadowDropdown:
+      defaultValue: lg
+      options:
+        preset: 'theme.shadow'
+      ui:
+        label: i18n
+        inspector:
+          position: 10
+          editorOptions:
+            dataSourceAdditionalData:
+              px: '0 0px 0px 1px currentColor'
+    themeShadowDialog:
+      defaultValue: xl
+      options:
+        preset: 'theme.shadow'
+      ui:
+        label: i18n
+        inspector:
+          position: 20
+    themeShadowTeaser:
+      defaultValue: lg
+      options:
+        preset: 'theme.shadow'
+      ui:
+        label: i18n
+        inspector:
+          position: 100
+    themeShadowTeaserHover:
+      defaultValue: 2xl
+      options:
+        preset: 'theme.shadow'
+      ui:
+        label: i18n
+        inspector:
+          position: 101
+    themeShadowTeaserTextbox:
+      defaultValue: lg
+      options:
+        preset: 'theme.shadow'
+      ui:
+        label: i18n
+        inspector:
+          position: 110
+    themeShadowTeaserTextboxHover:
+      defaultValue: 2xl
+      options:
+        preset: 'theme.shadow'
+      ui:
+        label: i18n
+        inspector:
+          position: 111
+    themeShadowTeaserPlain:
+      defaultValue: none
+      options:
+        preset: 'theme.shadow'
+      ui:
+        label: i18n
+        inspector:
+          position: 120
+    themeShadowTeaserPlainHover:
+      defaultValue: 2xl
+      options:
+        preset: 'theme.shadow'
+      ui:
+        label: i18n
+        inspector:
+          position: 121
+    themeShadowImageTextbox:
+      defaultValue: xl
+      options:
+        preset: 'theme.shadow'
+      ui:
+        label: i18n
+        inspector:
+          position: 200
+    themeShadowAssetsListThumbnail:
+      defaultValue: none
+      options:
+        preset: 'theme.shadow'
+      ui:
+        label: i18n
+        inspector:
+          position: 210
+    themeShadowAssetsListThumbnailHover:
+      defaultValue: xl
+      options:
+        preset: 'theme.shadow'
+      ui:
+        label: i18n
+        inspector:
+          position: 211

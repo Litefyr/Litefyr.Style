@@ -1,0 +1,29 @@
+'Litefyr.Style:Mixin.Visuals.Opacities':
+  abstract: true
+  superTypes:
+    'Litefyr.Style:Mixin.Tab': true
+  ui:
+    inspector:
+      groups:
+        themeOpacities:
+          label: i18n
+          position: 30
+          icon: chess-board
+          tab: theme
+          collapsed: true
+  properties:
+    themeOpacityImageWithTextOverlay:
+      type: integer
+      defaultValue: 100
+      ui:
+        label: i18n
+        reloadIfChanged: true
+        inspector:
+          group: themeOpacities
+          position: 10
+          editor: 'Carbon.RangeEditor/Editor'
+          editorOptions:
+            min: 0
+            max: 100
+            step: 5
+            unit: '%'

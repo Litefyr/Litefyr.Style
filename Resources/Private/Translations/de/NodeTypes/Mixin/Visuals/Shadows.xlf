@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="" product-name="Litefyr.Style" source-language="en" target-language="de" datatype="plaintext">
+        <body>
+            <trans-unit id="groups.themeShadows" xml:space="preserve">
+                <source>Shadows</source>
+                <target>Schatten</target>
+            </trans-unit>
+            <trans-unit id="properties.themeShadowDropdown" xml:space="preserve">
+                <source>Dropdowns</source>
+                <target>Dropdowns</target>
+            </trans-unit>
+            <trans-unit id="properties.themeShadowDialog" xml:space="preserve">
+                <source>Dialogues</source>
+                <target>Dialoge</target>
+            </trans-unit>
+            <trans-unit id="properties.themeShadowTeaser" xml:space="preserve">
+                <source>Default teaser</source>
+                <target>Normaler Teaser</target>
+            </trans-unit>
+            <trans-unit id="properties.themeShadowTeaserHover" xml:space="preserve">
+                <source>Default teaser on hover</source>
+                <target>Normaler Teaser beim Hovern</target>
+            </trans-unit>
+            <trans-unit id="properties.themeShadowTeaserTextbox" xml:space="preserve">
+                <source>Image teaser</source>
+                <target>Bild-Teaser</target>
+            </trans-unit>
+            <trans-unit id="properties.themeShadowTeaserTextboxHover" xml:space="preserve">
+                <source>Image teaser on hover</source>
+                <target>Bild-Teaser beim Hovern</target>
+            </trans-unit>
+            <trans-unit id="properties.themeShadowTeaserPlain" xml:space="preserve">
+                <source>Text teaser</source>
+                <target>Text-Teaser</target>
+            </trans-unit>
+            <trans-unit id="properties.themeShadowTeaserPlainHover" xml:space="preserve">
+                <source>Text teaser on hover</source>
+                <target>Text-Teaser beim Hovern</target>
+            </trans-unit>
+            <trans-unit id="properties.themeShadowImageTextbox" xml:space="preserve">
+                <source>Text box within image</source>
+                <target>Textbox innerhalb Bild</target>
+            </trans-unit>
+             <trans-unit id="properties.themeShadowAssetsListThumbnail" xml:space="preserve">
+                <source>Thumbnail in the asset list</source>
+                <target>Miniaturansicht in der Dateiliste</target>
+            </trans-unit>
+            <trans-unit id="properties.themeShadowAssetsListThumbnailHover" xml:space="preserve">
+                <source>Thumbnail in the asset list on hover</source>
+                <target>Miniaturansicht in der Dateiliste beim Hovern</target>
+            </trans-unit>
+             <trans-unit id="value.none" xml:space="preserve">
+                <source>No shadow</source>
+                <target>Keinen Schatten</target>
+            </trans-unit>
+            <trans-unit id="value.px" xml:space="preserve">
+                <source>1 Pixel border</source>
+                <target>1 Pixel Umrandung</target>
+            </trans-unit>
+            <trans-unit id="value.sm" xml:space="preserve">
+                <source>Small border ({0})</source>
+                <target>Kleiner Schatten ({0})</target>
+            </trans-unit>
+            <trans-unit id="value.default" xml:space="preserve">
+                <source>Normal shadow</source>
+                <target>Normaler Schatten</target>
+            </trans-unit>
+            <trans-unit id="value.md" xml:space="preserve">
+                <source>Medium shadow ({0})</source>
+                <target>Mittelerer Schatten ({0})</target>
+            </trans-unit>
+            <trans-unit id="value.lg" xml:space="preserve">
+                <source>Large shadow ({0})</source>
+                <target>Großer Schatten ({0})</target>
+            </trans-unit>
+            <trans-unit id="value.xl" xml:space="preserve">
+                <source>Very large shadow ({0})</source>
+                <target>Sehr großer Schatten ({0})</target>
+            </trans-unit>
+            <trans-unit id="value.2xl" xml:space="preserve">
+                <source>Extra large shadow ({0})</source>
+                <target>Extrem großer Schatten ({0})</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

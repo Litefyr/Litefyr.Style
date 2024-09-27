@@ -15,6 +15,10 @@
                 <source>Dark Mode</source>
                 <target>Dunkle Darstellung</target>
             </trans-unit>
+            <trans-unit id="groups.themeColorContrast" xml:space="preserve">
+                <source>Color contrast</source>
+                <target>Farbkontrast</target>
+            </trans-unit>
             <trans-unit id="properties.themeColorScheme.selectBoxEditor.values.light dark" xml:space="preserve">
                 <source>Light and dark mode</source>
                 <target>Helle und dunkle Darstellung</target>
@@ -62,6 +66,30 @@
             <trans-unit id="minor2" xml:space="preserve">
                 <source>Third accent color</source>
                 <target>Dritte Akzentfarbe</target>
+            </trans-unit>
+            <trans-unit id="properties.themeColorContrastThreshold" xml:space="preserve">
+                <source>Threshold for contrast color</source>
+                <target>Schwellenwert für Kontrastfarbe</target>
+            </trans-unit>
+            <trans-unit id="properties.themeColorContrastThreshold.ui.help.message" xml:space="preserve">
+                <source>Changes the threshold when the contrast color switches to black or white. The higher the number, the more likely white will be chosen as the contrast color.</source>
+                 <target>Ändert den Schwellenwert, wenn die Kontrastfarbe zu Schwarz oder Weiß wechselt. Je höher der Wert, desto eher wird Weiß als Kontrastfarbe gewählt.</target>
+            </trans-unit>
+            <trans-unit id="properties.themeColorContrastLightnessMin" xml:space="preserve">
+                <source>Minimum contrast lightness</source>
+                <target>Minimale Kontrast Helligkeit</target>
+            </trans-unit>
+            <trans-unit id="properties.themeColorContrastLightnessMin.ui.help.message" xml:space="preserve">
+                <source>A value higher than 0 adds a hint of hue to the black.</source>
+                <target>Ein Wert höher als 0 fügt dem Schwarz einen leichte Tönung hinzu.</target>
+            </trans-unit>
+            <trans-unit id="properties.themeColorContrastLightnessMax" xml:space="preserve">
+                <source>Maximum contrast lightness</source>
+                <target>Maximale Kontrast Helligkeit</target>
+            </trans-unit>
+            <trans-unit id="properties.themeColorContrastLightnessMax.ui.help.message" xml:space="preserve">
+                <source>A value lower than 100 adds a hint of hue to the white.</source>
+                <target>Ein Wert tiefer als 100 fügt dem Weiß einen leichte Tönung hinzu.</target>
             </trans-unit>
         </body>
     </file>

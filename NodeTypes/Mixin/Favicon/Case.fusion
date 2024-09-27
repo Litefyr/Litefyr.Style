@@ -1,0 +1,25 @@
+prototype(Litefyr.Style:Favicon.Case) < prototype(Neos.Fusion:Component) {
+    notFoundPage = 'Litefyr.Integration:Document.NotFound'
+    contentType = null
+
+    content = null
+
+    renderer = Neos.Fusion:Case {
+        hasContent {
+            condition = ${props.content}
+            renderer = Neos.Fusion:Http.Message {
+                httpResponseHead.headers.Content-Type = ${props.contentType}
+                content = ${props.content}
+            }
+        }
+        notFound {
+            condition = true
+            notFoundPage = ${q(site).children('[instanceof ' + props.notFoundPage + ']').get(0)}
+            @context {
+                node = ${this.notFoundPage}
+                documentNode = ${this.notFoundPage}
+            }
+            type = ${props.notFoundPage}
+        }
+    }
+}

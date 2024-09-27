@@ -4,9 +4,25 @@ Neos:
       presets:
         properties:
           theme:
+            shadow:
+              type: string
+              search:
+                indexing: false
+              ui:
+                reloadPageIfChanged: true
+                inspector:
+                  group: themeShadows
+                  editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
+                  editorOptions:
+                    minimumResultsForSearch: -1
+                    dataSourceIdentifier: litefyr-style-shadow
+                    dataSourceAdditionalData:
+                      disabled: []
             color:
               blackOrWhite:
                 type: string
+                search:
+                  indexing: false
                 ui:
                   reloadPageIfChanged: true
                   inspector:
@@ -19,6 +35,8 @@ Neos:
                           label: White
               required:
                 type: string
+                search:
+                  indexing: false
                 ui:
                   reloadPageIfChanged: true
                   inspector:
@@ -29,6 +47,8 @@ Neos:
                   Neos.Neos/Validation/NotEmptyValidator: {}
               optional:
                 type: string
+                search:
+                  indexing: false
                 ui:
                   reloadPageIfChanged: true
                   inspector:

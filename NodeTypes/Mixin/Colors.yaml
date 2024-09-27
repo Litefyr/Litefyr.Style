@@ -22,7 +22,15 @@
           icon: moon
           tab: theme
           collapsed: true
+        themeColorContrast:
+          label: i18n
+          position: 13
+          icon: eye
+          tab: theme
+          collapsed: true
   properties:
+    themeColorMeta:
+      type: string
     themeColorScheme:
       type: string
       defaultValue: light
@@ -265,3 +273,54 @@
           editorOptions:
             showLuminance: true
             collapsed: true
+    themeColorContrastThreshold:
+      type: integer
+      defaultValue: 65
+      ui:
+        label: i18n
+        reloadIfChanged: true
+        help:
+          message: i18n
+        inspector:
+          group: themeColorContrast
+          position: 10
+          editor: 'Carbon.RangeEditor/Editor'
+          editorOptions:
+            min: 50
+            max: 70
+            step: 1
+            unit: '%'
+    themeColorContrastLightnessMin:
+      type: integer
+      defaultValue: 5
+      ui:
+        label: i18n
+        reloadIfChanged: true
+        help:
+          message: i18n
+        inspector:
+          group: themeColorContrast
+          position: 20
+          editor: 'Carbon.RangeEditor/Editor'
+          editorOptions:
+            min: 0
+            max: 40
+            step: 1
+            unit: '%'
+    themeColorContrastLightnessMax:
+      type: integer
+      defaultValue: 95
+      ui:
+        label: i18n
+        reloadIfChanged: true
+        help:
+          message: i18n
+        inspector:
+          group: themeColorContrast
+          position: 95
+          editor: 'Carbon.RangeEditor/Editor'
+          editorOptions:
+            min: 80
+            max: 100
+            step: 1
+            unit: '%'

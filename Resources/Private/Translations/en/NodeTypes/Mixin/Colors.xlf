@@ -12,6 +12,9 @@
             <trans-unit id="groups.themeColorsDark" xml:space="preserve">
                 <source>Dark Mode</source>
             </trans-unit>
+            <trans-unit id="groups.themeColorContrast" xml:space="preserve">
+                <source>Color contrast</source>
+            </trans-unit>
             <trans-unit id="properties.themeColorScheme.selectBoxEditor.values.light dark" xml:space="preserve">
                 <source>Light and dark mode</source>
             </trans-unit>
@@ -47,6 +50,24 @@
             </trans-unit>
             <trans-unit id="minor2" xml:space="preserve">
                  <source>Third accent color</source>
+            </trans-unit>
+            <trans-unit id="properties.themeColorContrastThreshold" xml:space="preserve">
+                <source>Threshold for contrast color</source>
+            </trans-unit>
+            <trans-unit id="properties.themeColorContrastThreshold.ui.help.message" xml:space="preserve">
+                <source>Changes the threshold when the contrast color switches to black or white. The higher the number, the more likely white will be chosen as the contrast color.</source>
+            </trans-unit>
+            <trans-unit id="properties.themeColorContrastLightnessMin" xml:space="preserve">
+                <source>Minimum contrast lightness</source>
+            </trans-unit>
+            <trans-unit id="properties.themeColorContrastLightnessMin.ui.help.message" xml:space="preserve">
+                <source>A value higher than 0 adds a hint of hue to the black.</source>
+            </trans-unit>
+            <trans-unit id="properties.themeColorContrastLightnessMax" xml:space="preserve">
+                <source>Maximum contrast lightness</source>
+            </trans-unit>
+            <trans-unit id="properties.themeColorContrastLightnessMax.ui.help.message" xml:space="preserve">
+                <source>A value lower than 100 adds a hint of hue to the white.</source>
             </trans-unit>
         </body>
     </file>

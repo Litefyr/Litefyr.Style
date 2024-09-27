@@ -10,5 +10,5 @@ prototype(Litefyr.Integration:Component.Logo) {
 
     image = ${this.inContent && this.imageContent ? this.imageContent : this.imageDefault}
     markup = ${this.inContent && this.dataContent && this.dataContent.html ? this.dataContent.html : (this.dataDefault && this.dataDefault.html ? this.dataDefault.html : null)}
-    markupRenderer = 'Litefyr.Style:Logo.Markup'
+    markupRenderer = 'Litefyr.Style:CodePen.Markup'
 }

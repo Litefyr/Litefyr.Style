@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="" product-name="Litefyr.Style" source-language="en" datatype="plaintext">
+        <body>
+            <trans-unit id="groups.themeShadows" xml:space="preserve">
+                <source>Shadows</source>
+            </trans-unit>
+            <trans-unit id="properties.themeShadowDropdown" xml:space="preserve">
+                <source>Dropdowns</source>
+            </trans-unit>
+            <trans-unit id="properties.themeShadowDialog" xml:space="preserve">
+                <source>Dialogues</source>
+            </trans-unit>
+            <trans-unit id="properties.themeShadowTeaser" xml:space="preserve">
+                <source>Default teaser</source>
+            </trans-unit>
+            <trans-unit id="properties.themeShadowTeaserHover" xml:space="preserve">
+                <source>Default teaser on hover</source>
+            </trans-unit>
+            <trans-unit id="properties.themeShadowTeaserTextbox" xml:space="preserve">
+                <source>Image teaser</source>
+            </trans-unit>
+            <trans-unit id="properties.themeShadowTeaserTextboxHover" xml:space="preserve">
+                <source>Image teaser on hover</source>
+            </trans-unit>
+            <trans-unit id="properties.themeShadowTeaserPlain" xml:space="preserve">
+                <source>Text teaser</source>
+            </trans-unit>
+            <trans-unit id="properties.themeShadowTeaserPlainHover" xml:space="preserve">
+                <source>Text teaser on hover</source>
+            </trans-unit>
+            <trans-unit id="properties.themeShadowImageTextbox" xml:space="preserve">
+                <source>Text box within image</source>
+            </trans-unit>
+            <trans-unit id="properties.themeShadowAssetsListThumbnail" xml:space="preserve">
+                <source>Thumbnail in the asset list</source>
+            </trans-unit>
+            <trans-unit id="properties.themeShadowAssetsListThumbnailHover" xml:space="preserve">
+                <source>Thumbnail in the asset list on hover</source>
+            </trans-unit>
+            <trans-unit id="value.none" xml:space="preserve">
+                <source>No shadow</source>
+            </trans-unit>
+            <trans-unit id="value.px" xml:space="preserve">
+                <source>1 Pixel border</source>
+            </trans-unit>
+            <trans-unit id="value.sm" xml:space="preserve">
+                <source>Small border ({0})</source>
+            </trans-unit>
+            <trans-unit id="value.default" xml:space="preserve">
+                <source>Normal shadow</source>
+            </trans-unit>
+            <trans-unit id="value.md" xml:space="preserve">
+                <source>Medium shadow ({0})</source>
+            </trans-unit>
+            <trans-unit id="value.lg" xml:space="preserve">
+                <source>Large shadow ({0})</source>
+            </trans-unit>
+            <trans-unit id="value.xl" xml:space="preserve">
+                <source>Very large shadow ({0})</source>
+            </trans-unit>
+            <trans-unit id="value.2xl" xml:space="preserve">
+                <source>Extra large shadow ({0})</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

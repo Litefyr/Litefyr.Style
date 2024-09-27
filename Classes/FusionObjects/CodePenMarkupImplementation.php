@@ -9,9 +9,9 @@ use Neos\Fusion\Exception;
 use Neos\Fusion\FusionObjects\AbstractFusionObject;
 
 /**
- * Renderer LogoMarkup Fusion Object
+ * Renderer CodePen Fusion Object
  */
-class LogoMarkupImplementation extends AbstractFusionObject
+class CodePenMarkupImplementation extends AbstractFusionObject
 {
     #[Flow\Inject]
     protected FusionService $fusionService;
