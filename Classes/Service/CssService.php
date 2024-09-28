@@ -233,7 +233,7 @@ class CssService
             return;
         }
 
-        $headTagsProperties = ['themeFaviconSvg', 'themeFaviconPng'];
+        $headTagsProperties = ['themeFaviconSvg', 'themeFaviconPng', 'themeFaviconAppleTouch'];
         if ($needCSS || in_array($propertyName, $headTagsProperties)) {
             $this->contentCache->flushByTag('Style_HeadTags');
         }

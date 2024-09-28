@@ -1,9 +1,0 @@
-favicon-ico = Litefyr.Style:Favicon.Case {
-    contentType = 'image/x-icon'
-    content = Litefyr.Style:Favicon.Content {
-        type = 'ico'
-        asset = ${q(site).property('themeFaviconPng')}
-        size = 32
-        node = ${site}
-    }
-}

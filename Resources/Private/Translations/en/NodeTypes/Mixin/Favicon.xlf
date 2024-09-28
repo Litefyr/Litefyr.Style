@@ -7,7 +7,7 @@
                 <source>Favicons</source>
             </trans-unit>
             <trans-unit id="properties.themeFaviconSvg" xml:space="preserve">
-                <source>SVG variant</source>
+                <source>Vector (svg)</source>
             </trans-unit>
             <trans-unit id="properties.themeFaviconSvg.ui.help.message" xml:space="preserve">
                 <source>You can create icons using [favicon.io](https://favicon.io) or [realfavicongenerator.net](https://realfavicongenerator.net/svg-favicon/).
@@ -32,7 +32,10 @@ Following colors properties will be replaced with the hex color value from the c
 [Building an adaptive favicon](https://web.dev/articles/building/an-adaptive-favicon)</source>
             </trans-unit>
             <trans-unit id="properties.themeFaviconPng" xml:space="preserve">
-                <source>PNG variant</source>
+                <source>Image</source>
+            </trans-unit>
+            <trans-unit id="properties.themeFaviconAppleTouch" xml:space="preserve">
+                <source>Homescreen on apple devices</source>
             </trans-unit>
         </body>
     </file>

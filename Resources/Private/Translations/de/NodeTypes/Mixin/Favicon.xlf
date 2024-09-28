@@ -8,8 +8,8 @@
                 <target>Favicons</target>
             </trans-unit>
             <trans-unit id="properties.themeFaviconSvg" xml:space="preserve">
-                <source>SVG variant</source>
-                <target>SVG Variante</target>
+                <source>Vector (svg)</source>
+                <target>Vektor (svg)</target>
             </trans-unit>
             <trans-unit id="properties.themeFaviconSvg.ui.help.message" xml:space="preserve">
                 <source>You can create icons using [favicon.io](https://favicon.io) or [realfavicongenerator.net](https://realfavicongenerator.net/svg-favicon/).
@@ -54,8 +54,12 @@ Die folgenden Farbeigenschaften werden durch den Hexadezimalwert der gewählten 
 [Building an adaptive favicon](https://web.dev/articles/building/an-adaptive-favicon)</target>
             </trans-unit>
             <trans-unit id="properties.themeFaviconPng" xml:space="preserve">
-                <source>PNG variant</source>
-                <target>PNG Variante</target>
+                <source>Image</source>
+                <target>Bild</target>
+            </trans-unit>
+            <trans-unit id="properties.themeFaviconAppleTouch" xml:space="preserve">
+                <source>Homescreen on apple devices</source>
+                <target>Homescreen auf Apple-Geräten</target>
             </trans-unit>
         </body>
     </file>

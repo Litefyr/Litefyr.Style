@@ -39,20 +39,3 @@ prototype(Litefyr.Style:Favicon.SVG) < prototype(Neos.Fusion:Component) {
 prototype(Litefyr.Style:Favicon.SVG.CodePen) < prototype(Litefyr.Style:Favicon.SVG) {
     node = ${node}
 }
-
-favicon-svg = Litefyr.Style:Favicon.Case {
-    contentType = 'image/svg+xml'
-    content = Litefyr.Style:Favicon.SVG
-
-    @cache {
-        mode = 'cached'
-        entryIdentifier {
-            documentNode = ${site}
-            editPreviewMode = ${node.context.currentRenderingMode.name}
-            faviconSVG = 'faviconSVG'
-        }
-        entryTags {
-            1 = ${Neos.Caching.nodeTag(site)}
-        }
-    }
-}

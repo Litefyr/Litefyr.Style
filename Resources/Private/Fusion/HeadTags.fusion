@@ -4,7 +4,7 @@ styleHeadTags = Neos.Fusion:Component {
     themeHeaderMarkup = ${q(site).property('themeHeaderMarkup')}
     name = ${site.context.currentSite.name}
     themeFaviconSvg = ${q(site).property('themeFaviconSvg')}
-    themeFaviconPng = ${q(site).property('themeFaviconPng')}
+    themeFaviconImage = ${q(site).property('themeFaviconPng') || q(site).property('themeFaviconAppleTouch')}
     themeCSS = ${q(site).property('themeCSS')}
     themeCSSLink = Neos.Neos:NodeUri {
         node = ${site}
@@ -21,10 +21,10 @@ styleHeadTags = Neos.Fusion:Component {
         <meta @if={props.themeColor} name="theme-color" content={props.themeColor} />
         <meta @if={props.name} name="apple-mobile-web-app-title" content={props.name} />
         <meta @if={props.name} name="application-name" content={props.name} />
-        <link @if={props.themeFaviconPng} rel="icon" href="/favicon.ico" sizes="32x32" />
+        <link @if={props.themeFaviconImage} rel="icon" href="/favicon.ico" sizes="32x32" />
         <link @if={props.themeFaviconSvg && props.themeFaviconSvg.svg} rel="icon" href="/icon.svg" type="image/svg+xml" />
-        <link @if={props.themeFaviconPng} rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link @if={props.themeFaviconPng} rel="icon" href="/favicon-96x96.png" sizes="96x96" />
+        <link @if={props.themeFaviconImage} rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link @if={props.themeFaviconImage} rel="icon" href="/favicon-96x96.png" sizes="96x96" />
     `
 
     @cache {

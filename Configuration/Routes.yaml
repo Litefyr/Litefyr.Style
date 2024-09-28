@@ -32,7 +32,7 @@
     '@package': 'Neos.Neos'
     '@controller': 'Frontend\Node'
     '@action': 'show'
-    '@format': 'favicon-png'
+    '@format': 'apple-touch-icon-png'
   httpMethods: ['GET']
   routeParts:
     node:

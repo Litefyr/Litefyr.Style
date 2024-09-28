@@ -1,0 +1,46 @@
+favicon-svg = Litefyr.Style:Favicon.Case {
+    contentType = 'image/svg+xml'
+    content = Litefyr.Style:Favicon.SVG
+
+    @cache {
+        mode = 'cached'
+        entryIdentifier {
+            documentNode = ${site}
+            editPreviewMode = ${node.context.currentRenderingMode.name}
+            faviconSVG = 'faviconSVG'
+        }
+        entryTags {
+            1 = ${Neos.Caching.nodeTag(site)}
+        }
+    }
+}
+
+favicon-96-png = Litefyr.Style:Favicon.Case {
+    contentType = 'image/png'
+    content = Litefyr.Style:Favicon.Content {
+        type = 'png'
+        asset = ${q(site).property('themeFaviconPng') || q(site).property('themeFaviconAppleTouch')}
+        size = 96
+        node = ${site}
+    }
+}
+
+favicon-ico = Litefyr.Style:Favicon.Case {
+    contentType = 'image/x-icon'
+    content = Litefyr.Style:Favicon.Content {
+        type = 'ico'
+        asset = ${q(site).property('themeFaviconPng') || q(site).property('themeFaviconAppleTouch')}
+        size = 32
+        node = ${site}
+    }
+}
+
+apple-touch-icon-png = Litefyr.Style:Favicon.Case {
+    contentType = 'image/png'
+    content = Litefyr.Style:Favicon.Content {
+        type = 'png'
+        asset = ${q(site).property('themeFaviconAppleTouch') || q(site).property('themeFaviconPng')}
+        size = 180
+        node = ${site}
+    }
+}
