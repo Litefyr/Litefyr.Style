@@ -4,6 +4,7 @@ namespace Litefyr\Style;
 
 use Litefyr\Style\Service\CssService;
 use Litefyr\Style\Service\CodePenService;
+use Litefyr\Style\Service\FaviconService;
 use Neos\ContentRepository\Domain\Model\Node;
 use Neos\ContentRepository\Domain\Model\Workspace;
 use Neos\Flow\Core\Bootstrap;
@@ -21,5 +22,6 @@ class Package extends BasePackage
         $dispatcher->connect(Node::class, 'nodePropertyChanged', CssService::class, 'update');
 
         $dispatcher->connect(Workspace::class, 'afterNodePublishing', CodePenService::class, 'afterNodePublishing');
+        $dispatcher->connect(Workspace::class, 'afterNodePublishing', FaviconService::class, 'afterNodePublishing');
     }
 }

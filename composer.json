@@ -4,6 +4,7 @@
     "type": "neos-litefyr",
     "license": "GPL-3.0-or-later",
     "require": {
+        "ext-gd": "*",
         "carbon/colorpicker-oklch" : "^0.1.4",
         "carbon/tailwindcolors": "^0.1.6",
         "carbon/codepen": "^0.2.11",

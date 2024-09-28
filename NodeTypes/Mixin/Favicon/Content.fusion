@@ -1,0 +1,15 @@
+prototype(Litefyr.Style:Favicon.Content) {
+    @class = 'Litefyr\\Style\\FusionObjects\\FaviconImplementation'
+
+    /// 'ico'|'png'
+    type = 'ico'
+
+    /// Neos\Media\Domain\Model\AssetInterface
+    asset = null
+
+    /// integer
+    size = 32
+
+    /// Neos\ContentRepository\Domain\Projection\Content\TraversableNodeInterface
+    node = ${site}
+}
