@@ -2,16 +2,15 @@
 
 namespace Litefyr\Style\Service;
 
-use FilesystemIterator;
-use GdImage;
 use Neos\ContentRepository\Domain\Model\NodeInterface;
 use Neos\ContentRepository\Domain\Model\Workspace;
 use Neos\Flow\Annotations as Flow;
-use Neos\Flow\Mvc\ActionRequest;
 use Neos\Media\Domain\Model\AssetInterface;
+use Neos\Media\Domain\Model\ImageInterface;
 use Neos\Media\Domain\Model\ThumbnailConfiguration;
-use Neos\Media\Domain\Service\AssetService;
+use Neos\Media\Domain\Service\ThumbnailService;
 use Neos\Utility\Files;
+use FilesystemIterator;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use SplFileInfo;
@@ -23,7 +22,7 @@ class FaviconService
     protected string $temporaryDirectory = '';
 
     #[Flow\Inject]
-    protected AssetService $assetService;
+    protected ThumbnailService $thumbnailService;
 
     public function initializeObject(): void
     {
@@ -42,21 +41,10 @@ class FaviconService
         return $content;
     }
 
-    public function createFaviconFile(
-        string $nodeIdentifier,
-        AssetInterface $asset,
-        int $size,
-        string $type,
-        ActionRequest $request
-    ): ?string {
+    public function createFaviconFile(string $nodeIdentifier, AssetInterface $asset, int $size, string $type): ?string
+    {
         $filename = $this->getFilename($nodeIdentifier, $size, $type);
-        $thumbnail = $this->getThumbnail($asset, $size, $request);
-
-        if ($type === 'png') {
-            $content = file_get_contents($thumbnail);
-        } else {
-            $content = $this->createIcoFile($thumbnail, $size);
-        }
+        $content = $this->getThumbnailContent($asset, $size, $type);
 
         if (!$content) {
             return null;
@@ -96,14 +84,32 @@ class FaviconService
         }
     }
 
-    protected function getThumbnail(AssetInterface $asset, int $size, ActionRequest $request): ?string
+    protected function getThumbnailContent(AssetInterface $asset, int $size, string $format): ?string
     {
-        $thumbnailConfiguration = new ThumbnailConfiguration($size, $size, $size, $size, true, true, true, 80, 'png');
-        $thumbnailData = $this->assetService->getThumbnailUriAndSizeForAsset($asset, $thumbnailConfiguration, $request);
-        if ($thumbnailData === null || !isset($thumbnailData['src'])) {
-            return null;
+        $thumbnailConfiguration = new ThumbnailConfiguration(
+            $size,
+            $size,
+            $size,
+            $size,
+            true,
+            true,
+            false,
+            80,
+            $format
+        );
+        $thumbnailImage = $this->thumbnailService->getThumbnail($asset, $thumbnailConfiguration);
+        if ($thumbnailImage instanceof ImageInterface) {
+            if ($stream = $thumbnailImage->getResource()->getStream()) {
+                if (is_resource($stream)) {
+                    if ($content = stream_get_contents($stream)) {
+                        if (is_string($content)) {
+                            return $content;
+                        }
+                    }
+                }
+            }
         }
-        return $thumbnailData['src'];
+        return null;
     }
 
     protected function getFilename(string $nodeIdentifier, int $size, string $type): string
@@ -132,44 +138,5 @@ class FaviconService
         if (!file_exists($this->temporaryDirectory)) {
             Files::createDirectoryRecursively($this->temporaryDirectory);
         }
-    }
-
-    protected function createIcoFile(string $inputFile, int $size): string
-    {
-        $pngImage = imagecreatefrompng($inputFile);
-
-        if ($pngImage === false) {
-            return '';
-        }
-
-        $content = $this->imageico($pngImage, $size);
-
-        imagedestroy($pngImage);
-
-        return $content;
-    }
-
-    /**
-     * Create ICO file content from PNG image
-     *
-     * @param resource|GdImage $image
-     * @param int $size
-     * @return string|false
-     */
-    protected function imageico($image, $size)
-    {
-        $quality = 9;
-        $filters = PNG_NO_FILTER;
-        // Collect PNG data.
-        ob_start();
-        imagesavealpha($image, true);
-        imagepng($image, null, $quality, $filters);
-        $pngData = ob_get_clean();
-        // Write ICO header, image entry and PNG data.
-        echo pack('v3', 0, 1, 1);
-        echo pack('C4v2V2', $size, $size, 0, 0, 1, 32, strlen($pngData), 22);
-        echo $pngData;
-
-        return ob_get_clean();
     }
 }

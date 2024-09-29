@@ -7,16 +7,12 @@ use Neos\ContentRepository\Domain\Projection\Content\TraversableNodeInterface;
 use Neos\Flow\Annotations as Flow;
 use Neos\Fusion\FusionObjects\AbstractFusionObject;
 use Neos\Media\Domain\Model\AssetInterface;
-use Neos\Media\Domain\Service\AssetService;
 
 /**
  * Renderer Favicon Fusion Object
  */
 class FaviconImplementation extends AbstractFusionObject
 {
-    #[Flow\Inject]
-    protected AssetService $assetService;
-
     #[Flow\Inject]
     protected FaviconService $faviconService;
 
@@ -42,13 +38,13 @@ class FaviconImplementation extends AbstractFusionObject
 
     /**
      *
-     * @return string
+     * @return string|null
      * @throws \Exception
      */
-    public function evaluate(): string
+    public function evaluate(): ?string
     {
         $type = $this->getType();
-        $size = $this->getSize($type);
+        $size = $this->getSize();
         $node = $this->getNode();
         $nodeIdentifier = $node->getNodeAggregateIdentifier()->__toString();
 
@@ -60,11 +56,9 @@ class FaviconImplementation extends AbstractFusionObject
 
         $asset = $this->getAsset();
         if (!$asset) {
-            return '';
+            return null;
         }
 
-        $request = $this->getRuntime()->getControllerContext()->getRequest();
-
-        return $this->faviconService->createFaviconFile($nodeIdentifier, $asset, $size, $type, $request);
+        return $this->faviconService->createFaviconFile($nodeIdentifier, $asset, $size, $type);
     }
 }
