@@ -33,7 +33,7 @@ prototype(Litefyr.Style:Favicon.SVG) < prototype(Neos.Fusion:Component) {
     }
 
     @if.set = ${this.data && this.data.svg}
-    renderer = ${Presentation.sanitizeSVG(private.svg)}
+    renderer = ${Presentation.sanitizeSVG(private.svg, false)}
 }
 
 prototype(Litefyr.Style:Favicon.SVG.CodePen) < prototype(Litefyr.Style:Favicon.SVG) {

@@ -12,7 +12,9 @@
                 <target>Vektor (svg)</target>
             </trans-unit>
             <trans-unit id="properties.themeFaviconSvg.ui.help.message" xml:space="preserve">
-                <source>You can create icons using [favicon.io](https://favicon.io) or [realfavicongenerator.net](https://realfavicongenerator.net/svg-favicon/).
+                <source>Define size without `width` and `height` but with `viewBox`. [More information](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox)
+
+You can create icons using [favicon.io](https://favicon.io) or [realfavicongenerator.net](https://realfavicongenerator.net/svg-favicon/).
 
 ### Dynamic color replacement
 
@@ -32,7 +34,9 @@ Following colors properties will be replaced with the hex color value from the c
 ### Additional articles
 
 [Building an adaptive favicon](https://web.dev/articles/building/an-adaptive-favicon)</source>
-                <target>Icons können mit [favicon.io](https://favicon.io) oder [realfavicongenerator.net](https://realfavicongenerator.net/svg-favicon/) erstellt werden.
+                <target>Die Größe ohne `width` und `height` sondern mit `viewBox` definieren. [Mehr Informationen](https://www.mediaevent.de/tutorial/svg-viewbox-koordinaten.html)
+
+Icons können mit [favicon.io](https://favicon.io) oder [realfavicongenerator.net](https://realfavicongenerator.net/svg-favicon/) erstellt werden.
 
 ### Dynamische Farbersetzung
 
