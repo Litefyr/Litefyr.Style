@@ -31,6 +31,8 @@
   properties:
     themeColorMeta:
       type: string
+      search:
+        indexing: false
     themeColorScheme:
       type: string
       defaultValue: light
@@ -276,6 +278,8 @@
     themeColorContrastThreshold:
       type: integer
       defaultValue: 65
+      search:
+        indexing: false
       ui:
         label: i18n
         reloadIfChanged: true
@@ -293,6 +297,8 @@
     themeColorContrastLightnessMin:
       type: integer
       defaultValue: 5
+      search:
+        indexing: false
       ui:
         label: i18n
         reloadIfChanged: true
@@ -310,6 +316,8 @@
     themeColorContrastLightnessMax:
       type: integer
       defaultValue: 95
+      search:
+        indexing: false
       ui:
         label: i18n
         reloadIfChanged: true

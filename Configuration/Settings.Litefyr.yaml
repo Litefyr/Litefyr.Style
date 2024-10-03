@@ -1,8 +1,9 @@
 Litefyr:
   Integration:
     flowCommandsOnStartup:
-      StyleCSS: style:css
-      StyleCodePen: style:codepen
+      Style:
+        - 'style:css'
+        - 'style:codepen'
   Style:
     codepenProperties:
       # Add here you cli command to execute after a codepen property is published to live

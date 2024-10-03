@@ -10,7 +10,7 @@
                 <source>Vector (svg)</source>
             </trans-unit>
             <trans-unit id="properties.themeFaviconSvg.ui.help.message" xml:space="preserve">
-                <source>Define size without `width` and `height` but with `viewBox`. [More information](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox)
+                <source>Define size without `width` and `height` but with `viewBox`. [More information](https://webdesign.tutsplus.com/svg-viewport-and-viewbox-for-beginners--cms-30844t)
 
 You can create icons using [favicon.io](https://favicon.io) or [realfavicongenerator.net](https://realfavicongenerator.net/svg-favicon/).
 

@@ -36,6 +36,8 @@
                 language: html
     themeFaviconPng:
       type: 'Neos\Media\Domain\Model\ImageInterface'
+      search:
+        indexing: false
       ui:
         label: i18n
         inspector:
@@ -54,6 +56,8 @@
                   height: 1
     themeFaviconAppleTouch:
       type: 'Neos\Media\Domain\Model\ImageInterface'
+      search:
+        indexing: false
       ui:
         label: i18n
         inspector:

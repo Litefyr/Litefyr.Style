@@ -15,6 +15,8 @@
     themeOpacityImageWithTextOverlay:
       type: integer
       defaultValue: 100
+      search:
+        indexing: false
       ui:
         label: i18n
         reloadIfChanged: true
