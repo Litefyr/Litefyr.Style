@@ -110,7 +110,7 @@ class CssService
         $node->setProperty('themeCSS', $CSS);
         $node->setProperty('themeCSSHash', substr(hash('sha256', $CSS), 0, 8));
         $node->setProperty('themeBackendCSS', $backendCSS);
-        $node->setProperty('colorThemeMeta', $colors['colorThemeMeta']);
+        $node->setProperty('themeColorMeta', $colors['colorThemeMeta']);
         $node->setProperty('themeHeaderMarkup', $markup);
 
         return $CSS;
