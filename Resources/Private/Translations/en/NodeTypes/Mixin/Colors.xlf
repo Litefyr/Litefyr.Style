@@ -49,7 +49,19 @@
                 <source>Minor accent color</source>
             </trans-unit>
             <trans-unit id="minor2" xml:space="preserve">
-                 <source>Third accent color</source>
+                <source>Third accent color</source>
+            </trans-unit>
+            <trans-unit id="default" xml:space="preserve">
+                <source>Default color</source>
+            </trans-unit>
+            <trans-unit id="inverted" xml:space="preserve">
+                <source>Invert default color</source>
+            </trans-unit>
+            <trans-unit id="gray" xml:space="preserve">
+                <source>Grayscale</source>
+            </trans-unit>
+            <trans-unit id="text" xml:space="preserve">
+                <source>Text color</source>
             </trans-unit>
             <trans-unit id="properties.themeColorContrastThreshold" xml:space="preserve">
                 <source>Threshold for contrast color</source>

@@ -74,14 +74,13 @@ class CssService
             'light' => '',
             'dark' => '',
             'onEnd' => '',
-            'backend' => '',
         ];
         foreach ([$fonts, $colors, $clipPath, $rounded, $divider, $logo, $shadow, $opacities] as $value) {
             if (isset($value['markup'])) {
                 $markup .= $value['markup'];
             }
             if (isset($value['CSS'])) {
-                foreach (['onStart', 'root', 'light', 'dark', 'onEnd', 'backend'] as $key) {
+                foreach (['onStart', 'root', 'light', 'dark', 'onEnd'] as $key) {
                     if (isset($value['CSS'][$key])) {
                         $cssObject[$key] .= $value['CSS'][$key];
                     }
@@ -104,12 +103,9 @@ class CssService
         }
         $CSS .= $cssObject['onEnd'];
 
-        $backendCSS = sprintf(':root{%s}', $cssObject['backend']);
-
         // Set properties
         $node->setProperty('themeCSS', $CSS);
         $node->setProperty('themeCSSHash', substr(hash('sha256', $CSS), 0, 8));
-        $node->setProperty('themeBackendCSS', $backendCSS);
         $node->setProperty('themeColorMeta', $colors['colorThemeMeta']);
         $node->setProperty('themeHeaderMarkup', $markup);
 

@@ -29,6 +29,14 @@
           tab: theme
           collapsed: true
   properties:
+    themeColorLightGray:
+      type: array
+      search:
+        indexing: false
+    themeColorDarkGray:
+      type: array
+      search:
+        indexing: false
     themeColorMeta:
       type: string
       search:
@@ -112,6 +120,7 @@
             allowEmpty: false
             showLuminance: true
             collapsed: true
+            contrastThreshold: 'ClientEval: node.properties.themeColorContrastThreshold / 100'
     themeColorLightMinor:
       options:
         preset: 'theme.color.optional'
@@ -129,6 +138,7 @@
             allowEmpty: false
             showLuminance: true
             collapsed: true
+            contrastThreshold: 'ClientEval: node.properties.themeColorContrastThreshold / 100'
     themeColorLightMinor2:
       options:
         preset: 'theme.color.optional'
@@ -143,9 +153,9 @@
           position: 130
           hidden: 'ClientEval: node.properties.themeColorScheme === "dark"'
           editorOptions:
-            allowEmpty: false
             showLuminance: true
             collapsed: true
+            contrastThreshold: 'ClientEval: node.properties.themeColorContrastThreshold / 100'
     themeColorLightHeader:
       options:
         preset: 'theme.color.optional'
@@ -162,6 +172,7 @@
           editorOptions:
             showLuminance: true
             collapsed: true
+            contrastThreshold: 'ClientEval: node.properties.themeColorContrastThreshold / 100'
     themeColorLightFooter:
       options:
         preset: 'theme.color.optional'
@@ -178,6 +189,7 @@
           editorOptions:
             showLuminance: true
             collapsed: true
+            contrastThreshold: 'ClientEval: node.properties.themeColorContrastThreshold / 100'
     themeColorDark:
       options:
         preset: 'Carbon.TailwindColors.backgroundAndForeground'
@@ -209,6 +221,7 @@
             allowEmpty: false
             showLuminance: true
             collapsed: true
+            contrastThreshold: 'ClientEval: node.properties.themeColorContrastThreshold / 100'
     themeColorDarkMinor:
       options:
         preset: 'theme.color.optional'
@@ -226,6 +239,7 @@
             allowEmpty: false
             showLuminance: true
             collapsed: true
+            contrastThreshold: 'ClientEval: node.properties.themeColorContrastThreshold / 100'
     themeColorDarkMinor2:
       options:
         preset: 'theme.color.optional'
@@ -240,9 +254,9 @@
           position: 130
           hidden: 'ClientEval: node.properties.themeColorScheme === "light"'
           editorOptions:
-            allowEmpty: false
             showLuminance: true
             collapsed: true
+            contrastThreshold: 'ClientEval: node.properties.themeColorContrastThreshold / 100'
     themeColorDarkHeader:
       options:
         preset: 'theme.color.optional'
@@ -259,6 +273,7 @@
           editorOptions:
             showLuminance: true
             collapsed: true
+            contrastThreshold: 'ClientEval: node.properties.themeColorContrastThreshold / 100'
     themeColorDarkFooter:
       options:
         preset: 'theme.color.optional'
@@ -275,6 +290,7 @@
           editorOptions:
             showLuminance: true
             collapsed: true
+            contrastThreshold: 'ClientEval: node.properties.themeColorContrastThreshold / 100'
     themeColorContrastThreshold:
       type: integer
       defaultValue: 65

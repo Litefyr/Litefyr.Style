@@ -67,6 +67,22 @@
                 <source>Third accent color</source>
                 <target>Dritte Akzentfarbe</target>
             </trans-unit>
+            <trans-unit id="default" xml:space="preserve">
+                <source>Default color</source>
+                <target>Standardfarbe</target>
+            </trans-unit>
+            <trans-unit id="inverted" xml:space="preserve">
+                <source>Invert default color</source>
+                <target>Standardfarbe invertieren</target>
+            </trans-unit>
+            <trans-unit id="gray" xml:space="preserve">
+                <source>Grayscale</source>
+                <target>Graustufe</target>
+            </trans-unit>
+            <trans-unit id="text" xml:space="preserve">
+                <source>Text color</source>
+                <target>Textfarbe</target>
+            </trans-unit>
             <trans-unit id="properties.themeColorContrastThreshold" xml:space="preserve">
                 <source>Threshold for contrast color</source>
                 <target>Schwellenwert für Kontrastfarbe</target>

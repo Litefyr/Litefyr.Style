@@ -54,30 +54,29 @@
       search:
         indexing: false
       ui:
-        label: 'Litefyr.Integration:NodeTypes.Colors:color.default'
+        label: 'Litefyr.Style:NodeTypes.Mixin.Colors:default'
         reloadPageIfChanged: true
         inspector:
           position: 30
           group: themeScroll
-          editor: 'Carbon.ColorValues/Editor'
+          editor: 'Beromir.ToggleEditor/Editor'
           editorOptions:
             allowEmpty: false
-            values:
+            maximalColumns: 5
+            layout: 'color'
+            dataSourceIdentifier: litefyr-style-color
+            dataSourceAdditionalData:
               main:
-                label: 'Litefyr.Integration:NodeTypes.Colors:color.main'
-                color: 'var(--color-theme-main)'
+                color: 'ClientEval: [node.properties.themeColorLightMain?.hex, node.properties.themeColorDarkMain?.hex]'
               minor:
-                label: 'Litefyr.Integration:NodeTypes.Colors:color.minor'
-                color: 'var(--color-theme-minor)'
+                color: 'ClientEval: node.properties.themeColorScheme === "dark" ? node.properties.themeColorDarkMinor?.hex : node.properties.themeColorLightMinor?.hex'
               minor2:
-                label: 'Litefyr.Integration:NodeTypes.Colors:color.minor2'
-                color: 'var(--color-theme-minor2)'
+                color: 'ClientEval: node.properties.themeColorScheme === "dark" ? node.properties.themeColorDarkMinor2?.hex : node.properties.themeColorLightMinor2?.hex'
               gray:
-                label: 'Litefyr.Integration:NodeTypes.Colors:color.gray'
-                color: 'var(--color-theme-gray)'
+                color: 'ClientEval: [node.properties.themeColorLightGray?.hex, node.properties.themeColorDarkGray?.hex]'
               default:
-                label: 'Litefyr.Integration:NodeTypes.Colors:color.text'
-                color: 'var(--color-theme-front)'
+                label: 'Litefyr.Style:NodeTypes.Mixin.Colors:text'
+                color: 'ClientEval: [node.properties.themeColorLight?.hex?.[0], node.properties.themeColorDark?.hex?.[0]]'
     themeScrollIndicatorSize:
       type: integer
       defaultValue: 34

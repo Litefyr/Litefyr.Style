@@ -170,6 +170,9 @@ class ColorService
             $gray = $this->convert->toOkLch($isLight ? '#DDDDDD' : '#222222');
         }
 
+        // Save gray value
+        $node->setProperty(sprintf('themeColor%sGray', $scheme), $gray);
+
         return [
             'back' => $this->convert->toOkLch($backHex),
             'front' => $this->convert->toOkLch($frontHex),
@@ -205,7 +208,7 @@ class ColorService
      * @param SchemeArray|null $light scheme config
      * @param SchemeArray|null $dark scheme config
      * @param array{light?:string,dark?:string}|null $colorThemeMeta
-     * @return array{onStart:string,root:string,light:string,dark:string,backend:string}
+     * @return array{onStart:string,root:string,light:string,dark:string}
      */
     protected function generateCSSVariables(string $scheme, ?array $light, ?array $dark, ?array $colorThemeMeta): array
     {
@@ -232,29 +235,7 @@ class ColorService
             'root' => $rootCSS,
             'light' => $oneScheme ? '' : $lightCSS,
             'dark' => $oneScheme ? '' : $darkCSS,
-            'backend' => $this->generateBackendCSSVariables($light ?? $dark),
         ];
-    }
-
-    /**
-     * @param SchemeArray|null $scheme
-     * @return string
-     */
-    protected function generateBackendCSSVariables(?array $scheme): string
-    {
-        if (!$scheme) {
-            return '';
-        }
-
-        $CSS = '';
-        foreach ($scheme as $key => $value) {
-            $color = $value['oklch'] ?? null;
-            if ($color) {
-                $CSS .= sprintf('--color-theme-%s:%s;', $key, $color);
-            }
-        }
-
-        return $CSS;
     }
 
     /**

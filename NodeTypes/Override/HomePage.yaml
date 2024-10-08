@@ -9,10 +9,6 @@
     'Litefyr.Style:Mixin.ScollIndicator': true
     'Litefyr.Style:Mixin.Extensions': true
   properties:
-    themeBackendCSS:
-      type: string
-      search:
-        indexing: false
     themeCSS:
       type: string
       search:
