@@ -15,6 +15,7 @@ const defaultOptions = {
     allowEmpty: false,
     disabled: false,
     roundedButton: 0,
+    colorContrastThreshold: 65,
     colors: [],
     mainFont: {},
 };

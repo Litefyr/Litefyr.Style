@@ -39,7 +39,7 @@
         inspector:
           group: themeClipPath
           position: 20
-          hidden: 'ClientEval: node.properties.themeClipPath.top ? false : true'
+          hidden: 'ClientEval: node.properties.themeClipPath?.top ? false : true'
     themeClipPathInContent:
       type: boolean
       search:
@@ -51,7 +51,7 @@
         inspector:
           group: themeClipPath
           position: 30
-          hidden: 'ClientEval: node.properties.themeClipPath.top ? false : true'
+          hidden: 'ClientEval: node.properties.themeClipPath?.top ? false : true'
     themeClipPathAboveFooter:
       type: boolean
       search:
@@ -63,4 +63,4 @@
         inspector:
           group: themeClipPath
           position: 40
-          hidden: 'ClientEval: node.properties.themeClipPath.top ? false : true'
+          hidden: 'ClientEval: node.properties.themeClipPath?.top ? false : true'

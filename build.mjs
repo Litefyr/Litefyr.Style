@@ -26,10 +26,6 @@ const options = {
             targets: {
                 chrome: 80, // aligns somewhat to es2020
             },
-            cssModules: {
-                dashedIdents: true,
-                pattern: "litefyr-style-[hash]-[local]",
-            },
         }),
     ],
 };

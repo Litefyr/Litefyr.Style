@@ -10,7 +10,7 @@ const neosifier = neos((globalRegistry) => ({
 
 export default neosifier(PreviewText);
 
-function PreviewText({ text, style, type, colors }) {
+function PreviewText({ text, style, type, colors, colorContrastThreshold }) {
     const blockQuoteElements = parseTags(text, "blockquote").map(({ tagName, text }) => ({
         tagName,
         text: parseTags(text, "strong"),
@@ -19,6 +19,14 @@ function PreviewText({ text, style, type, colors }) {
     const isButton = type === "button";
 
     colors = colors.filter((color) => !!color);
+
+    function getColorFromBackground(background) {
+        let luminance = parseFloat(background.split("(")[1].split(" ")[0]);
+        if (luminance < 1) {
+            luminance *= 100;
+        }
+        return luminance > colorContrastThreshold ? "black" : "white";
+    }
 
     return (
         <Fragment>
@@ -29,7 +37,13 @@ function PreviewText({ text, style, type, colors }) {
                             key={index}
                             type="button"
                             data-theme="main"
-                            style={{ ...style.normal, cursor: "auto", backgroundColor: color, color: "white" }}
+                            style={{
+                                ...style.normal,
+                                cursor: "auto",
+                                backgroundColor: color,
+                                color: getColorFromBackground(color),
+                                "--fluid-bp": "1px",
+                            }}
                             class={clsx(button.btn, button["btn--inline"])}
                         >
                             {text}

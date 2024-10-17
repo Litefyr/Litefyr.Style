@@ -73,3 +73,4 @@
             roundedButton: 'ClientEval: node.properties.themeRoundedButton'
             colors: 'ClientEval: node.properties.themeColorScheme == "dark" ? [node.properties.themeColorDarkMain?.oklch, node.properties.themeColorDarkMinor?.oklch, node.properties.themeColorDarkMinor2?.oklch] : [node.properties.themeColorLightMain?.oklch, node.properties.themeColorLightMinor?.oklch, node.properties.themeColorLightMinor2?.oklch]'
             mainFont: 'ClientEval: node.properties.themeFontMain'
+            colorContrastThreshold: 'ClientEval: node.properties.themeColorContrastThreshold || 65'

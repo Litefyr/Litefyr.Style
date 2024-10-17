@@ -91,7 +91,13 @@ export default function SecondaryFont({ onChange, value, options, i18nRegistry }
                 i18nRegistry={i18nRegistry}
             />
             <div className={clsx(previewClassName, style[preview + "Output"], style.fontOutput)}>
-                <PreviewText text={previewText} style={state.style} type={options.type} colors={options?.colors} />
+                <PreviewText
+                    text={previewText}
+                    style={state.style}
+                    type={options.type}
+                    colors={options?.colors}
+                    colorContrastThreshold={options?.colorContrastThreshold}
+                />
             </div>
         </div>
     );

@@ -74,8 +74,7 @@
                 color: 'ClientEval: node.properties.themeColorScheme === "dark" ? node.properties.themeColorDarkMinor2?.hex : node.properties.themeColorLightMinor2?.hex'
               gray:
                 color: 'ClientEval: [node.properties.themeColorLightGray?.hex, node.properties.themeColorDarkGray?.hex]'
-              default:
-                label: 'Litefyr.Style:NodeTypes.Mixin.Colors:text'
+              text:
                 color: 'ClientEval: [node.properties.themeColorLight?.hex?.[0], node.properties.themeColorDark?.hex?.[0]]'
     themeScrollIndicatorSize:
       type: integer
