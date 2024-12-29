@@ -7,6 +7,10 @@
                 <source>Navigation</source>
                 <target>Navigation</target>
             </trans-unit>
+            <trans-unit id="properties.themeHeaderFullWidth" xml:space="preserve">
+                <source>Navigation across the entire width</source>
+                <target>Navigation über die ganze Breite</target>
+            </trans-unit>
             <trans-unit id="properties.themeHeaderGap" xml:space="preserve">
                 <source>Distance between navigation points</source>
                 <target>Abstand zwischen Navigationspunkten</target>

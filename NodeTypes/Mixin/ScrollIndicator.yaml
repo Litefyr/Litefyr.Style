@@ -105,8 +105,8 @@
           group: themeScroll
           position: 50
     themeScrollIndicatorRounded:
-      type: integer
-      defaultValue: 26
+      type: string
+      defaultValue: '9999px'
       search:
         indexing: false
       ui:
@@ -116,11 +116,11 @@
           group: themeScroll
           position: 60
           hidden: 'ClientEval: node.properties.themeScrollIndicatorBackground !== true'
-          editor: 'Carbon.RangeEditor/Editor'
+          editor: 'Carbon.Editor.Styling/BorderRadius'
           editorOptions:
-            minLabel: 'Litefyr.Style:NodeTypes.Mixin.ScollIndicator:properties.themeScrollIndicatorRounded.minLabel'
-            maxLabel: 'Litefyr.Style:NodeTypes.Mixin.ScollIndicator:properties.themeScrollIndicatorRounded.maxLabel'
-            min: 0
-            max: 26
-            step: 2
-            unit: px
+            previewAspectRatio: 1
+            allowFullRounded: true
+            allowMultiple: true
+            allowOrganic: true
+            convertPxToRem: false
+            preview: true

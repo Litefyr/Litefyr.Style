@@ -16,7 +16,7 @@ Litefyr:
     default:
       scheme: zinc
       mainColor: '#65a30d'
-      rounded: 0
+      rounded: '0'
     shadows:
       # https://tailwindcss.com/docs/box-shadow
       # Colored shadows are not supported like this

@@ -7,6 +7,10 @@
                 <source>Footer</source>
                 <target>Fußzeile</target>
             </trans-unit>
+            <trans-unit id="properties.themeFooterFullWidth" xml:space="preserve">
+                <source>Content across the entire width</source>
+                <target>Inhalt über die ganze Breite</target>
+            </trans-unit>
             <trans-unit id="properties.themeFooterSpacing" xml:space="preserve">
                 <source>Margin of the navigation</source>
                 <target>Abstand der Navigation</target>

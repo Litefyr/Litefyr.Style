@@ -6,6 +6,9 @@
             <trans-unit id="groups.themeFooter" xml:space="preserve">
                 <source>Footer</source>
             </trans-unit>
+            <trans-unit id="properties.themeFooterFullWidth" xml:space="preserve">
+                <source>Content across the entire width</source>
+            </trans-unit>
             <trans-unit id="properties.themeFooterSpacing" xml:space="preserve">
                 <source>Margin of the navigation</source>
             </trans-unit>

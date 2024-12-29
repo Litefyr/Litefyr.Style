@@ -1,5 +1,0 @@
-prototype(Litefyr.Integration:Document.AbstractPage) {
-    prototype(Litefyr.Presentation:Atom.Clippath.Component) {
-        @if.hasClipPath = ${q(site).property('themeClipPathEnabled') && q(site).property('themeClipPathInContent')}
-    }
-}

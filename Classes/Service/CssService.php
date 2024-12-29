@@ -2,17 +2,19 @@
 
 namespace Litefyr\Style\Service;
 
-use Neos\Flow\Annotations as Flow;
-use Neos\Fusion\Core\Cache\ContentCache;
-use Neos\ContentRepository\Domain\Model\NodeInterface;
-use Litefyr\Style\Service\FontService;
 use Litefyr\Style\Service\ClipPathService;
-use Litefyr\Style\Service\DividerService;
 use Litefyr\Style\Service\ColorService;
+use Litefyr\Style\Service\ContentService;
+use Litefyr\Style\Service\DividerService;
+use Litefyr\Style\Service\FontService;
+use Litefyr\Style\Service\FooterService;
 use Litefyr\Style\Service\LogoService;
 use Litefyr\Style\Service\OpacityService;
 use Litefyr\Style\Service\RoundedService;
 use Litefyr\Style\Service\ShadowService;
+use Neos\ContentRepository\Domain\Model\NodeInterface;
+use Neos\Flow\Annotations as Flow;
+use Neos\Fusion\Core\Cache\ContentCache;
 
 #[Flow\Scope('singleton')]
 class CssService
@@ -28,6 +30,12 @@ class CssService
 
     #[Flow\Inject]
     protected ColorService $colorService;
+
+    #[Flow\Inject]
+    protected ContentService $contentService;
+
+    #[Flow\Inject]
+    protected FooterService $footerService;
 
     #[Flow\Inject]
     protected RoundedService $roundedService;
@@ -59,6 +67,8 @@ class CssService
         // Get values from the site
         $colors = $this->colorService->getColors($node);
         $fonts = $this->fontService->getFonts($node);
+        $content = $this->contentService->getContent($node);
+        $footer = $this->footerService->getFooter($node);
         $clipPath = $this->clipPathService->getClipPath($node);
         $rounded = $this->roundedService->getRoudedValues($node);
         $divider = $this->dividerService->getDivider($node);
@@ -75,7 +85,10 @@ class CssService
             'dark' => '',
             'onEnd' => '',
         ];
-        foreach ([$fonts, $colors, $clipPath, $rounded, $divider, $logo, $shadow, $opacities] as $value) {
+        foreach (
+            [$fonts, $content, $footer, $colors, $clipPath, $rounded, $divider, $logo, $shadow, $opacities]
+            as $value
+        ) {
             if (isset($value['markup'])) {
                 $markup .= $value['markup'];
             }
@@ -178,6 +191,8 @@ class CssService
             'themeFontHeadline',
             'themeFontQuote',
             'themeFontButton',
+            'themeFontHeader',
+            'themeFontFooter',
             'themeFontMain',
 
             // ClipPath
@@ -185,6 +200,13 @@ class CssService
             'themeClipPathInContent',
             'themeClipPathBelowNavigation',
             'themeClipPathAboveFooter',
+
+            // Content
+            'themeContentSpacing',
+            'themeContentHeadlineAlignment',
+
+            // Footer
+            'themeFooterSpacing',
 
             // Logo
             'themeLogoSize',

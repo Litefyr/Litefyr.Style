@@ -6,6 +6,9 @@
             <trans-unit id="groups.themeNavigation" xml:space="preserve">
                 <source>Navigation</source>
             </trans-unit>
+            <trans-unit id="properties.themeHeaderFullWidth" xml:space="preserve">
+                <source>Navigation across the entire width</source>
+            </trans-unit>
             <trans-unit id="properties.themeHeaderGap" xml:space="preserve">
                 <source>Distance between navigation points</source>
             </trans-unit>

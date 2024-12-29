@@ -14,63 +14,35 @@ class RoundedService
     const FULL_ROUND = '9999px';
 
     /**
-     * Return roun
+     * Return rounded values for different elements.
      *
      * @param NodeInterface $node
-     * @return array{rounded: array{box: string, image: string, button: string, scroller: string}, CSS: array{root: string}}
+     * @return array
      */
     public function getRoudedValues(NodeInterface $node): array
     {
         $rounded = [
-            'box' => $this->getValue($node, 'themeRoundedBox'),
-            'image' => $this->getValue($node, 'themeRoundedImage'),
-            'button' => $this->getValue($node, 'themeRoundedButton'),
-            'input' => $this->getValue($node, 'themeRoundedInput', false),
-            'scroller' => $this->getValue($node, 'themeScrollIndicatorRounded'),
+            'box' => $node->getProperty('themeRoundedBox') ?? $this->default,
+            'image' => $node->getProperty('themeRoundedImage') ?? $this->default,
+            'button' => $node->getProperty('themeRoundedButton') ?? $this->default,
+            'input' => $node->getProperty('themeRoundedInput') ?? $this->default,
+            'scroller' => $node->getProperty('themeScrollIndicatorRounded') ?? $this->default,
         ];
-        $CSS = '';
+
+        $root = '';
+
         foreach ($rounded as $key => $value) {
-            $CSS .= $this->getCSSProperty($key, $value);
+            $root .= sprintf('--rounded-%s:%s;', $key, $value);
+            if ($key == 'image') {
+                $roundImage = $value == self::FULL_ROUND || str_contains($value, ' / ');
+                $node->setProperty('themeRoundImage', $roundImage);
+            }
         }
+
         return [
-            'rounded' => $rounded,
             'CSS' => [
-                'root' => $CSS,
+                'root' => $root,
             ],
         ];
-    }
-
-    /**
-     * Get value from node, fallback to default. Check if the value is full rounded or not, and return string value
-     *
-     * @param NodeInterface $node
-     * @param string $property
-     * @return string
-     */
-    protected function getValue(NodeInterface $node, string $property, bool $canBeFull = true): string
-    {
-        $value = $node->getProperty($property) ?? $this->default;
-
-        // The value 26 means full rounded
-        if ($canBeFull && $value >= 26) {
-            return self::FULL_ROUND;
-        }
-        return sprintf('%srem', $value / 16);
-    }
-
-    /**
-     * Create CSS property from key and value. If the value is full round, add an additional property with full round-$key
-     *
-     * @param string $key
-     * @param string $value
-     * @return string
-     */
-    protected function getCSSProperty(string $key, string $value): string
-    {
-        $CSS = sprintf('--rounded-%s:%s;', $key, $value);
-        if ($value == self::FULL_ROUND) {
-            return sprintf('--round-%s:1;%s', $key, $CSS);
-        }
-        return $CSS;
     }
 }

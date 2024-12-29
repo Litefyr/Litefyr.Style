@@ -7,14 +7,14 @@
       groups:
         themeRounded:
           label: i18n
-          position: 24
+          position: 25
           icon: square
           tab: theme
           collapsed: true
   properties:
     themeRoundedBox:
-      type: integer
-      defaultValue: 0
+      type: string
+      defaultValue: '0'
       search:
         indexing: false
       ui:
@@ -23,16 +23,17 @@
         inspector:
           group: themeRounded
           position: 10
-          editor: 'Carbon.RangeEditor/Editor'
+          editor: 'Carbon.Editor.Styling/BorderRadius'
           editorOptions:
-            minLabel: 'Litefyr.Style:NodeTypes.Mixin.Visuals.Rounded:square'
-            min: 0
-            max: 24
-            step: 2
-            unit: px
+            allowPercentage: true
+            allowMultiple: true
+            convertPxToRem: true
+    themeRoundImage:
+      type: boolean
+      defaultValue: false
     themeRoundedImage:
-      type: integer
-      defaultValue: 0
+      type: string
+      defaultValue: '0'
       search:
         indexing: false
       ui:
@@ -41,17 +42,16 @@
         inspector:
           group: themeRounded
           position: 20
-          editor: 'Carbon.RangeEditor/Editor'
+          editor: 'Carbon.Editor.Styling/BorderRadius'
           editorOptions:
-            minLabel: 'Litefyr.Style:NodeTypes.Mixin.Visuals.Rounded:square'
-            maxLabel: 'Litefyr.Style:NodeTypes.Mixin.Visuals.Rounded:rounded'
-            min: 0
-            max: 26
-            step: 2
-            unit: px
+            allowFullRounded: true
+            allowPercentage: true
+            allowMultiple: true
+            allowOrganic: true
+            convertPxToRem: true
     themeRoundedButton:
-      type: integer
-      defaultValue: 0
+      type: string
+      defaultValue: '0'
       search:
         indexing: false
       ui:
@@ -60,17 +60,15 @@
         inspector:
           group: themeRounded
           position: 30
-          editor: 'Carbon.RangeEditor/Editor'
+          editor: 'Carbon.Editor.Styling/BorderRadius'
           editorOptions:
-            minLabel: 'Litefyr.Style:NodeTypes.Mixin.Visuals.Rounded:square'
-            maxLabel: 'Litefyr.Style:NodeTypes.Mixin.Visuals.Rounded:rounded'
-            min: 0
-            max: 26
-            step: 2
-            unit: px
+            allowPercentage: true
+            allowMultiple: true
+            previewAspectRatio: 6
+            convertPxToRem: true
     themeRoundedInput:
-      type: integer
-      defaultValue: 0
+      type: string
+      defaultValue: '0'
       search:
         indexing: false
       ui:
@@ -79,10 +77,9 @@
         inspector:
           group: themeRounded
           position: 40
-          editor: 'Carbon.RangeEditor/Editor'
+          editor: 'Carbon.Editor.Styling/BorderRadius'
           editorOptions:
-            minLabel: 'Litefyr.Style:NodeTypes.Mixin.Visuals.Rounded:square'
-            min: 0
-            max: 30
-            step: 2
-            unit: px
+            allowPercentage: true
+            allowMultiple: true
+            previewAspectRatio: 6
+            convertPxToRem: true

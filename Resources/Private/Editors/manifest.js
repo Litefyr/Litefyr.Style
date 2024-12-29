@@ -1,26 +1,30 @@
 import manifest from "@neos-project/neos-ui-extensibility";
+import React, { Suspense, lazy } from "react";
+import LoadingAnimation from "carbon-neos-loadinganimation/LoadingWithClassNames";
 
-import { ClipPath, ClipPathWrap } from "./ClipPath";
-import { Font, FontWrap } from "./Font";
+const editors = {
+    Font: () => import("./Font"),
+    ClipPath: () => import("./ClipPath"),
+};
+
+function generateLazyEditor(name) {
+    const LazyEditor = lazy(editors[name]);
+    return (props) => (
+        <Suspense fallback={<LoadingAnimation isLoading={true} />}>
+            <LazyEditor {...props} />
+        </Suspense>
+    );
+}
+
+const keys = Object.keys(editors);
+const loaded = keys.map((key) => generateLazyEditor(key));
 
 manifest("Litefyr.Style:Editors", {}, (globalRegistry) => {
-    const inspectorRegistry = globalRegistry.get("inspector");
-    const editorsRegistry = inspectorRegistry.get("editors");
-    const secondaryEditorsRegistry = inspectorRegistry.get("secondaryEditors");
+    const editorsRegistry = globalRegistry.get("inspector").get("editors");
 
-    editorsRegistry.set("Litefyr.Style/ClipPathEditor", {
-        component: ClipPath,
-    });
-
-    secondaryEditorsRegistry.set("Litefyr.Style/ClipPathEditorWrap", {
-        component: ClipPathWrap,
-    });
-
-    editorsRegistry.set("Litefyr.Style/FontEditor", {
-        component: Font,
-    });
-
-    secondaryEditorsRegistry.set("Litefyr.Style/FontEditorWrap", {
-        component: FontWrap,
+    keys.forEach((key, index) => {
+        editorsRegistry.set(`Litefyr.Style/${key}Editor`, {
+            component: loaded[index],
+        });
     });
 });

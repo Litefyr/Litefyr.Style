@@ -10,22 +10,22 @@
           position: 10
           icon: paint-roller
           tab: theme
-        themeColorsLight:
+        themeColorContrast:
           label: i18n
           position: 11
+          icon: eye
+          tab: theme
+          collapsed: true
+        themeColorsLight:
+          label: i18n
+          position: 12
           icon: sun
           tab: theme
           collapsed: true
         themeColorsDark:
           label: i18n
-          position: 12
-          icon: moon
-          tab: theme
-          collapsed: true
-        themeColorContrast:
-          label: i18n
           position: 13
-          icon: eye
+          icon: moon
           tab: theme
           collapsed: true
   properties:
@@ -184,7 +184,7 @@
         reloadPageIfChanged: true
         inspector:
           group: themeColorsLight
-          position: 210
+          position: 300
           hidden: 'ClientEval: node.properties.themeColorScheme === "dark"'
           editorOptions:
             showLuminance: true
@@ -285,7 +285,7 @@
         reloadPageIfChanged: true
         inspector:
           group: themeColorsDark
-          position: 210
+          position: 300
           hidden: 'ClientEval: node.properties.themeColorScheme === "light"'
           editorOptions:
             showLuminance: true

@@ -7,7 +7,7 @@
       groups:
         themeShadows:
           label: i18n
-          position: 25
+          position: 26
           icon: adjust
           tab: theme
           collapsed: true

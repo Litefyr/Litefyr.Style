@@ -1,0 +1,19 @@
+'Litefyr.Style:Mixin.EnableClipPath':
+  abstract: true
+  superTypes:
+    'Litefyr.Integration:Mixin.LookGroup': true
+  properties:
+    enableClipPath:
+      type: array
+      search:
+        indexing: false
+      ui:
+        reloadIfChanged: true
+        inspector:
+          group: look
+          editor: Beromir.ToggleEditor/Editor
+          hidden: 'ClientEval: !!(node.parent.match(/\/node-[a-zA-Z0-9]*@/)) || !!node.properties.enableText || !(node.properties.breakout=="full")'
+          editorOptions:
+            multiple: true
+            layout: list
+            dataSourceIdentifier: 'litefyr-style-has-clippath'

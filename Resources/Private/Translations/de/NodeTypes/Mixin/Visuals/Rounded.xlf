@@ -11,6 +11,10 @@
                 <source>Rounded</source>
                 <target>Abgerundet</target>
             </trans-unit>
+            <trans-unit id="round" xml:space="preserve">
+                <source>Round</source>
+                <target>Rund</target>
+            </trans-unit>
             <trans-unit id="groups.themeRounded" xml:space="preserve">
                 <source>Roundings</source>
                 <target>Abrundungen</target>

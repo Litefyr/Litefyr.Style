@@ -18,6 +18,12 @@
             <trans-unit id="properties.themeFontButton" xml:space="preserve">
                 <source>Buttons</source>
             </trans-unit>
+            <trans-unit id="properties.themeFontHeader" xml:space="preserve">
+                <source>Main Navigation</source>
+            </trans-unit>
+            <trans-unit id="properties.themeFontFooter" xml:space="preserve">
+                <source>Footer</source>
+            </trans-unit>
             <trans-unit id="editor.characterListing" xml:space="preserve">
                 <source>Character listing</source>
             </trans-unit>
@@ -57,7 +63,7 @@ Pass–Through  Spacing  Help  Tutorials  Release Notes
 iOS Android Apple macOS Microsoft Windows  Onboarding
 12.4 pt  64%  90px  45 kg   12 o'clock  $64 $7  €64 €64  £7 £7
 elk  best  mnm DCGQOMN
-Identity  identity (M) [M] {M} <M>
+Identity  identity (M) [M] {M} &lt;M&gt;
 The quick brown fox jumps over the lazy dog
 Efraim  User account  Text Tool  Team Library
 Monster  Lars, stina
@@ -67,7 +73,7 @@ Documentation  Xerox
 War, what is it good for? Absolutely nothing
 We found a fix to the ffi problem
 Irrational  fi  ffi  fl  ffl
-rsms@notion.se
+hello@litefyr.io
 0 1 2 3 4 5 6 7 8 9  7*4  7×4  3/4  7÷8  3° ℃ ℉
 #80A6F3  #FFFFFF  #000000
 in Drafts • 3 hours ago  Cheer Google Account
@@ -89,6 +95,72 @@ HAHBHCHDHEHFHGHHIHJHKHLHMHNHOHPHQHRHSHTHUHVHWHXHYHZH
 71 72 73 74 75 76 77 78 79 70
 81 82 83 84 85 86 87 88 89 80
 91 92 93 94 95 96 97 98 99 90]]></source>
+            </trans-unit>
+            <trans-unit id="editor.preview.header" xml:space="preserve">
+                <source><![CDATA[<ul><li><strong>Current link</strong></li><li>Link</li></ul>]]></source>
+            </trans-unit>
+            <trans-unit id="editor.preview.footer" xml:space="preserve">
+                <source><![CDATA[<ul><li><strong>Current link</strong></li><li>Link</li></ul><p>© 2024 Litefyr, All rights reserved.</p>]]></source>
+            </trans-unit>
+            <trans-unit id="editor.edit" xml:space="preserve">
+                <source>Edit</source>
+            </trans-unit>
+            <trans-unit id="editor.reset" xml:space="preserve">
+                <source>Reset</source>
+            </trans-unit>
+            <trans-unit id="editor.select" xml:space="preserve">
+                <source>Select font</source>
+            </trans-unit>
+            <trans-unit id="editor.variations.wght" xml:space="preserve">
+                <source>Weight</source>
+            </trans-unit>
+            <trans-unit id="editor.variations.wdth" xml:space="preserve">
+                <source>Width</source>
+            </trans-unit>
+            <trans-unit id="editor.variations.slnt" xml:space="preserve">
+                <source>Slant</source>
+            </trans-unit>
+            <trans-unit id="editor.variations.opsz" xml:space="preserve">
+                <source>Optical Size</source>
+            </trans-unit>
+            <trans-unit id="editor.variations.ital" xml:space="preserve">
+                <source>Italics</source>
+            </trans-unit>
+            <trans-unit id="editor.variations.ROND" xml:space="preserve">
+                <source>Roundness</source>
+            </trans-unit>
+            <trans-unit id="editor.variations.YTLC" xml:space="preserve">
+                <source>Lowercase Height</source>
+            </trans-unit>
+            <trans-unit id="editor.variations.YTDE" xml:space="preserve">
+                <source>Descender Depth</source>
+            </trans-unit>
+            <trans-unit id="editor.variations.YOPQ" xml:space="preserve">
+                <source>Thin Stroke</source>
+            </trans-unit>
+            <trans-unit id="editor.variations.HEXP" xml:space="preserve">
+                <source>Hyper expansion</source>
+            </trans-unit>
+            <trans-unit id="editor.variations.GRAD" xml:space="preserve">
+                <source>Stroke Thicknesses</source>
+            </trans-unit>
+            <trans-unit id="editor.feature.pnum" xml:space="preserve">
+                <source>Proportional Figures</source>
+            </trans-unit>
+            <trans-unit id="editor.feature.tnum" xml:space="preserve">
+                <source>Tabular Figures</source>
+            </trans-unit>
+            <trans-unit id="editor.feature.locl" xml:space="preserve">
+                <source>Localized Forms</source>
+            </trans-unit>
+            <trans-unit id="editor.feature.calt" xml:space="preserve">
+                <source>Contextual Alternates</source>
+            </trans-unit>
+            <trans-unit id="editor.feature.lnum" xml:space="preserve">
+                <source>Lining Figures</source>
+            </trans-unit>
+            <trans-unit id="editor.feature.cswh" xml:space="preserve">
+                <source>Contextual Swash</source>
             </trans-unit>
         </body>
     </file>

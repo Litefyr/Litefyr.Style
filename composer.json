@@ -8,12 +8,24 @@
         "carbon/colorpicker-oklch" : "^1.0",
         "carbon/tailwindcolors": "^0.1.6",
         "carbon/codepen": "^0.2.11",
-        "carbon/rangeeditor": "^0.1",
-        "garagist/contentboxfusionservice": "^2.2"
+        "carbon/rangeeditor": "^0.1.11",
+        "carbon/editor-styling": "^0.1.6",
+        "carbon/webfonts": "^0.1",
+        "garagist/contentboxfusionservice": "^2.2",
+        "litefyr/integration": "self.version"
     },
     "autoload": {
         "psr-4": {
             "Litefyr\\Style\\": "Classes"
+        }
+    },
+    "extra": {
+        "neos": {
+            "loading-order": {
+                "after": [
+                     "litefyr/integration"
+                ]
+            }
         }
     },
     "keywords": [

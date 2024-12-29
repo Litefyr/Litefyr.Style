@@ -9,6 +9,9 @@
             <trans-unit id="rounded" xml:space="preserve">
                 <source>Rounded</source>
             </trans-unit>
+            <trans-unit id="round" xml:space="preserve">
+                <source>Round</source>
+            </trans-unit>
             <trans-unit id="groups.themeRounded" xml:space="preserve">
                 <source>Roundings</source>
             </trans-unit>

@@ -1,0 +1,207 @@
+/* stylelint-disable custom-property-pattern */
+
+.primaryWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-Half);
+}
+
+.secondary {
+  display: grid;
+  gap: var(--spacing-GoldenUnit);
+  grid-template:
+    "topControls bottomControls ." auto
+    "globalControls bottomControls ." auto
+    "topOutput topOutput topOutput" auto
+    "bottomOutput bottomOutput bottomOutput" auto
+    "output output output" auto /
+    210px 210px minmax(0, 1fr);
+
+  & .curveOutputTop {
+    grid-area: topOutput;
+    align-self: center;
+  }
+
+  & .globalControls {
+    grid-area: globalControls;
+  }
+
+  & .curveControlsTop {
+    grid-area: topControls;
+  }
+
+  & .curveOutputBottom {
+    grid-area: bottomOutput;
+    align-self: center;
+  }
+
+  & .curveControlsBottom {
+    grid-area: bottomControls;
+  }
+
+  & .clipPathOutput {
+    grid-area: output;
+    align-self: center;
+    max-height: 800px;
+  }
+}
+
+@container (width >= 600px) {
+  .secondary {
+    gap: var(--spacing-GoldenUnit) var(--spacing-Full);
+    grid-template:
+      "topOutput globalControls" auto
+      "topOutput topControls" auto
+      "bottomOutput bottomControls" auto
+      "output ." auto /
+      minmax(0, 1fr) 210px;
+  }
+}
+
+@container (width >= 1500px) {
+  .secondary {
+    grid-template:
+      "output topOutput globalControls" auto
+      "output topOutput topControls" auto
+      "output bottomOutput bottomControls" auto /
+      minmax(0, 1fr) minmax(0, 1fr) 210px;
+
+    & .clipPathOutput {
+      max-height: 88vh;
+    }
+  }
+}
+
+.globalControls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-Full);
+}
+
+.curveOutput {
+  width: 100%;
+  margin: 0;
+
+  & canvas {
+    display: block;
+    width: 100%;
+    outline: none;
+    touch-action: none;
+    padding: 0;
+    border: 0;
+  }
+}
+
+.curveControls {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.numberOfPoints {
+  display: flex;
+  gap: var(--spacing-Half);
+
+  & > :not(button) {
+    flex: 1;
+  }
+}
+
+.iconButtons {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 17px;
+  align-self: start;
+}
+
+.chessboard {
+  background-image: url('data:image/svg+xml, <svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" fill-opacity=".25"><rect x="200" width="200" height="200" /><rect y="200" width="200" height="200" /></svg>');
+  background-size: 16px 16px;
+}
+
+.previewOutput {
+  position: relative;
+  background-color: var(--colors-ContrastDarkest);
+  border: 0;
+  border-radius: 2px;
+  cursor: pointer;
+  padding: 0;
+  overflow: hidden;
+  min-height: 100px;
+  max-height: 300px;
+  transition: background-color var(--transition-Default) ease-in-out;
+
+  & > svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transition: opacity var(--transition-Default) ease-in-out;
+    opacity: 0;
+    z-index: 3;
+  }
+
+  & .clipPathOutput > * {
+    transition: background-color var(--transition-Default) ease-in-out;
+  }
+
+  &:hover {
+    background-color: var(--colors-PrimaryBlue);
+
+    & > svg {
+      opacity: 0.7;
+    }
+
+    & .clipPathOutput {
+      & > :last-child {
+        background-color: var(--colors-PrimaryVioletHover) !important;
+      }
+
+      & > :first-child {
+        background-color: var(--colors-PrimaryViolet) !important;
+      }
+    }
+  }
+}
+
+.clipPathOutput {
+  width: 100%;
+  margin: 0;
+  padding: var(--spacing-Full) 0;
+  overflow: hidden;
+
+  & h1 {
+    text-align: center;
+    margin: 0;
+    padding: var(--spacing-Quarter) var(--spacing-Full);
+    line-height: 1;
+    opacity: 0.6;
+  }
+}
+
+.topClipPath,
+.bottomClipPath {
+  position: relative;
+  text-align: center;
+  padding-top: var(--padding-top, 0);
+  padding-bottom: var(--padding-bottom, 0);
+  min-height: calc(var(--padding-top, 0) + var(--padding-bottom, 0) + 1px);
+}
+
+.topClipPath {
+  background-color: var(--colors-PrimaryBlue);
+}
+
+.reverseStacking {
+  z-index: 1;
+}
+
+.bottomClipPath {
+  background-color: var(--colors-PrimaryViolet);
+  margin-top: calc(var(--padding-bottom, 0) * var(--nesting, 0) - 1px);
+}
+
+.rotate90 {
+  transform: rotate(90deg);
+}

@@ -12,6 +12,26 @@
           tab: theme
           collapsed: true
   properties:
+    themeHeaderFullWidth:
+      type: boolean
+      search:
+        indexing: false
+      ui:
+        label: i18n
+        reloadIfChanged: true
+        inspector:
+          group: themeNavigation
+          position: 5
+    themeHeaderFontSize:
+      options:
+        preset: 'font.size'
+      ui:
+        inspector:
+          group: themeNavigation
+          position: 10
+          editorOptions:
+            min: -1
+            max: 4
     themeHeaderGap:
       type: integer
       defaultValue: 16
@@ -22,7 +42,7 @@
         reloadIfChanged: true
         inspector:
           group: themeNavigation
-          position: 10
+          position: 20
           editor: 'Carbon.RangeEditor/Editor'
           editorOptions:
             min: 0

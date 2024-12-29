@@ -70,7 +70,7 @@ class ColorDataSourceService
         $colors = [];
 
         // Get colors from the oklch color picker.
-        foreach (['Main', 'Minor', 'Minor2', 'Gray'] as $propertyName) {
+        foreach (['Main', 'Minor', 'Minor2', 'Gray', 'Header', 'Footer'] as $propertyName) {
             if (!$this->isArgumentSet($arguments, strtolower($propertyName))) {
                 continue;
             }

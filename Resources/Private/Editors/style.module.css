@@ -1,0 +1,43 @@
+/* stylelint-disable custom-property-pattern */
+
+.responsiveContainer {
+  container-type: inline-size;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: var(--fontSize-Base);
+}
+
+.highlight {
+  box-shadow: 0 0 0 2px var(--colors-Warn);
+}
+
+.disabled {
+  cursor: not-allowed !important;
+  opacity: 0.65;
+
+  & > * {
+    pointer-events: none;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: var(--spacing-Half);
+  align-items: baseline;
+}
+
+.maxHeightSecondary {
+  max-height: var(--dialog-max-height);
+  min-height: var(--dialog-max-height);
+  overflow: auto;
+}
+
+.paddingSecondary {
+  padding: calc(var(--spacing-Full) * 2) 20px var(--spacing-Full);
+}
+
+.checkboxLabel {
+  display: flex;
+  user-select: none;
+  cursor: pointer;
+}

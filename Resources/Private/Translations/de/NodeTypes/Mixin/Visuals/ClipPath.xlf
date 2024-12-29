@@ -15,42 +15,6 @@
                 <source>This can be used to define a wave that extends across the entire screen. The width and height of the wave can be adjusted. The color of the wave is taken from the main color scheme.</source>
                 <target>Hiermit kann eine Welle definiert werden, die über den gesamten Bildschirm reicht. Die Welle kann in der Breite und Höhe angepasst werden. Die Farbe der Welle wird aus dem Hauptfarbschema übernommen.</target>
             </trans-unit>
-            <trans-unit id="editor.content" xml:space="preserve">
-                <source>Content</source>
-                <target>Inhalt</target>
-            </trans-unit>
-            <trans-unit id="editor.width" xml:space="preserve">
-                <source>Width</source>
-                <target>Breite</target>
-            </trans-unit>
-            <trans-unit id="editor.height" xml:space="preserve">
-                <source>Height</source>
-                <target>Höhe</target>
-            </trans-unit>
-            <trans-unit id="editor.offset" xml:space="preserve">
-                <source>Offset</source>
-                <target>Offset</target>
-            </trans-unit>
-            <trans-unit id="editor.amplitude" xml:space="preserve">
-                <source>Amplitude</source>
-                <target>Amplitude</target>
-            </trans-unit>
-            <trans-unit id="editor.frequency" xml:space="preserve">
-                <source>Frequency</source>
-                <target>Frequenz</target>
-            </trans-unit>
-            <trans-unit id="editor.points" xml:space="preserve">
-                <source>Number of points</source>
-                <target>Anzahl Punkte</target>
-            </trans-unit>
-            <trans-unit id="editor.phase" xml:space="preserve">
-                <source>Phase</source>
-                <target>Phase</target>
-            </trans-unit>
-            <trans-unit id="editor.asyncPhase" xml:space="preserve">
-                <source>Asynchronous phase</source>
-                <target>Asynchrone Phase</target>
-            </trans-unit>
             <trans-unit id="properties.themeClipPathBelowNavigation" xml:space="preserve">
                 <source>Show below the navigation</source>
                 <target>Unterhalb der Navigation anzeigen</target>
@@ -62,6 +26,122 @@
             <trans-unit id="properties.themeClipPathAboveFooter" xml:space="preserve">
                 <source>Display above the footer</source>
                 <target>Oberhalb der Fusszeile anzeigen</target>
+            </trans-unit>
+            <trans-unit id="editor.edit" xml:space="preserve">
+                <source>Edit wave</source>
+                <target>Welle editieren</target>
+            </trans-unit>
+            <trans-unit id="editor.reset" xml:space="preserve">
+                <source>Do not use a wave</source>
+                <target>Keine Welle benützen</target>
+            </trans-unit>
+            <trans-unit id="editor.content" xml:space="preserve">
+                <source>Content</source>
+                <target>Inhalt</target>
+            </trans-unit>
+            <trans-unit id="editor.asyncPath" xml:space="preserve">
+                <source>Asynchronous path</source>
+                <target>Asynchroner Pfad</target>
+            </trans-unit>
+            <trans-unit id="editor.cubic" xml:space="preserve">
+                <source>Smoothing</source>
+                <target>Glättend</target>
+            </trans-unit>
+            <trans-unit id="editor.akima" xml:space="preserve">
+                <source>Non-smoothing</source>
+                <target>Nicht glättend</target>
+            </trans-unit>
+            <trans-unit id="editor.linear" xml:space="preserve">
+                <source>Linear</source>
+                <target>Linear</target>
+            </trans-unit>
+            <trans-unit id="editor.nearestNeighbor" xml:space="preserve">
+                <source>Rectangular</source>
+                <target>Rechteckig</target>
+            </trans-unit>
+            <trans-unit id="editor.loess" xml:space="preserve">
+                <source>Moving regression</source>
+                <target>Bewegliche Regression</target>
+            </trans-unit>
+            <trans-unit id="editor.interpolationMethodError" xml:space="preserve">
+                <source>Invalid interpolation method</source>
+                <target>Unzulässige Interpolationsmethode</target>
+            </trans-unit>
+            <trans-unit id="editor.coordinatesError" xml:space="preserve">
+                <source>Coordinates could not be decoded</source>
+                <target>Koordinaten konnten nicht entschlüsselt werden</target>
+            </trans-unit>
+            <trans-unit id="editor.parseConfigError" xml:space="preserve">
+                <source>Failed to parse config</source>
+                <target>Konfiguration konnte nicht geparst werden</target>
+            </trans-unit>
+            <trans-unit id="editor.clipboardError" xml:space="preserve">
+                <source>Failed to read clipboard</source>
+                <target>Zwischenablage konnte nicht gelesen werden</target>
+            </trans-unit>
+            <trans-unit id="editor.interpolationmethod" xml:space="preserve">
+                <source>Interpolation method</source>
+                <target>Interpolationsverfahren</target>
+            </trans-unit>
+            <trans-unit id="editor.numberOfPoints" xml:space="preserve">
+                <source>Number of points</source>
+                <target>Anzahl der Punkte</target>
+            </trans-unit>
+            <trans-unit id="editor.showGrid" xml:space="preserve">
+                <source>Show Grid</source>
+                <target>Raster anzeigen</target>
+            </trans-unit>
+            <trans-unit id="editor.snapToGrid" xml:space="preserve">
+                <source>Snap to Grid</source>
+                <target>Am Raster ausrichten</target>
+            </trans-unit>
+            <trans-unit id="editor.copyConfig" xml:space="preserve">
+                <source>Copy config</source>
+                <target>Konfiguration kopieren</target>
+            </trans-unit>
+            <trans-unit id="editor.pasteConfig" xml:space="preserve">
+                <source>Paste config</source>
+                <target>Konfiguration einfügen</target>
+            </trans-unit>
+            <trans-unit id="editor.flipVertically" xml:space="preserve">
+                <source>Flip vertically</source>
+                <target>Vertikal spiegeln</target>
+            </trans-unit>
+            <trans-unit id="editor.flipHorizontally" xml:space="preserve">
+                <source>Flip horizontally</source>
+                <target>Horizontal spiegeln</target>
+            </trans-unit>
+            <trans-unit id="editor.undo" xml:space="preserve">
+                <source>Undo</source>
+                <target>Rückgängig machen</target>
+            </trans-unit>
+            <trans-unit id="editor.redo" xml:space="preserve">
+                <source>Redo</source>
+                <target>Wiederherstellen</target>
+            </trans-unit>
+            <trans-unit id="editor.deletePoint" xml:space="preserve">
+                <source>Delete point</source>
+                <target>Punkt löschen</target>
+            </trans-unit>
+            <trans-unit id="editor.nesting" xml:space="preserve">
+                <source>Nesting</source>
+                <target>Verschachtelung</target>
+            </trans-unit>
+            <trans-unit id="editor.reverseStacking" xml:space="preserve">
+                <source>Reverse stacking</source>
+                <target>Umgekehrte Stapelung</target>
+            </trans-unit>
+            <trans-unit id="editor.topSpacing" xml:space="preserve">
+                <source>Extra space at the top</source>
+                <target>Extra Abstand oben</target>
+            </trans-unit>
+            <trans-unit id="editor.bottomSpacing" xml:space="preserve">
+                <source>Extra space at the bottom</source>
+                <target>Extra Abstand unten</target>
+            </trans-unit>
+            <trans-unit id="enableClip" xml:space="preserve">
+                <source>Enable wave</source>
+                <target>Welle aktivieren</target>
             </trans-unit>
         </body>
     </file>

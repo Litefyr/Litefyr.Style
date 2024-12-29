@@ -4,8 +4,10 @@ header {
     logoPositionRight = ${q(site).property('themeLogoPositionRight')}
     logoMarginTop = ${q(site).property('themeLogoMarginTop')}
     logoMarginBottom = ${q(site).property('themeLogoMarginBottom')}
+    fontSize = ${q(site).property('themeHeaderFontSize')}
     clipPathBelowNavigation = ${q(site).property('themeClipPathEnabled') && q(site).property('themeClipPathBelowNavigation')}
     headerGap = ${q(site).property('themeHeaderGap')}
+    fullWidth = ${q(site).property('themeHeaderFullWidth')}
     logo {
         size = ${q(site).property('themeLogoSize') || 40}
         height = ${this.size * 2}

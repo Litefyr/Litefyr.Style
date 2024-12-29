@@ -188,6 +188,9 @@ class CodePenService
         }
         if (is_array($command) && count($command)) {
             foreach ($command as $commandItem) {
+                if (!$commandItem || !is_string($commandItem)) {
+                    continue;
+                }
                 // @phpstan-ignore-next-line
                 exec(sprintf('cd %s && %s', FLOW_PATH_ROOT, $commandItem));
             }

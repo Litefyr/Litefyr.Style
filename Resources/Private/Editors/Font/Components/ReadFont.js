@@ -1,8 +1,16 @@
-let FontLib;
+import { getFilePath } from "/_Resources/Static/Packages/Carbon.Webfonts/Editor/Helper.js";
 
-async function readFont(font, pluginConfig = {}) {
-    const { folder, fonts } = pluginConfig;
-    const config = fonts[font];
+let FontLib;
+const regex = /url\(['"]?(?<url>[^"')]+)/gm;
+const emptyReturn = {
+    features: [],
+    variations: [],
+};
+
+// https://simoncozens.github.io/feature-tags/
+const disallowedFeatures = ["liga", "ccmp", "rvrn", "dnom", "numr", "init", "fina", "medi", "rlig", "locl", "frac"];
+
+async function readFont(cssFile) {
     if (!FontLib) {
         await import("/_Resources/Static/Packages/Litefyr.Style/Editors/Inflate.js");
         await import("/_Resources/Static/Packages/Litefyr.Style/Editors/Unbrotli.js");
@@ -10,30 +18,104 @@ async function readFont(font, pluginConfig = {}) {
         FontLib = Font;
     }
 
-    let fontWeightOptions = null;
-    if (config.fontWeight && typeof config.fontWeight !== "string") {
-        // The font is not variable, we must know this because of the filename
-        fontWeightOptions = Array.isArray(config.fontWeight) ? config.fontWeight : [config.fontWeight];
+    let filePath = getFilePath(cssFile);
+    if (!filePath) {
+        return emptyReturn;
     }
-
-    let filepathToFont = config?.filepath;
-    if (!filepathToFont) {
-        const filename = fontWeightOptions ? `${font}-${fontWeightOptions[0]}` : font;
-        filepathToFont = `${folder}/${filename}.woff2`;
+    if (!filePath.startsWith("http://") && !filePath.startsWith("https://")) {
+        filePath = window.location.origin + filePath;
     }
+    // Remove filename from filepath
+    const basePath = filePath.replace(/\/[^/]*$/, "/");
+    let fontName = null;
+    let fontFiles = [];
+    [...document.styleSheets].some((styleSheet) => {
+        if (styleSheet.href === filePath) {
+            const cssRules = [...styleSheet.cssRules];
+            // all the font-faces rules
+            const rulesFontFace = cssRules.filter((rule) => rule.cssText.startsWith("@font-face"));
 
-    return new Promise((resolve, reject) => {
-        const fontObject = new FontLib(font);
-
-        fontObject.onerror = (event) => reject(event);
-        fontObject.onload = async (event) => {
-            let features = await fontCheck(event);
-            features.fontWeight.options = fontWeightOptions;
-            resolve(features);
-        };
-
-        fontObject.src = filepathToFont;
+            rulesFontFace.forEach((fontFace) => {
+                if (!fontName) {
+                    fontName = fontFace.style.getPropertyValue("font-family").replace(/['"]+/g, "");
+                }
+                const src = fontFace.style.getPropertyValue("src");
+                const match = regex.exec(src);
+                const url = match?.groups?.url;
+                if (url) {
+                    fontFiles.push(resolvePath(url, basePath));
+                }
+            });
+            return true;
+        }
+        return false;
     });
+    if (!fontFiles.length) {
+        return emptyReturn;
+    }
+
+    const features = [];
+    const variations = {};
+
+    const promises = fontFiles.map((filepathToFont, index) => {
+        return new Promise((resolve) => {
+            const fontObject = new FontLib(fontName + index);
+            fontObject.onerror = () => resolve();
+            fontObject.onload = async (event) => {
+                const { fontFeatureSettings, fontVariationSettings } = await fontCheck(event);
+                // Push the font-feature-settings to the array
+                if (fontFeatureSettings?.length) {
+                    fontFeatureSettings.forEach((feature) => {
+                        if (!features.includes(feature) && !disallowedFeatures.includes(feature)) {
+                            features.push(feature);
+                        }
+                    });
+                }
+
+                // Push the font-variation-settings to the object
+                if (fontVariationSettings && Object.keys(fontVariationSettings).length) {
+                    Object.entries(fontVariationSettings).forEach(([key, config]) => {
+                        if (!variations[key]) {
+                            variations[key] = config;
+                        }
+                    });
+                }
+                resolve();
+            };
+            fontObject.src = filepathToFont;
+        });
+    });
+
+    await Promise.all(promises);
+    return { features, variations: Object.values(variations) };
+}
+
+function resolvePath(path, basePath = window.location.origin) {
+    if (path.startsWith("http://") || path.startsWith("https://")) {
+        return path;
+    }
+
+    if (path.startsWith("/")) {
+        return window.location.origin + path;
+    }
+
+    if (!basePath.endsWith("/")) {
+        basePath += "/";
+    }
+
+    const resolvedPath = path
+        .split("/")
+        .reduce((a, v) => {
+            if (v === "..") {
+                a.pop();
+            } else if (v !== ".") {
+                a.push(v);
+            }
+            return a;
+        }, [])
+        .join("/");
+
+    return basePath + resolvedPath;
 }
 
 // When the font's up and loaded in, let's do some testing!

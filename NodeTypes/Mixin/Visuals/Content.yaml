@@ -1,0 +1,72 @@
+'Litefyr.Style:Mixin.Visuals.Content':
+  abstract: true
+  superTypes:
+    'Litefyr.Style:Mixin.Tab': true
+  ui:
+    inspector:
+      groups:
+        themeContent:
+          label: i18n
+          position: 23
+          icon: folder-open
+          tab: theme
+          collapsed: true
+  properties:
+    themeContentSpacing:
+      type: string
+      defaultValue: 8
+      search:
+        indexing: false
+      ui:
+        label: i18n
+        reloadIfChanged: true
+        inspector:
+          group: themeContent
+          position: 10
+          editor: 'Carbon.Tailwind/Spacing'
+          editorOptions:
+            spacing:
+              - 2.5
+              - 3
+              - 3.5
+              - 4
+              - 5
+              - 6
+              - 7
+              - 8
+              - 9
+              - 10
+              - 11
+              - 12
+              - 14
+              - 16
+              - 20
+              - 24
+              - 28
+              - 32
+              - 36
+              - 40
+    themeContentHeadlineAlignment:
+      type: string
+      defaultValue: 'center'
+      search:
+        indexing: false
+      ui:
+        label: i18n
+        reloadIfChanged: true
+        inspector:
+          group: themeContent
+          position: 20
+          editor: 'Beromir.ToggleEditor/Editor'
+          editorOptions:
+            layout: list
+            values:
+              left:
+                label: 'Litefyr.Style:NodeTypes.Mixin.Visuals.Content:properties.themeContentHeadlineAlignment.left'
+                icon: 'align-left'
+              center:
+                label: 'Litefyr.Style:NodeTypes.Mixin.Visuals.Content:properties.themeContentHeadlineAlignment.center'
+                icon: 'align-center'
+              # right:
+              #   label: 'Litefyr.Style:NodeTypes.Mixin.Visuals.Content:properties.themeContentHeadlineAlignment.right'
+              #   icon: 'align-right'

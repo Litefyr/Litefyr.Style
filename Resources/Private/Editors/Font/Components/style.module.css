@@ -1,0 +1,194 @@
+/* stylelint-disable custom-property-pattern */
+.primaryFontOutput {
+  width: 100%;
+  text-align: left;
+  border-radius: 2px;
+}
+
+.primaryFontOutputPlaceholder {
+  color: var(--colors-ContrastBright);
+
+  &:where(:hover, :focus) {
+    color: var(--colors-ContrastBrightest);
+  }
+}
+
+.secondaryGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+}
+
+.secondaryControls {
+  --fontFamily-MaxHeight: calc(var(--dialog-max-height) - 170px);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-GoldenUnit);
+  order: 1;
+}
+
+.radio {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  min-height: 22px;
+  min-width: 22px;
+  line-height: 22px;
+  vertical-align: middle;
+  padding: 0 !important;
+  cursor: pointer;
+
+  & span {
+    width: 22px;
+    height: 22px;
+    margin-right: 8px;
+    overflow: hidden;
+    float: left;
+    position: relative;
+
+    &::before {
+      content: "";
+      border-radius: 50%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      background-color: var(--colors-ContrastDark);
+      border: 1px solid var(--colors-ContrastBrighter);
+      color: var(--colors-UncheckedCheckboxTick);
+      cursor: pointer;
+      line-height: 20px;
+      text-align: center;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      background: var(--colors-UncheckedCheckboxTick);
+      border-radius: 50%;
+      width: 8px;
+      height: 8px;
+      left: 7px;
+      top: 7px;
+    }
+  }
+
+  & input {
+    position: absolute;
+    left: -9999px;
+    vertical-align: top;
+  }
+
+  & input:checked + span {
+    &::before {
+      background-color: var(--colors-PrimaryBlue);
+      border: 1px solid var(--colors-PrimaryBlue);
+      color: var(--colors-ContrastBrightest);
+    }
+
+    &::after {
+      background: var(--colors-ContrastBrightest);
+    }
+  }
+}
+
+.fontFeatures {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-Full);
+
+  &:empty {
+    display: none;
+  }
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-Half);
+}
+
+.buttonPreview {
+  display: flex;
+  flex-direction: column;
+  gap: 3em;
+}
+
+.fontOutput {
+  margin: 0 auto;
+  padding: 3rem 1rem;
+  outline: none;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  max-height: var(--dialog-max-height);
+  overflow: auto;
+  max-width: 100%;
+
+  & button {
+    border: 0;
+  }
+
+  > p {
+    margin: 0 0 2em;
+  }
+
+  > p:last-child {
+    margin-bottom: 0;
+  }
+
+  & blockquote {
+    margin-left: 0;
+    margin-right: 0;
+
+    &::before {
+      content: open-quote;
+    }
+
+    &::after {
+      content: close-quote;
+    }
+  }
+}
+
+.headlineOutput {
+  font-size: 3rem;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.headerOutput,
+.footerOutput {
+  & ul {
+    display: flex;
+    gap: 1em;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  & li {
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+  }
+
+  & p {
+    font-size: 0.75rem;
+    opacity: 0.9;
+  }
+}
+
+.headerOutput li {
+  padding: 1rem;
+}
+
+.footerOutput li {
+  font-size: 1rem;
+}
+
+.rangeOutput {
+  font-size: 2rem;
+  white-space: pre;
+  overflow: auto;
+}

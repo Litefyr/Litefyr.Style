@@ -3,6 +3,7 @@
   superTypes:
     'Litefyr.Style:Mixin.Visuals.Logo': true
     'Litefyr.Style:Mixin.Visuals.Navigation': true
+    'Litefyr.Style:Mixin.Visuals.Content': true
     'Litefyr.Style:Mixin.Visuals.Footer': true
     'Litefyr.Style:Mixin.Visuals.ClipPath': true
     'Litefyr.Style:Mixin.Visuals.Rounded': true

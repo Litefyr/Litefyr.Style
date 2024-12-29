@@ -12,33 +12,6 @@
             <trans-unit id="properties.themeClipPath.ui.help.message" xml:space="preserve">
                 <source>This can be used to define a wave that extends across the entire screen. The width and height of the wave can be adjusted. The color of the wave is taken from the main color scheme.</source>
             </trans-unit>
-            <trans-unit id="editor.content" xml:space="preserve">
-                <source>Content</source>
-            </trans-unit>
-            <trans-unit id="editor.width" xml:space="preserve">
-                <source>Width</source>
-            </trans-unit>
-            <trans-unit id="editor.height" xml:space="preserve">
-                <source>Height</source>
-            </trans-unit>
-            <trans-unit id="editor.offset" xml:space="preserve">
-                <source>Offset</source>
-            </trans-unit>
-            <trans-unit id="editor.amplitude" xml:space="preserve">
-                <source>Amplitude</source>
-            </trans-unit>
-            <trans-unit id="editor.frequency" xml:space="preserve">
-                <source>Frequency</source>
-            </trans-unit>
-            <trans-unit id="editor.points" xml:space="preserve">
-                <source>Number of points</source>
-            </trans-unit>
-            <trans-unit id="editor.phase" xml:space="preserve">
-                <source>Phase</source>
-            </trans-unit>
-            <trans-unit id="editor.asyncPhase" xml:space="preserve">
-                <source>Asynchronous phase</source>
-            </trans-unit>
             <trans-unit id="properties.themeClipPathBelowNavigation" xml:space="preserve">
                 <source>Show below the navigation</source>
             </trans-unit>
@@ -47,6 +20,93 @@
             </trans-unit>
             <trans-unit id="properties.themeClipPathAboveFooter" xml:space="preserve">
                 <source>Display above the footer</source>
+            </trans-unit>
+            <trans-unit id="editor.edit" xml:space="preserve">
+                <source>Edit wave</source>
+            </trans-unit>
+            <trans-unit id="editor.reset" xml:space="preserve">
+                <source>Do not use a wave</source>
+            </trans-unit>
+            <trans-unit id="editor.content" xml:space="preserve">
+                <source>Content</source>
+            </trans-unit>
+            <trans-unit id="editor.asyncPath" xml:space="preserve">
+                <source>Asynchronous path</source>
+            </trans-unit>
+            <trans-unit id="editor.cubic" xml:space="preserve">
+                <source>Smoothing</source>
+            </trans-unit>
+            <trans-unit id="editor.akima" xml:space="preserve">
+                <source>Non-smoothing</source>
+            </trans-unit>
+            <trans-unit id="editor.linear" xml:space="preserve">
+                <source>Linear</source>
+            </trans-unit>
+            <trans-unit id="editor.nearestNeighbor" xml:space="preserve">
+                <source>Rectangular</source>
+            </trans-unit>
+            <trans-unit id="editor.loess" xml:space="preserve">
+                <source>Moving regression</source>
+            </trans-unit>
+            <trans-unit id="editor.interpolationMethodError" xml:space="preserve">
+                <source>Invalid interpolation method</source>
+            </trans-unit>
+            <trans-unit id="editor.coordinatesError" xml:space="preserve">
+                <source>Coordinates could not be decoded</source>
+            </trans-unit>
+            <trans-unit id="editor.parseConfigError" xml:space="preserve">
+                <source>Failed to parse config</source>
+            </trans-unit>
+            <trans-unit id="editor.clipboardError" xml:space="preserve">
+                <source>Failed to read clipboard</source>
+            </trans-unit>
+            <trans-unit id="editor.interpolationmethod" xml:space="preserve">
+                <source>Interpolation method</source>
+            </trans-unit>
+            <trans-unit id="editor.numberOfPoints" xml:space="preserve">
+                <source>Number of points</source>
+            </trans-unit>
+            <trans-unit id="editor.showGrid" xml:space="preserve">
+                <source>Show Grid</source>
+            </trans-unit>
+            <trans-unit id="editor.snapToGrid" xml:space="preserve">
+                <source>Snap to Grid</source>
+            </trans-unit>
+            <trans-unit id="editor.copyConfig" xml:space="preserve">
+                <source>Copy config</source>
+            </trans-unit>
+            <trans-unit id="editor.pasteConfig" xml:space="preserve">
+                <source>Paste config</source>
+            </trans-unit>
+            <trans-unit id="editor.flipVertically" xml:space="preserve">
+                <source>Flip vertically</source>
+            </trans-unit>
+            <trans-unit id="editor.flipHorizontally" xml:space="preserve">
+                <source>Flip horizontally</source>
+            </trans-unit>
+            <trans-unit id="editor.undo" xml:space="preserve">
+                <source>Undo</source>
+            </trans-unit>
+            <trans-unit id="editor.redo" xml:space="preserve">
+                <source>Redo</source>
+            </trans-unit>
+            <trans-unit id="editor.deletePoint" xml:space="preserve">
+                <source>Delete point</source>
+            </trans-unit>
+            <trans-unit id="editor.nesting" xml:space="preserve">
+                <source>Nesting</source>
+            </trans-unit>
+            <trans-unit id="editor.reverseStacking" xml:space="preserve">
+                <source>Reverse stacking</source>
+            </trans-unit>
+            <trans-unit id="enableClip" xml:space="preserve">
+                <source>Enable wave</source>
+            </trans-unit>
+            <trans-unit id="editor.topSpacing" xml:space="preserve">
+                <source>Extra space at the top</source>
+            </trans-unit>
+            <trans-unit id="editor.bottomSpacing" xml:space="preserve">
+                <source>Extra space at the bottom</source>
             </trans-unit>
         </body>
     </file>

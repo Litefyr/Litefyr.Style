@@ -14,77 +14,135 @@ class ClipPathService
      * @param NodeInterface $node
      * @return array{CSS:array{root:string,onEnd:string}}
      */
-    public function getClipPath(NodeInterface $node): array
+    public function getClipPath(NodeInterface $node): ?array
     {
-        $afterNavigation = $node->getProperty('themeClipPathBelowNavigation');
-        $inContent = $node->getProperty('themeClipPathInContent');
-        $beforeFooter = $node->getProperty('themeClipPathAboveFooter');
+        $afterNavigation = !!$node->getProperty('themeClipPathBelowNavigation');
+        $inContent = !!$node->getProperty('themeClipPathInContent');
+        $beforeFooter = !!$node->getProperty('themeClipPathAboveFooter');
 
         $clipPathEnabled = false;
 
         if ($afterNavigation || $inContent || $beforeFooter) {
             $clipPath = $node->getProperty('themeClipPath') ?? [];
-            $clipPathCSS = $this->getCustomClipPathCssProperty($clipPath);
-            $clipPathEnabled = !!$clipPathCSS;
+            $CSS = $this->generateCSS($clipPath, $afterNavigation, $inContent, $beforeFooter);
+            $clipPathEnabled = $CSS ? !!count($CSS) : false;
         }
 
         $node->setProperty('themeClipPathEnabled', $clipPathEnabled);
 
-        if ($clipPathEnabled && $inContent) {
-            // Clip path utliities
-            // clippath:hidden Hide the elment
-            // clippath:bg-transparent Make the background transparent
-            $utilityClasses = '.clippath\:hidden{display:none}.clippath\:bg-transparent{background-color:transparent}';
-            // Important variants
-            $utilityClasses .=
-                '.clippath\:\!hidden{display:none !important}.clippath\:\!bg-transparent{background-color:transparent !important}';
+        if (!$clipPathEnabled) {
+            return null;
         }
 
         return [
-            'CSS' => [
-                'root' => $clipPathCSS ?? '',
-                'onEnd' => $utilityClasses ?? '',
-            ],
+            'CSS' => $CSS,
         ];
     }
 
     /**
-     * Add the CSS property for the clip path
+     * Add the CSS custom properties for the clip path
      *
-     * @param array{top?:string,bottom?:string,height:int,width:int} $config
-     * @return string|null
+     * @param array{css?:array} $config
+     * @return array|null
      */
-    protected function getCustomClipPathCssProperty(array $config): ?string
+    protected function generateCSS(array $config, bool $afterNavigation, bool $inContent, bool $beforeFooter): ?array
     {
-        $top = $config['top'] ?? null;
-        $bottom = $config['bottom'] ?? null;
-        if (!$top || !$bottom) {
+        if (!isset($config['css']) || !count($config['css'])) {
             return null;
         }
 
-        $identicalTopAndBottom = $top === $bottom;
+        // Properties from editor are
+        // [
+        //      raw => [
+        //          top => string
+        //          bottom => string
+        //      ],
+        //      height => [
+        //          top => number + unit (vw), eg 50vw
+        //          bottom => number + unit (vw)
+        //      ],
+        //      nesting => number between -1 and 0
+        // ]
 
-        if ($identicalTopAndBottom) {
-            $path = $top;
-            $top = 'var(--clippath-path)';
-            $bottom = $top;
+        $customProperties = [];
+        $cssClasses = [];
+
+        if ($beforeFooter || $inContent) {
+            $customProperties['raw-top'] = $config['css']['raw']['top'];
+            $customProperties['height-top'] = $config['css']['height']['top'];
+
+            if ($config['nesting']) {
+                $customProperties['nesting-multiplier'] = $config['css']['nesting'];
+                $customProperties['nesting-value'] = $config['css']['height']['bottom'];
+                $customProperties['nesting'] =
+                    'calc(var(--clippath-nesting-value) * var(--clippath-nesting-multiplier) - 1px)';
+            }
         }
 
-        $height = round(($config['height'] / $config['width']) * 100, 6);
-        $topStart = '100% 100%,0% 100%';
-        $bottomStart = '100% 0%,0% 0%';
+        if ($afterNavigation || $inContent) {
+            $customProperties['raw-bottom'] = $config['css']['raw']['bottom'];
+            $customProperties['height-bottom'] = $config['css']['height']['bottom'];
+        }
 
-        return implode('', [
-            '--clippath-display:block;',
-            '--clippath-display-top:block;',
-            '--clippath-display-bottom:block;',
-            sprintf('--clippath-ratio:%s / %s;', $config['width'], $config['height']),
-            sprintf('--clippath-margin:-%s%%;', $height),
-            sprintf('--clippath-height:%svw;', $height),
-            sprintf('--clippath-height-half:%svw;', $height / 2),
-            $identicalTopAndBottom ? sprintf('--clippath-path:%s;', $path) : '',
-            sprintf('--clippath-path-top:polygon(%s,%s);', $topStart, $top),
-            sprintf('--clippath-path-bottom:polygon(%s,%s);', $bottomStart, $bottom),
-        ]);
+        if ($afterNavigation) {
+            $customProperties['header-path'] = 'polygon(0 0,100% 0,var(--clippath-raw-bottom))';
+            $customProperties['header-height'] = 'calc(var(--clippath-height-bottom) + var(--header-height))';
+            $cssClasses[] =
+                '.clippath-header{clip-path:var(--clippath-header-path);padding-bottom:var(--clippath-height-bottom)}';
+            $cssClasses[] = '.clippath-header--min-h{min-height:var(--clippath-header-height)}';
+        }
+
+        if ($inContent) {
+            $customProperties['content-path'] = 'polygon(var(--clippath-raw-top),var(--clippath-raw-bottom))';
+            $customProperties['content-height-top'] = 'var(--clippath-height-top)';
+            $customProperties['content-height-bottom'] = 'var(--clippath-height-bottom)';
+            $customProperties['content-height'] =
+                'calc(var(--clippath-height-top) + var(--clippath-height-bottom) + 1px)';
+            $customProperties['content-height-full'] = 'calc(var(--clippath-content-height) + 100%)';
+
+            $cssClasses[] = '.clippath-content{clip-path:var(--clippath-content-path)}';
+            $cssClasses[] =
+                '.clippath-padding,.clippath-content--padding,.clippath-contentbox,.clippath-content--contentbox{padding-top:var(--clippath-content-height-top);padding-bottom:var(--clippath-content-height-bottom)}';
+            $cssClasses[] =
+                '.clippath-padding,.clippath-content--padding,.clippath-min-height,.clippath-content--min-height{min-height:var(--clippath-content-height)}';
+            $cssClasses[] = '.clippath-contentbox,.clippath-content--contentbox{box-sizing:content-box}';
+            $cssClasses[] =
+                '.clippath-margin,.clippath-content--margin{margin-top:var(--clippath-content-height-top);margin-bottom:var(--clippath-content-height-bottom)}';
+            $cssClasses[] =
+                '.clippath-min-height-full,.clippath-content--min-height-full{min-height:var(--clippath-content-height-full)}';
+            // Disabled neseted clip paths
+            $cssClasses[] =
+                ':is(.clippath-content:not(.clippath-content--nested) .clippath-content:not(.clippath-content--nested),.clippath-not-inside){--clippath-content-height-top:0;--clippath-content-height-bottom:0;--clippath-content-height:0;--clippath-content-path:none;--clippath-content-height-full:100%;}';
+
+            if ($config['nesting']) {
+                if ($config['reverseStacking']) {
+                    // override the height of the top clip path
+                    $customProperties['content-height-top'] =
+                        'max(var(--clippath-height-top), var(--clippath-height-bottom))';
+                }
+                $cssClasses[] =
+                    ':is(.clippath-content,.clippath-quote,.clippath-nesting) + :is(.clippath-content,.clippath-quote,.clippath-nesting){margin-top:var(--clippath-nesting)}';
+            }
+        }
+
+        if ($beforeFooter) {
+            $customProperties['footer-path'] = 'polygon(var(--clippath-raw-top),100% 100%,0 100%)';
+            $customProperties['footer-height'] = 'calc(var(--clippath-height-top) + var(--footer-spacing, 0px))';
+            $cssClasses[] =
+                '.clippath-footer{clip-path:var(--clippath-footer-path);padding-top:var(--clippath-footer-height);min-height:var(--clippath-footer-height)}';
+        }
+
+        $root = '';
+        foreach ($customProperties as $key => $value) {
+            if ($value) {
+                $root .= sprintf('--clippath-%s:%s;', $key, $value);
+            }
+        }
+
+        $onEnd = implode('', $cssClasses);
+        return [
+            'root' => $root,
+            'onEnd' => $onEnd,
+        ];
     }
 }

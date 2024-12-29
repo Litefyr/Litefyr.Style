@@ -53,6 +53,7 @@ class DividerService
         ];
         $softConfig = (int) $config['soft'];
         $softValue = $softConfig ? $softConfig . 'px' : 0;
+        $minHeightCustomProperty = $softConfig || 0;
         if ($softValue) {
             $cssProperties['default']['min-height'] = $softValue;
             $cssProperties['before']['height'] = $softValue;
@@ -73,6 +74,9 @@ class DividerService
 
             $height = $thumbnailData['height'] / 2;
             $minHeight = max($softConfig, $height);
+            if ($minHeightCustomProperty < $minHeight) {
+                $minHeightCustomProperty = $minHeight;
+            }
             $cssProperties['default']['position'] = 'relative';
             $cssProperties['default']['min-height'] = $minHeight ? $minHeight . 'px' : 0;
             $position = $config['imagePosition'] ?? 'center';
@@ -97,7 +101,11 @@ class DividerService
             ];
         }
 
-        return $this->writeHrCSS($cssProperties, $themedProperties);
+        $customProperties = [
+            'min-h' => sprintf('%spx', $minHeightCustomProperty < 4 ? 4 : $minHeightCustomProperty),
+        ];
+
+        return $this->writeHrCSS($cssProperties, $themedProperties, $customProperties);
     }
 
     /**
@@ -105,15 +113,24 @@ class DividerService
      *
      * @param array{default:mixed, before:mixed, after:mixed} $cssProperties
      * @param array{default:mixed, before:mixed}  $themedProperties
+     * @param array $customProperties
      * @return array{CSS: array{onEnd: string}}
      */
-    protected function writeHrCSS(array $cssProperties, array $themedProperties): array
+    protected function writeHrCSS(array $cssProperties, array $themedProperties, array $customProperties): array
     {
         $CSS = $this->getPropertiesString($cssProperties, false);
         $CSS .= $this->getPropertiesString($themedProperties, true);
 
+        $root = '';
+        foreach ($customProperties as $key => $value) {
+            if ($value) {
+                $root .= sprintf('--hr-%s:%s;', $key, $value);
+            }
+        }
+
         return [
             'CSS' => [
+                'root' => $root,
                 'onEnd' => $CSS,
             ],
         ];

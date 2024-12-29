@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2"
+    xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="" product-name="Litefyr.Style" source-language="en" target-language="de" datatype="plaintext">
+        <body>
+            <trans-unit id="groups.themeContent" xml:space="preserve">
+                <source>Content</source>
+                <target>Inhalt</target>
+            </trans-unit>
+            <trans-unit id="properties.themeContentSpacing" xml:space="preserve">
+                <source>Spacing between content elements</source>
+                <target>Abstand zwischen Inhaltselementen</target>
+            </trans-unit>
+            <trans-unit id="properties.themeContentHeadlineAlignment" xml:space="preserve">
+                <source>Alignment of headlines</source>
+                <target>Ausrichtung der Überschriften</target>
+            </trans-unit>
+            <trans-unit id="properties.themeContentHeadlineAlignment.left" xml:space="preserve">
+                <source>Left</source>
+                <target>Links</target>
+            </trans-unit>
+            <trans-unit id="properties.themeContentHeadlineAlignment.center" xml:space="preserve">
+                <source>Center</source>
+                <target>Zentriert</target>
+            </trans-unit>
+            <trans-unit id="properties.themeContentHeadlineAlignment.right" xml:space="preserve">
+                <source>Right</source>
+                <target>Rechts</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

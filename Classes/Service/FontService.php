@@ -4,83 +4,42 @@ namespace Litefyr\Style\Service;
 
 use Neos\Flow\Annotations as Flow;
 use Neos\ContentRepository\Domain\Model\NodeInterface;
+use Carbon\Webfonts\Service;
 
 #[Flow\Scope('singleton')]
 class FontService
 {
-    /**
-     * @var array<string, mixed>
-     */
-    #[Flow\InjectConfiguration('frontendConfiguration.LitefyrStyleEditorsFont', 'Neos.Neos.Ui')]
-    protected array $fontSettings;
+    const FALLBACK = [
+        'fontFamily' =>
+            'ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";',
+        'fontFeatureSettings' => 'normal',
+        'fontVariationSettings' => 'normal',
+        'fontWeight' => 400,
+        'fontWeightBold' => 700,
+        'cssFile' => null,
+    ];
+
+    #[Flow\Inject]
+    protected Service $webfontsService;
 
     /**
-     * Get font faces and preload tags from a site node
+     * Get stylesheets
      *
      * @param array{main?: mixed, headline?: mixed, quote?: mixed, button?: mixed} $fonts
-     * @return array{preloadTags: string, fontFaces: string}
-     */
-    protected function getFontFacesAndPreloadTags(array $fonts): array
-    {
-        $fontFaces = [];
-        $preloadTags = [];
-        $folder = $this->fontSettings['folder'];
-        foreach ($fonts as $font) {
-            $name = $font['font'];
-            $fontSettings = $this->fontSettings['fonts'][$name];
-
-            $hasUserSettings = isset($font['userSettings']['variable']);
-            $isVariableFont = $hasUserSettings
-                ? $font['userSettings']['variable']
-                : is_string($fontSettings['fontWeight']);
-
-            // The font is a variable font, so we only need to load one file
-            if ($isVariableFont) {
-                $fontWeightFromSettings = $fontSettings['fontWeight'];
-                $filepath = $fontSettings['filepath'] ?? sprintf('%s/%s.woff2', $folder, $name);
-                $fontFaces[] = $this->returnFontFace($name, $fontWeightFromSettings, $filepath);
-                $preloadTags[] = $this->fontPreload($filepath);
-                continue;
-            }
-
-            $fontWeightNormal = $font['userSettings']['fontWeight']['normal'] ?? 400;
-            $fontWeightBold = $font['userSettings']['fontWeight']['bold'] ?? 600;
-
-            $filepath = $fontSettings['filepath'] ?? sprintf('%s/%s-%s.woff2', $folder, $name, $fontWeightNormal);
-            $fontFaces[] = $this->returnFontFace($name, $fontWeightNormal, $filepath);
-            $preloadTags[] = $this->fontPreload($filepath);
-
-            if ($fontWeightNormal != $fontWeightBold) {
-                $filepath = $fontSettings['filepath'] ?? sprintf('%s/%s-%s.woff2', $folder, $name, $fontWeightBold);
-                $fontFaces[] = $this->returnFontFace($name, $fontWeightBold, $filepath);
-                $preloadTags[] = $this->fontPreload($filepath);
-            }
-        }
-
-        return [
-            'preloadTags' => implode('', array_unique($preloadTags)),
-            'fontFaces' => implode('', array_unique($fontFaces)),
-        ];
-    }
-
-    /**
-     * Return a font face
-     *
-     * @param string $name
-     * @param string|int $fontWeight
-     * @param string $filepath
      * @return string
      */
-    protected function returnFontFace(string $name, string|int $fontWeight, string $filepath): string
+    protected function geStylesheets(array $fonts): string
     {
-        $format = pathinfo($filepath, PATHINFO_EXTENSION);
-        return sprintf(
-            '@font-face{font-family:%s;font-weight:%s;font-display:swap;font-style:normal;src: url("%s") format("%s")}',
-            $name,
-            (string) $fontWeight,
-            $filepath,
-            $format
-        );
+        $stylesheets = [];
+        foreach ($fonts as $font) {
+            $cssFilePath = $this->webfontsService->getCSSFile($font['fontFamily']);
+            if (empty($cssFilePath)) {
+                continue;
+            }
+            $stylesheets[] = sprintf('<link rel="stylesheet" href="%s">', $cssFilePath);
+        }
+
+        return implode('', array_unique($stylesheets));
     }
 
     /**
@@ -105,37 +64,33 @@ class FontService
     {
         $fontProperties = [];
         foreach ($fonts as $key => $font) {
-            $name = $font['font'];
-            $fontSettings = $this->fontSettings['fonts'][$name];
-            $fallback = $this->fontSettings['fallback'][$fontSettings['group']];
-
-            // Font familiy definition
-            $fontProperties[] = sprintf('--font-%s:%s, %s;', $key, $name, $fallback);
+            // Font family
+            $fontProperties[] = sprintf('--font-%s:%s;', $key, $font['fontFamily']);
 
             // Font feature settings
             $fontProperties[] = sprintf(
                 '--font-%s--feature:%s;',
                 $key,
-                $font['style']['normal']['fontFeatureSettings'] ?? 'normal'
+                $font['fontFeatureSettings'] ?? self::FALLBACK['fontFeatureSettings']
             );
 
             // Font variation settings
             $fontProperties[] = sprintf(
                 '--font-%s--variation:%s;',
                 $key,
-                $font['style']['normal']['fontVariationSettings'] ?? 'normal'
+                $font['fontVariationSettings'] ?? self::FALLBACK['fontVariationSettings']
             );
 
             // Font weight settings
             $fontProperties[] = sprintf(
                 '--font-weight-%s:%s;',
                 $key,
-                $font['userSettings']['fontWeight']['normal'] ?? 400
+                $font['fontWeight'] ?? self::FALLBACK['fontWeight']
             );
             $fontProperties[] = sprintf(
                 '--font-weight-%s-bold:%s;',
                 $key,
-                $font['userSettings']['fontWeight']['bold'] ?? 600
+                $font['fontWeightBold'] ?? self::FALLBACK['fontWeightBold']
             );
         }
 
@@ -155,16 +110,15 @@ class FontService
             'headline' => $node->getProperty('themeFontHeadline'),
             'quote' => $node->getProperty('themeFontQuote'),
             'button' => $node->getProperty('themeFontButton'),
+            'header' => $node->getProperty('themeFontHeader'),
+            'footer' => $node->getProperty('themeFontFooter'),
         ];
         $fonts = $this->makeSureMainFontIsSet($fonts);
 
-        $fontFacesAndPreloadTags = $this->getFontFacesAndPreloadTags($fonts);
-
         return [
             'fonts' => $fonts,
-            'markup' => $fontFacesAndPreloadTags['preloadTags'],
+            'markup' => $this->geStylesheets($fonts),
             'CSS' => [
-                'onStart' => $fontFacesAndPreloadTags['fontFaces'],
                 'root' => $this->getFontCssProperties($fonts),
             ],
         ];
@@ -178,14 +132,12 @@ class FontService
      */
     protected function makeSureMainFontIsSet(array $fonts): array
     {
-        // Make sure main is set
-        if (!isset($fonts['main']) || !isset($fonts['main']['font'])) {
-            $fonts['main'] = [
-                'font' => $this->fontSettings['fallbackFont'],
-            ];
+        // Make sure main font is set
+        if (!isset($fonts['main']) || !isset($fonts['main']['fontFamily'])) {
+            $fonts['main'] = self::FALLBACK;
         }
         $fonts = array_filter($fonts, function ($font) {
-            return $font && isset($font['font']);
+            return $font && isset($font['fontFamily']);
         });
         return $fonts;
     }

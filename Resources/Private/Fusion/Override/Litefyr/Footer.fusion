@@ -2,7 +2,8 @@ footer {
     colorSchemeSwitchter = ${q(site).property('themeColorSchemeSwitchter')}
     colorSchemeSwitchter.@if.both = ${q(site).property('themeColorScheme') == 'light dark'}
     clipPathAboveFooter = ${q(site).property('themeClipPathEnabled') && q(site).property('themeClipPathAboveFooter')}
-    spacing = ${q(site).property('themeFooterSpacing')}
+    fullWidth = ${q(site).property('themeFooterFullWidth')}
+
     logo = Litefyr.Integration:Component.Logo {
         @if.show = ${q(site).property('themeFooterShowLogo')}
         class = 'p-0'

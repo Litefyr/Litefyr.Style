@@ -1,0 +1,15 @@
+/* stylelint-disable custom-property-pattern */
+
+.dropdownContents {
+  flex-direction: column;
+  gap: 1px;
+  padding: 4px 2px 2px !important;
+  display: flex;
+  margin-top: -4px;
+}
+
+.dropdownButton {
+  text-align: left;
+  width: 100%;
+  background: var(--colors-ContrastDarkest);
+}
