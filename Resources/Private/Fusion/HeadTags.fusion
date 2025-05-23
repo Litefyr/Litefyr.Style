@@ -7,6 +7,7 @@ styleHeadTags = Neos.Fusion:Component {
     themeFaviconImage = ${q(site).property('themeFaviconPng') || q(site).property('themeFaviconAppleTouch')}
     themeCSS = ${q(site).property('themeCSS')}
     themeCSSLink = Neos.Neos:NodeUri {
+        absolute = true
         node = ${site}
         format = 'themestyle'
     }

@@ -63,6 +63,18 @@
             <trans-unit id="default" xml:space="preserve">
                 <source>Default color</source>
             </trans-unit>
+            <trans-unit id="black" xml:space="preserve">
+                <source>Black</source>
+            </trans-unit>
+            <trans-unit id="white" xml:space="preserve">
+                <source>White</source>
+            </trans-unit>
+            <trans-unit id="blackAndWhite" xml:space="preserve">
+                <source>Black (Light mode) / White (Dark mode)</source>
+            </trans-unit>
+            <trans-unit id="whiteAndBlack" xml:space="preserve">
+                <source>White (Light mode) / Black (Dark mode)</source>
+            </trans-unit>
             <trans-unit id="properties.themeColorContrastThreshold" xml:space="preserve">
                 <source>Threshold for contrast color</source>
             </trans-unit>

@@ -31,6 +31,10 @@
                 <source>Footer</source>
                 <target>Fußzeile</target>
             </trans-unit>
+            <trans-unit id="properties.themeFontCountdown" xml:space="preserve">
+                <source>Countdown</source>
+                <target>Countdown</target>
+            </trans-unit>
             <trans-unit id="editor.characterListing" xml:space="preserve">
                 <source>Character listing</source>
                 <target>Zeichenauflistung</target>
@@ -58,6 +62,10 @@
             <trans-unit id="editor.preview.button" xml:space="preserve">
                 <source>learn more</source>
                 <target>mehr erfahren</target>
+            </trans-unit>
+            <trans-unit id="editor.preview.countdown" xml:space="preserve">
+                <source>00 01 02 03 04 05 06 07 08 09 10</source>
+                <target>00 01 02 03 04 05 06 07 08 09 10</target>
             </trans-unit>
             <trans-unit id="editor.preview.main" xml:space="preserve">
                 <source><![CDATA[Far far away, <strong>behind the word mountains,</strong> far from the countries Vokalia and Consonantia, there live the blind texts. <br><br>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. <strong>A small river named Duden flows by their place and supplies it with the necessary regelialia.</strong> It is a paradisematic country, in which roasted parts of sentences fly into your mouth. <br><br>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of <strong>Lorem Ipsum decided to leave</strong> for the far World of Grammar. <br><br> The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way. When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way. On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their projects again and again. And if she hasn’t been rewritten, then they are still using her.]]></source>
@@ -126,6 +134,10 @@
             <trans-unit id="editor.variations.GRAD" xml:space="preserve">
                 <source>Stroke Thicknesses</source>
                 <target>Liniendicke</target>
+            </trans-unit>
+            <trans-unit id="editor.uppercase" xml:space="preserve">
+                <source>Uppercase</source>
+                <target>Großbuchstaben</target>
             </trans-unit>
             <trans-unit id="editor.feature.pnum" xml:space="preserve">
                 <source>Proportional Figures</source>

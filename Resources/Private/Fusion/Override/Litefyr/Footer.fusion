@@ -3,6 +3,8 @@ footer {
     colorSchemeSwitchter.@if.both = ${q(site).property('themeColorScheme') == 'light dark'}
     clipPathAboveFooter = ${q(site).property('themeClipPathEnabled') && q(site).property('themeClipPathAboveFooter')}
     fullWidth = ${q(site).property('themeFooterFullWidth')}
+    languageSelector = ${q(site).property('themeFooterLanguageSelector')}
+    languageSelectorStyle = ${q(site).property('themeFooterLanguageSelectorStyle')}
 
     logo = Litefyr.Integration:Component.Logo {
         @if.show = ${q(site).property('themeFooterShowLogo')}
@@ -13,6 +15,7 @@ footer {
         additionalLinkClass = 'max-w-full'
         linkAttributes {
             href = Neos.Neos:NodeUri {
+                absolute = true
                 node = ${site}
             }
         }

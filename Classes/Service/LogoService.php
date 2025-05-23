@@ -17,9 +17,17 @@ class LogoService
     public function getLogoSizes(NodeInterface $node): array
     {
         $logoSize = $node->getProperty('themeLogoSize') ?? 40;
+        $marginTop = $node->getProperty('themeLogoMarginTop') ?? 0;
+        $marginBottom = $node->getProperty('themeLogoMarginBottom') ?? 0;
+
         $size = $logoSize / 1.25;
         $sizeInContent = $node->getProperty('themeLogoSizeInContent');
         $sizeInContent = $sizeInContent ? $sizeInContent : 600;
+
+        $height = [
+            'mobile' => $size + $marginTop + $marginBottom,
+            'desktop' => $logoSize + $marginTop + $marginBottom,
+        ];
 
         $config = [
             'size' => $size,
@@ -29,6 +37,9 @@ class LogoService
         $CSS = '';
         foreach ($config as $key => $value) {
             $CSS .= sprintf('--logo-%s:%srem;', $key, round($value / 16, 4));
+        }
+        foreach ($height as $key => $value) {
+            $CSS .= sprintf('--header-height-%s:%spx;', $key, $value);
         }
 
         return [

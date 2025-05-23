@@ -128,6 +128,24 @@ class ColorDataSourceService
             $colors['link'] = $colors['main'];
         }
 
+        if ($this->isArgumentSet($arguments, 'black')) {
+            $colors['black'] = 'black';
+        }
+
+        if ($this->isArgumentSet($arguments, 'white')) {
+            $colors['white'] = 'white';
+        }
+
+        if ($hasMultipleColors) {
+            if ($this->isArgumentSet($arguments, 'blackAndWhite')) {
+                $colors['blackAndWhite'] = ['black', 'white'];
+            }
+
+            if ($this->isArgumentSet($arguments, 'whiteAndBlack')) {
+                $colors['whiteAndBlack'] = ['white', 'black'];
+            }
+        }
+
         // Get the options
         $options = [];
         $presets = [];
@@ -152,6 +170,12 @@ class ColorDataSourceService
                     break;
                 case 'background':
                     $value = 'inverted';
+                    break;
+                case 'blackAndWhite':
+                    $value = 'black-white';
+                    break;
+                case 'whiteAndBlack':
+                    $value = 'white-black';
                     break;
                 default:
                     $value = $key;
@@ -183,9 +207,7 @@ class ColorDataSourceService
      */
     public function getStyleNode(NodeInterface $node): ?NodeInterface
     {
-        return (new FlowQuery([$node]))
-            ->closest('[instanceof Litefyr.Style:Mixin.Colors]')
-            ->get(0);
+        return (new FlowQuery([$node]))->closest('[instanceof Litefyr.Style:Mixin.Colors]')->get(0);
     }
 
     /**

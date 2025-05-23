@@ -12,14 +12,20 @@ prototype(Litefyr.Style:Favicon.Case) < prototype(Neos.Fusion:Component) {
                 content = ${props.content}
             }
         }
-        notFound {
-            condition = true
+        notFoundPage {
             notFoundPage = ${q(site).children('[instanceof ' + props.notFoundPage + ']').get(0)}
             @context {
                 node = ${this.notFoundPage}
                 documentNode = ${this.notFoundPage}
             }
+            condition = ${node}
             type = ${props.notFoundPage}
+        }
+        browser404 {
+            condition = true
+            renderer = Neos.Fusion:Http.Message {
+                httpResponseHead.statusCode = 404
+            }
         }
     }
 }

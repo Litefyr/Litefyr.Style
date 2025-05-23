@@ -11,7 +11,7 @@ class FontService
 {
     const FALLBACK = [
         'fontFamily' =>
-            'ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";',
+            'ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
         'fontFeatureSettings' => 'normal',
         'fontVariationSettings' => 'normal',
         'fontWeight' => 400,
@@ -21,6 +21,34 @@ class FontService
 
     #[Flow\Inject]
     protected Service $webfontsService;
+
+    /**
+     * Return the fonts properties from a node
+     *
+     * @param NodeInterface $node
+     * @return array{fonts: array{main?:mixed,headline?:mixed,quote?:mixed,button?:mixed}, markup: string, CSS: array{onStart: string, root: string}}
+     */
+    public function getFonts(NodeInterface $node): array
+    {
+        $fonts = [
+            'main' => $node->getProperty('themeFontMain'),
+            'headline' => $node->getProperty('themeFontHeadline'),
+            'quote' => $node->getProperty('themeFontQuote'),
+            'button' => $node->getProperty('themeFontButton'),
+            'header' => $node->getProperty('themeFontHeader'),
+            'footer' => $node->getProperty('themeFontFooter'),
+            'countdown' => $node->getProperty('themeFontCountdown'),
+        ];
+        $fonts = $this->makeSureMainFontIsSet($fonts);
+
+        return [
+            'fonts' => $fonts,
+            'markup' => $this->geStylesheets($fonts),
+            'CSS' => [
+                'root' => $this->getFontCssProperties($fonts),
+            ],
+        ];
+    }
 
     /**
      * Get stylesheets
@@ -40,18 +68,6 @@ class FontService
         }
 
         return implode('', array_unique($stylesheets));
-    }
-
-    /**
-     * Get font preload links
-     *
-     * @param string $filepath
-     * @return string
-     */
-    protected function fontPreload(string $filepath): string
-    {
-        $format = pathinfo($filepath, PATHINFO_EXTENSION);
-        return sprintf('<link rel="preload" href="%s" as="font" type="font/%s" crossorigin>', $filepath, $format);
     }
 
     /**
@@ -92,36 +108,14 @@ class FontService
                 $key,
                 $font['fontWeightBold'] ?? self::FALLBACK['fontWeightBold']
             );
+
+            // Uppercase settings
+            if ($font['uppercase'] ?? false) {
+                $fontProperties[] = sprintf('--font-uppercase-%s:uppercase;', $key);
+            }
         }
 
         return implode('', array_unique($fontProperties));
-    }
-
-    /**
-     * Return the fonts properties from a node
-     *
-     * @param NodeInterface $node
-     * @return array{fonts: array{main?:mixed,headline?:mixed,quote?:mixed,button?:mixed}, markup: string, CSS: array{onStart: string, root: string}}
-     */
-    public function getFonts(NodeInterface $node): array
-    {
-        $fonts = [
-            'main' => $node->getProperty('themeFontMain'),
-            'headline' => $node->getProperty('themeFontHeadline'),
-            'quote' => $node->getProperty('themeFontQuote'),
-            'button' => $node->getProperty('themeFontButton'),
-            'header' => $node->getProperty('themeFontHeader'),
-            'footer' => $node->getProperty('themeFontFooter'),
-        ];
-        $fonts = $this->makeSureMainFontIsSet($fonts);
-
-        return [
-            'fonts' => $fonts,
-            'markup' => $this->geStylesheets($fonts),
-            'CSS' => [
-                'root' => $this->getFontCssProperties($fonts),
-            ],
-        ];
     }
 
     /**

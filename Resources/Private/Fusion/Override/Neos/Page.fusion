@@ -1,32 +1,13 @@
 prototype(Neos.Neos:Page) {
-    htmlTag.attributes {
-        class.@process {
-            colorScheme = ${Array.push(value, q(site).property('themeColorScheme') == 'dark' ? 'dark' : 'light')}
-            roundImages = ${Array.push(value, q(site).property('themeRoundImage') ? 'images-round' : 'images-default')}
-            clipPath = Neos.Fusion:Component {
-                enabled = ${q(site).property('themeClipPathEnabled')}
-                header = ${q(site).property('themeClipPathBelowNavigation')}
-                content = ${q(site).property('themeClipPathInContent')}
-                footer = ${q(site).property('themeClipPathAboveFooter')}
-                clipPath = ${q(site).property('themeClipPath')}
-                reverse = ${!!(this.enabled && this.content && this.clipPath && this.clipPath.css.reverseStacking)}
-
-                renderer = Neos.Fusion:Reduce {
-                    items = ${['header', 'content', 'footer']}
-                    itemReducer = ${Array.push(carry, item + (props.enabled && props[item] ? '-clip' : '-flat'))}
-                    initialValue = ${value}
-                    @process.reverse = ${props.reverse ? Array.push(value, 'content-clip--reverse') : value}
-                }
-            }
-        }
-    }
-
+    htmlTag.attributes.class.@process.style = Litefyr.Style:HtmlClass
     head.themeStyle = Neos.Fusion:Renderer {
         @position= 'after structuredData'
         renderPath = '/styleHeadTags'
     }
+    bodyTag.attributes.data-theme = 'default'
 }
 
 prototype(Carbon.BackendDocument:Document) {
     style.@process.style = ${q(site).property('themeCSS') + value}
+    htmlClass.@process.style = Litefyr.Style:HtmlClass
 }

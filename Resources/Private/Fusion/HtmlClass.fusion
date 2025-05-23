@@ -1,0 +1,25 @@
+prototype(Litefyr.Style:HtmlClass) < prototype(Neos.Fusion:Component) {
+    value = ${value}
+    colorScheme = ${q(site).property('themeColorScheme') == 'dark' ? 'dark' : 'light'}
+    roundImages = ${q(site).property('themeRoundImage') ? 'images-round' : 'images-default'}
+    clipPathItems = ${['header', 'content', 'footer']}
+
+    clipPath = Neos.Fusion:DataStructure {
+        enabled = ${q(site).property('themeClipPathEnabled')}
+        header = ${q(site).property('themeClipPathBelowNavigation')}
+        content = ${q(site).property('themeClipPathInContent')}
+        footer = ${q(site).property('themeClipPathAboveFooter')}
+        value = ${q(site).property('themeClipPath')}
+        reverse = ${!!(this.enabled && this.content && this.value && this.value.css.reverseStacking)}
+    }
+
+    @private {
+        clipPath = Neos.Fusion:Reduce {
+            items = ${props.clipPathItems}
+            itemReducer = ${Array.push(carry, item + (props.clipPath.enabled && props.clipPath[item] ? '-clip' : '-flat'))}
+            initialValue = ${[]}
+            @process.reverse = ${props.clipPath.reverse ? Array.push(value, 'content-clip--reverse') : value}
+        }
+    }
+    renderer = ${Carbon.String.classNames(props.value, props.colorScheme, props.roundImages, private.clipPath)}
+}

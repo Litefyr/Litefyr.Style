@@ -34,7 +34,9 @@ function PreviewText({ text, style, fontWeightBold, type, colors, colorContrastT
 
     const isButton = type === "button";
 
-    colors = colors.filter((color) => !!color);
+    if (isButton && Array.isArray(colors)) {
+        colors = colors.filter((color) => !!color);
+    }
 
     function getColorFromBackground(background) {
         let luminance = parseFloat(background.split("(")[1].split(" ")[0]);
@@ -52,7 +54,7 @@ function PreviewText({ text, style, fontWeightBold, type, colors, colorContrastT
         <div className={styleSheet.buttonPreview}>
             {colors.map((color, index) => (
                 <button
-                    key={index}
+                    key={`color-${index}`}
                     type="button"
                     data-theme="main"
                     style={{

@@ -115,12 +115,11 @@ function Editor({ id, value, commit, highlight, labels, options }) {
 
 const neosifier = neos((globalRegistry) => {
     const i18nRegistry = globalRegistry.get("i18n");
-    const secondaryEditorsRegistry = globalRegistry.get("inspector").get("secondaryEditors");
     const labels = {};
     ["edit", "reset", "content"].forEach((key) => {
         labels[key] = i18nRegistry.translate(`Litefyr.Style:NodeTypes.Mixin.Visuals.ClipPath:editor.${key}`);
     });
-    return { labels, secondaryEditorsRegistry };
+    return { labels };
 });
 
 export default neosifier(Editor);

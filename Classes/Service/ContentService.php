@@ -31,12 +31,15 @@ class ContentService
         if ($headlineAlignment == 'left') {
             $onEnd .= '.headline-alignment-margin{margin-right:auto}';
             $onEnd .= '.headline-alignment-justify{justify-content:start}';
+            $onEnd .= '.headline-alignment-items{align-items:start}';
         } elseif ($headlineAlignment == 'right') {
             $onEnd .= '.headline-alignment-margin{margin-left:auto}';
             $onEnd .= '.headline-alignment-justify{justify-content:end}';
+            $onEnd .= '.headline-alignment-items{align-items:end}';
         } else {
             $onEnd .= '.headline-alignment-margin{margin-left:auto;margin-right:auto}';
             $onEnd .= '.headline-alignment-justify{justify-content:center}';
+            $onEnd .= '.headline-alignment-items{align-items:center}';
         }
 
         return [

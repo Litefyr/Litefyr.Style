@@ -38,6 +38,7 @@ function Panel({ id, onChange, value, options, placeholder, i18nRegistry, labels
     const [cssFile, setCssFile] = useState(null);
     const [fontWeightConfig, setFontWeightConfig] = useState(null);
     const [fontType, setFontType] = useState(null);
+    const [uppercase, setUppercase] = useState(!!value?.uppercase);
 
     useEffect(() => {
         if (!fontFamily) {
@@ -45,12 +46,13 @@ function Panel({ id, onChange, value, options, placeholder, i18nRegistry, labels
         }
         onChange({
             fontFamily,
-            fontVariationSettings: fontVariationSettings,
+            fontVariationSettings,
             fontFeatureSettings,
             fontWeight,
             fontWeightBold,
+            uppercase,
         });
-    }, [fontFamily, fontVariationSettings, fontFeatureSettings, fontWeight, fontWeightBold]);
+    }, [fontFamily, fontVariationSettings, fontFeatureSettings, fontWeight, fontWeightBold, uppercase]);
 
     useEffect(() => {
         if (!fontFamily) {
@@ -66,6 +68,9 @@ function Panel({ id, onChange, value, options, placeholder, i18nRegistry, labels
 
         if (!obj?.font) {
             setFontFamily(null);
+            setUppercase(false);
+            setFontVariationSettings("normal");
+            setFontFeatureSettings("normal");
             onChange();
             return;
         }
@@ -91,15 +96,10 @@ function Panel({ id, onChange, value, options, placeholder, i18nRegistry, labels
         }
     }, [fontFamily]);
 
-    function reset() {
-        setFontFamily(null);
-        onChange();
-    }
-
     const previewClassName = "litefyr-font-preview";
     const mainFontCSS = mainFontStyle(options?.mainFont || {}, previewClassName);
     const buttonCSS = `.${previewClassName} button{border-radius:${options?.roundedButton || 0} !important}`;
-    const enableBold = options.type !== "button";
+    const enableBold = !!options?.enableBold;
     const preview = rangePreview ? "range" : options.type;
     const previewText = i18nRegistry.translate(`Litefyr.Style:NodeTypes.Mixin.Fonts:editor.preview.${preview}`);
 
@@ -128,26 +128,33 @@ function Panel({ id, onChange, value, options, placeholder, i18nRegistry, labels
                         }}
                     />
                 </div>
-                <FontWeight
-                    id={id}
-                    defaultFontWeight={defaultFontWeight}
-                    defaultFontWeightBold={defaultFontWeightBold}
-                    fontType={fontType}
-                    fontWeight={fontWeight}
-                    setFontWeight={setFontWeight}
-                    fontWeightBold={fontWeightBold}
-                    setFontWeightBold={setFontWeightBold}
-                    enableBold={enableBold}
-                    fontWeightConfig={fontWeightConfig}
-                />
-                <FontFeatures
-                    id={id}
-                    cssFile={cssFile}
-                    fontVariationSettings={fontVariationSettings}
-                    setFontVariationSettings={setFontVariationSettings}
-                    fontFeatureSettings={fontFeatureSettings}
-                    setFontFeatureSettings={setFontFeatureSettings}
-                />
+                {fontFamily && (
+                    <>
+                        <FontWeight
+                            id={id}
+                            defaultFontWeight={defaultFontWeight}
+                            defaultFontWeightBold={defaultFontWeightBold}
+                            fontType={fontType}
+                            fontWeight={fontWeight}
+                            setFontWeight={setFontWeight}
+                            fontWeightBold={fontWeightBold}
+                            setFontWeightBold={setFontWeightBold}
+                            enableBold={enableBold}
+                            fontWeightConfig={fontWeightConfig}
+                        />
+                        <FontFeatures
+                            id={id}
+                            cssFile={cssFile}
+                            allowUpperCase={options?.allowUpperCase}
+                            uppercase={uppercase}
+                            setUppercase={setUppercase}
+                            fontVariationSettings={fontVariationSettings}
+                            setFontVariationSettings={setFontVariationSettings}
+                            fontFeatureSettings={fontFeatureSettings}
+                            setFontFeatureSettings={setFontFeatureSettings}
+                        />
+                    </>
+                )}
             </div>
             <div className={clsx(previewClassName, style[preview + "Output"], style.fontOutput)}>
                 <PreviewText
@@ -159,6 +166,7 @@ function Panel({ id, onChange, value, options, placeholder, i18nRegistry, labels
                                   fontWeight,
                                   fontVariationSettings,
                                   fontFeatureSettings,
+                                  textTransform: uppercase ? "uppercase" : "inherit",
                               }
                             : {}
                     }

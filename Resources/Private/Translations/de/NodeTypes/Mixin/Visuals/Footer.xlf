@@ -23,6 +23,14 @@
                 <source>Height of the logo</source>
                 <target>Höhe des Logos</target>
             </trans-unit>
+            <trans-unit id="properties.themeFooterLanguageSelector" xml:space="preserve">
+                <source>Language selector type</source>
+                <target>Bezeichnung der Sprachauswahl</target>
+            </trans-unit>
+            <trans-unit id="properties.themeFooterLanguageSelectorStyle" xml:space="preserve">
+                <source>Style variant of the language selection</source>
+                <target>Stil-Variante der Sprachauswahl</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

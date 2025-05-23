@@ -8,6 +8,8 @@ header {
     clipPathBelowNavigation = ${q(site).property('themeClipPathEnabled') && q(site).property('themeClipPathBelowNavigation')}
     headerGap = ${q(site).property('themeHeaderGap')}
     fullWidth = ${q(site).property('themeHeaderFullWidth')}
+    languageSelector = ${q(site).property('themeHeaderLanguageSelector')}
+    languageSelectorStyle = ${q(site).property('themeHeaderLanguageSelectorStyle')}
     logo {
         size = ${q(site).property('themeLogoSize') || 40}
         height = ${this.size * 2}

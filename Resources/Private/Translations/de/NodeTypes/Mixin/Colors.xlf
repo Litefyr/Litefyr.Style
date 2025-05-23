@@ -83,6 +83,22 @@
                 <source>Default color</source>
                 <target>Standardfarbe</target>
             </trans-unit>
+            <trans-unit id="black" xml:space="preserve">
+                <source>Black</source>
+                <target>Schwarz</target>
+            </trans-unit>
+            <trans-unit id="white" xml:space="preserve">
+                <source>White</source>
+                <target>Weiß</target>
+            </trans-unit>
+            <trans-unit id="blackAndWhite" xml:space="preserve">
+                <source>Black (Light mode) / White (Dark mode)</source>
+                <target>Schwarz (heller Modus) / Weiß (dunkler Modus)</target>
+            </trans-unit>
+            <trans-unit id="whiteAndBlack" xml:space="preserve">
+                <source>White (Light mode) / Black (Dark mode)</source>
+                <target>Weiß (heller Modus) / Schwarz (dunkler Modus)</target>
+            </trans-unit>
             <trans-unit id="properties.themeColorContrastThreshold" xml:space="preserve">
                 <source>Threshold for contrast color</source>
                 <target>Schwellenwert für Kontrastfarbe</target>

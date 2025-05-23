@@ -28,7 +28,7 @@ export default function Dropdown({ label, options, value, onChange, plainOptions
                 </DropDown.Header>
                 <DropDown.Contents id={`${id}-contents`} scrollable={false} className={style.dropdownContents}>
                     {options.map((option, index) => (
-                        <li key={index}>
+                        <li key={`key-${index}`}>
                             <Button
                                 onClick={() => onChange(plainOptions ? option : option?.value)}
                                 className={style.dropdownButton}

@@ -41,6 +41,9 @@ function featuresStateToString(featuresState) {
 function FontFeatures({
     id,
     cssFile,
+    allowUpperCase,
+    uppercase,
+    setUppercase,
     fontVariationSettings,
     setFontVariationSettings,
     fontFeatureSettings,
@@ -119,6 +122,12 @@ function FontFeatures({
                 />
             ))}
             <div className={style.fontFeatures}>
+                {allowUpperCase && (
+                    <label className={style.checkboxLabel} title="uppercase">
+                        <CheckBox onChange={() => setUppercase(!uppercase)} isChecked={uppercase} />
+                        {i18nRegistry.translate("Litefyr.Style:NodeTypes.Mixin.Fonts:editor.uppercase", "Uppercase")}
+                    </label>
+                )}
                 {features.map((feature) => (
                     <label className={style.checkboxLabel} title={feature} key={feature}>
                         <CheckBox

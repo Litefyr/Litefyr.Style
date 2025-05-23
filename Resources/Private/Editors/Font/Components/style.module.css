@@ -192,3 +192,7 @@
   white-space: pre;
   overflow: auto;
 }
+
+.uppercase {
+  text-transform: uppercase;
+}

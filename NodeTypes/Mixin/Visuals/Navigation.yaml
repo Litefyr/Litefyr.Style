@@ -110,3 +110,40 @@
         inspector:
           group: themeNavigation
           position: 60
+    themeHeaderLanguageSelector:
+      type: string
+      search:
+        indexing: false
+      ui:
+        label: i18n
+        reloadPageIfChanged: true
+        inspector:
+          group: themeNavigation
+          position: 70
+          editor: 'Beromir.ToggleEditor/Editor'
+          editorOptions:
+            allowEmpty: true
+            layout: flex
+            dataSourceIdentifier: litefyr-style-language-selector
+            dataSourceAdditionalData:
+              style: 'ClientEval: node.properties.themeHeaderLanguageSelectorStyle'
+    themeHeaderLanguageSelectorStyle:
+      type: string
+      defaultValue: solid
+      search:
+        indexing: false
+      ui:
+        label: i18n
+        reloadPageIfChanged: true
+        inspector:
+          group: themeNavigation
+          position: 70
+          editor: 'Beromir.ToggleEditor/Editor'
+          hidden: 'ClientEval: ["", "shortLabel", "longLabel"].includes(node.properties.effect)'
+          editorOptions:
+            allowEmpty: false
+            maximalColumns: 5
+            dataSourceIdentifier: litefyr-style-language-selector
+            dataSourceAdditionalData:
+              type: 'style'
+              icon: 'ClientEval: node.properties.themeHeaderLanguageSelector'

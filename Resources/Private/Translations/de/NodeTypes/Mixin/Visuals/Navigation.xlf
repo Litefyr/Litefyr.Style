@@ -31,6 +31,14 @@
                 <source>Position logo on the right</source>
                 <target>Logo rechts positionieren</target>
             </trans-unit>
+            <trans-unit id="properties.themeHeaderLanguageSelector" xml:space="preserve">
+                <source>Language selector type</source>
+                <target>Bezeichnung der Sprachauswahl</target>
+            </trans-unit>
+            <trans-unit id="properties.themeHeaderLanguageSelectorStyle" xml:space="preserve">
+                <source>Style variant of the language selection</source>
+                <target>Stil-Variante der Sprachauswahl</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

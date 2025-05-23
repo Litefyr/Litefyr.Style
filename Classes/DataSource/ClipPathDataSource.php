@@ -23,9 +23,7 @@ class ClipPathDataSource extends AbstractDataSource
     public function getData(NodeInterface $node = null, array $arguments = [])
     {
         /** @var NodeInterface $styleNode */
-        $styleNode = (new FlowQuery([$node]))
-            ->closest('[instanceof Litefyr.Style:Mixin.Visuals.ClipPath]')
-            ->get(0);
+        $styleNode = (new FlowQuery([$node]))->closest('[instanceof Litefyr.Style:Mixin.Visuals.ClipPath]')->get(0);
 
         if (
             !$styleNode ||

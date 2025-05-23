@@ -38,6 +38,7 @@
           editor: Litefyr.Style/FontEditor
           editorOptions:
             type: headline
+            allowUpperCase: true
             mainFont: 'ClientEval: node.properties.themeFontMain'
     themeFontQuote:
       type: array
@@ -66,6 +67,8 @@
           editor: Litefyr.Style/FontEditor
           editorOptions:
             type: button
+            allowUpperCase: true
+            enableBold: false
             roundedButton: 'ClientEval: node.properties.themeRoundedButton'
             colors: 'ClientEval: node.properties.themeColorScheme == "dark" ? [node.properties.themeColorDarkMain?.oklch, node.properties.themeColorDarkMinor?.oklch, node.properties.themeColorDarkMinor2?.oklch] : [node.properties.themeColorLightMain?.oklch, node.properties.themeColorLightMinor?.oklch, node.properties.themeColorLightMinor2?.oklch]'
             mainFont: 'ClientEval: node.properties.themeFontMain'
@@ -83,6 +86,7 @@
           editor: Litefyr.Style/FontEditor
           editorOptions:
             type: header
+            allowUpperCase: true
             mainFont: 'ClientEval: node.properties.themeFontMain'
     themeFontFooter:
       type: array
@@ -97,4 +101,22 @@
           editor: Litefyr.Style/FontEditor
           editorOptions:
             type: footer
+            allowUpperCase: true
+            mainFont: 'ClientEval: node.properties.themeFontMain'
+    themeFontCountdown:
+      type: array
+      search:
+        indexing: false
+      ui:
+        label: i18n
+        reloadIfChanged: true
+        inspector:
+          group: themeFonts
+          position: 70
+          editor: Litefyr.Style/FontEditor
+          hidden: true
+          editorOptions:
+            type: countdown
+            allowUpperCase: false
+            enableBold: false
             mainFont: 'ClientEval: node.properties.themeFontMain'

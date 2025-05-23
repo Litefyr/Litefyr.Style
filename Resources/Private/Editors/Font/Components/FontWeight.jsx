@@ -64,7 +64,12 @@ function FontWeight({
                 <div>
                     <div>{labels.normalFontWeight}</div>
                     {fontWeightConfig.map((weight) => (
-                        <RadioButton key={weight} value={weight} onChange={setFontWeight} currentValue={fontWeight} />
+                        <RadioButton
+                            key={`key-${weight}`}
+                            value={weight}
+                            onChange={setFontWeight}
+                            currentValue={fontWeight}
+                        />
                     ))}
                 </div>
                 {enableBold && fontWeightConfig.length > 1 && (
@@ -72,7 +77,7 @@ function FontWeight({
                         <div>{labels.boldFontWeight}</div>
                         {fontWeightConfig.map((weight) => (
                             <RadioButton
-                                key={weight}
+                                key={`key-${weight}`}
                                 value={weight}
                                 onChange={setFontWeightBold}
                                 currentValue={fontWeightBold}
@@ -88,7 +93,7 @@ function FontWeight({
         <>
             <RangeInput
                 {...fontWeightConfig}
-                key={key}
+                key={`${key}-normal`}
                 id={`${id}-fontweight`}
                 value={fontWeight}
                 label={labels.normalFontWeight}

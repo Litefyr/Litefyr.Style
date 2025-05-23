@@ -60,7 +60,7 @@ class CssService
      */
     public function generateCss(NodeInterface $node): ?string
     {
-        if (!$node->getNodeType()->isOfType('Litefyr.Integration:Document.HomePage')) {
+        if (!$node->getNodeType()->isOfType('Litefyr.Style:Mixin.Style')) {
             return null;
         }
 
@@ -193,6 +193,7 @@ class CssService
             'themeFontButton',
             'themeFontHeader',
             'themeFontFooter',
+            'themeFontCountdown',
             'themeFontMain',
 
             // ClipPath
@@ -211,6 +212,8 @@ class CssService
             // Logo
             'themeLogoSize',
             'themeLogoSizeInContent',
+            'themeLogoMarginTop',
+            'themeLogoMarginBottom',
 
             // Scroll indicator
             'themeScrollIndicatorRounded',

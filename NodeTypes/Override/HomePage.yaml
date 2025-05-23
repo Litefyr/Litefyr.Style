@@ -1,5 +1,6 @@
 'Litefyr.Integration:Document.HomePage':
   superTypes:
+    'Litefyr.Style:Mixin.Style': true
     'Litefyr.Style:Mixin.Colors': true
     'Litefyr.Style:Mixin.Visuals': true
     'Litefyr.Style:Mixin.Fonts': true
@@ -9,23 +10,6 @@
     'Litefyr.Style:Mixin.ScollIndicator': true
     'Litefyr.Style:Mixin.Extensions': true
   properties:
-    themeCSS:
-      type: string
-      search:
-        indexing: false
-    themeCSSHash:
-      type: string
-      search:
-        indexing: false
-    themeHeaderMarkup:
-      type: string
-      search:
-        indexing: false
-    themeClipPathEnabled:
-      type: boolean
-      defaultValue: false
-      search:
-        indexing: false
     footerNavigationMultiColumn:
       ui:
         inspector:

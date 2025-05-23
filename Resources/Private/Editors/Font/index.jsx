@@ -12,9 +12,11 @@ const defaultOptions = {
     type: "main",
     allowEmpty: true,
     disabled: false,
+    enableBold: true,
     roundedButton: 0,
     colorContrastThreshold: 65,
     colors: [],
+    allowUpperCase: false,
     useCarbonWebfonts: true,
 };
 
